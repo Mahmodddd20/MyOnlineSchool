@@ -241,7 +241,7 @@ export default function Messaging (props) {
     return (
         <Container className='m-2 '>
             <h1 className='m-4'>
-                <Badge pill variant="success rounded-0">
+                <Badge pill variant="success rounded-0 text-wrap">
                     Welcome To Your Class Messages
                 </Badge>{newM}
             </h1>

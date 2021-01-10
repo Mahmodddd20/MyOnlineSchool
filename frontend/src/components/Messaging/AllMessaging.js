@@ -62,7 +62,8 @@ export default function AllMessaging(props) {
                             <Card.Body>
                                 <Card.Title>From {classroom.start_date} To {classroom.finish_date}</Card.Title>
                                 <Card.Text>
-                                    Description
+                                    Teacher Name: {classroom.teacher_name}<br/>
+                                    Teacher Email: {classroom.teacher_email}
                                 </Card.Text>
                                 <Button variant="primary" href={"/messaging/"+classroom.id}>Enter the private messaging </Button>
                                 <Button variant="secondary" className='mt-1' href={"/groupmessaging/"+classroom.id}>Enter the group messaging </Button>
@@ -79,8 +80,9 @@ export default function AllMessaging(props) {
                         <Card.Body>
                             <Card.Title>From {classroom.start_date} To {classroom.finish_date}</Card.Title>
                             <Card.Text>
-                                Teacher Name: {classroom.teacherName}
-                                Teacher Email: {classroom.teacherEmail}                           </Card.Text>
+                                Teacher Name: {classroom.teacherName}<br/>
+                                Teacher Email: {classroom.teacherEmail}
+                            </Card.Text>
                             <Button variant="primary" href={"/messaging/"+classroom.classId}>Enter the private messaging </Button>
                             <Button variant="secondary" className='mt-1' href={"/groupmessaging/"+classroom.classId}>Enter the group messaging </Button>
 
@@ -116,10 +118,11 @@ export default function AllMessaging(props) {
     }
     function emptyClasses(){
         return(
-            <div>
-
-                <h1>no classes</h1>
-            </div>
+            <h1 className='text-monospace text-uppercase ml-2 pl-2'>no classes Yet
+                <div className="spinner-border  text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+            </h1>
         )
     }
     function allClasses(){
@@ -136,7 +139,7 @@ export default function AllMessaging(props) {
                     welcome to your messaging system
                 </Badge>
             </h1>
-            <CardColumns>
+            <CardColumns className=' ml-1'>
 
                 {classroom.length>0 ? allClasses() : emptyClasses()}
             </CardColumns>

@@ -80,7 +80,7 @@ export default function Login() {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-            <div className="card">
+            <div className="card mt-4">
             <div className="card-header">Login</div>
                 <div className="card-body">
                     <form method="POST" onSubmit={handleLogin} >

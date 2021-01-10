@@ -68,8 +68,9 @@ export default function AllMyClasses(){
                         <Card.Body>
                             <Card.Title>From {classroom.start_date} To {classroom.finish_date}</Card.Title>
                             <Card.Text>
-                                Teacher Name: {classroom.teacherName}
-                                Teacher Email: {classroom.teacherEmail}                           </Card.Text>
+                                Teacher Name: {classroom.teacherName}<br/>
+                                Teacher Email: {classroom.teacherEmail}
+                            </Card.Text>
                             <Button variant="primary" href={"/weeks/show/"+classroom.classId}>Enter {classroom.className}</Button>
                         </Card.Body>
                     </Card>
@@ -81,9 +82,11 @@ export default function AllMyClasses(){
     }
     function emptyClasses(){
         return(
-            <div className="spinner-border m-5 text-primary" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+                <h1 className='text-monospace text-uppercase ml-2 pl-2'>no classes Yet
+                    <div className="spinner-border  text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </h1>
         )
     }
     function allClasses(){

@@ -88,12 +88,12 @@ export default function GroupMessaging (props) {
                 return (
                     <div className='w-auto '>
                         {message.sender_id==CookieService.get('id')?
-                            <ListGroup.Item  variant="info" className='m-1 pb-0 float-left' key={message.id}>
-                                <p className='text-left  text-monospace'><strong>Me:</strong> {message.message}</p>
+                            <ListGroup.Item  variant="light" className='ml-2 m-1 pb-0 float-left' key={message.id}>
+                                <p style={{color:'black'}} className='text-left text-monospace'><strong>Me:</strong> {message.message}</p>
                                 <p className='text-muted text-center text-monospace'>{message.created_at}</p>
                             </ListGroup.Item> :
-                            <ListGroup.Item  variant="primary" className='m-1 pb-0 float-right ' key={message.id} >
-                                <p className='text-left  text-monospace'><strong>{message.sender_name}:</strong> {message.message} </p>
+                            <ListGroup.Item style={{backgroundColor:'#c0f5ae'}} variant="primary" className='mr-2 m-1 pb-0 float-right ' key={message.id} >
+                                <p style={{color:'black'}} className='text-left  text-monospace'><strong>{message.sender_name}:</strong> {message.message} </p>
                                 <p className='text-muted text-center text-monospace'>{message.created_at}</p>
                             </ListGroup.Item>}
                     </div>
@@ -132,22 +132,23 @@ export default function GroupMessaging (props) {
 
     function Group(){
         return(
-            <div className='d-flex h-auto'>
-                    <Card style={{ maxWidth: '35rem', minWidth: '18rem' ,width:'25rem'}}>
-                        <Card.Header className='text-primary text-capitalize text-monospace'>class: <strong>{classroom.name}</strong></Card.Header>
-                        <ListGroup variant="flush" className='pre-scrollable '>
+            <div className='d-flex '>
+                    <Card className='w-100 '>
+                        <Card.Header style={{backgroundColor:'#76b7f5'}} className='text-light text-capitalize text-monospace'>class: <strong>{classroom.name}</strong></Card.Header>
+                        <ListGroup variant="flush" className='pre-scrollable' style={{backgroundColor:'#e6f0f2'}}>
                             {renderMessages()}
                             <div ref={messagesEndRef} />
                         </ListGroup>
 
                         <Form method="POST" onSubmit={sendMessage}>
-                            <Form.Group controlId="formBasicMessage">
+                            <Form.Group className='mb-0 mt-1' controlId="formBasicMessage">
                                 {/*<Form.Label>Enter your message</Form.Label>*/}
                                 <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
+                                <Button style={{backgroundColor:'#76b7f5'}} className='m-2' variant="primary" type="submit">
+                                    Send
+                                </Button>
+
                             </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Send
-                            </Button>
                         </Form>
 
                     </Card>
@@ -165,13 +166,13 @@ export default function GroupMessaging (props) {
     }
 
     return (
-        <Container className='m-2 '>
-            <h1 className='m-4'>
+        <Container className='mb-5 m-2 w-100 mw-75 mw-50'>
+            <h1 className='mt-4 mr-0 ml-1 mb-4 '>
                 <Badge pill variant="success rounded-0" className='text-wrap'>
                     Welcome To Your Group Messages
                 </Badge>
             </h1>
-            <div>
+            <div className='ml-1 m-1 ' >
                 {Group()}
 
             </div>

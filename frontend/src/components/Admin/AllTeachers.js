@@ -45,7 +45,7 @@ export default function AllTeachersTable() {
         );
     }
     return (
-        <div  className='mt-4 mb-4 h-50 pre-scrollable text-capitalize'>
+        <div  className='mt-4 mb-4 h-50 pre-scrollable text-capitalize w-auto'>
             <Table striped bordered hover>
                 <thead>
                 <tr>
@@ -58,7 +58,7 @@ export default function AllTeachersTable() {
 
                 </tr>
                 </thead>
-                <tbody >
+                <tbody className='text-truncate'>
 
                 {renderTeachers ()}
                 </tbody>

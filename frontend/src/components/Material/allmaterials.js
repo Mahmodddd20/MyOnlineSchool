@@ -28,7 +28,6 @@ export default function MyWeek(props){
                         <Card.Header as="h5">{material.name}</Card.Header>
                         <Card.Body>
                             {/*<Card.Img variant="top" src={material.link} />*/}
-                            {/*<Card.Title>{material.link}</Card.Title>*/}
                             <Card.Text dangerouslySetInnerHTML={{__html: material.description}}>
                             </Card.Text>
                             <Button className='m-2' variant="primary" href={"/material/show/"+material.id}>
@@ -43,9 +42,12 @@ export default function MyWeek(props){
 
     function emptyMaterials(){
         return(
-            <div>
-
-                <h1>no material</h1>
+            <div className='d-flex mt-0 ml-2'>
+                <h1 className='text-monospace text-uppercase mt-0 m-2 p-2'>no materials yet
+                    <div className="spinner-border ml-2 mb-0 mt-0 text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </h1>
             </div>
         )
     }
@@ -59,21 +61,21 @@ export default function MyWeek(props){
     }
 
     return (
-        <Container className='m-2 '>
+        <Container className='m-lg-5 text-capitalize text-wrap w-auto '>
             <h1 className='m-4'>
-                <Badge pill variant="success">
-                    welcome to your material
+                <Badge pill variant="success" className='rounded-0 text-wrap'>
+                    welcome to your materials
                 </Badge>
             </h1>
-            <CardColumns>
+            <div className='w-50'>
                 <h1 className='m-4'>
-                    <Badge pill variant="light">
+                    <Badge pill variant="light" className='text-wrap'>
                         The Materials
                     </Badge>
                 </h1>
-            </CardColumns>
-            <CardColumns className='d-inline'>
-                <CardGroup>
+            </div>
+            <CardColumns className='m-0 d-inline'>
+                <CardGroup className='text-center'>
                     {material.length>0 ? allMaterials() : emptyMaterials()}
                 </CardGroup>
             </CardColumns>

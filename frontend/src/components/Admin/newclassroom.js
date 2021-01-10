@@ -64,7 +64,7 @@ export default function Newclassroom() {
         return teacher.map(teach=>{
 
             return(
-             <option  key={teach.id} value={teach.id}> {teach.name} -> {teach.email} </option>
+             <option  key={teach.id} className='text-capitalize text-justify' value={teach.id}> {teach.role}  {teach.name} </option>
 
         )})}
 
@@ -97,7 +97,7 @@ export default function Newclassroom() {
 
     return (
         <i>
-            <div className="container mt-4">
+            <div className="container mt-4 text-capitalize">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
@@ -117,7 +117,7 @@ export default function Newclassroom() {
                                     <div className="form-group row">
                                         <label htmlFor="name" className="col-md-4 col-form-label text-md-right">Teacher</label>
 
-                                        <div className="col-md-6 text-wrap">
+                                        <div className="col-md-6 text-wrap text-capitalize">
                                             <select id="Id" type="text" data-live-search="true" className=' custom-select text-wrap pre-scrollable' name="teacher_id" aria-label="teacher_id"
                                                    onClick={handleTeacherIdChange}>
                                                 <option defaultValue={0}>Select Teacher</option>
@@ -139,7 +139,7 @@ export default function Newclassroom() {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Finish_date</label>
+                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Finish date</label>
 
                                         <div className="col-md-6">
                                             <input id="finish_date" type="date"  className={`form-control`} name="finish_date" autoComplete="finish_date"
@@ -158,9 +158,10 @@ export default function Newclassroom() {
                                 </form>
                             </div>
                         </div>
+                        <AllTeachersTable/>
+
                     </div>
                 </div>
-                <AllTeachersTable/>
             </div>
         </i>
     )

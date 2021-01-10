@@ -43,9 +43,12 @@ export default function AllHomeworks(props){
 
     function emptyHomeworks(){
         return(
-            <div>
-
-                <h1>no homework</h1>
+            <div className='d-flex mt-0 ml-2'>
+                <h1 className='text-monospace text-uppercase mt-0 m-2 p-2'>no homeworks yet
+                    <div className="spinner-border ml-2 mb-0 mt-0 text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </h1>
             </div>
         )
     }
@@ -59,20 +62,20 @@ export default function AllHomeworks(props){
     }
 
     return (
-        <Container className='m-2 '>
+        <Container className='m-lg-5 text-capitalize text-wrap w-auto '>
             <h1 className='m-4'>
-                <Badge pill variant="success">
+                <Badge pill variant="success" className='rounded-0 text-wrap'>
                     welcome to your homeworks
                 </Badge>
             </h1>
-            <CardColumns>
+            <div className='w-50'>
                 <h1 className='m-4'>
-                    <Badge pill variant="light">
+                    <Badge pill variant="light" className='text-wrap'>
                         The Homeworks
                     </Badge>
                 </h1>
-            </CardColumns>
-            <CardColumns className='d-inline'>
+            </div>
+            <CardColumns className='m-0 d-inline'>
                 <CardGroup>
                     {homework.length>0 ? allHomeworks() : emptyHomeworks()}
                 </CardGroup>

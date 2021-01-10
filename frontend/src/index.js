@@ -24,8 +24,6 @@ import NewHomework from './components/Homework/newhomework';
 import EditWeek from './components/ClassRoom/editweek';
 import EditClass from './components/Admin/editclassroom';
 import AddStudentToClass from './components/Admin/addstudenttoclass';
-import App from './App'
-import Mail from './components/mail'
 import Messaging from "./components/Messaging/messaging";
 import GroupMessaging from "./components/Messaging/GroupMessaging";
 import AllMessaging from "./components/Messaging/AllMessaging";
@@ -39,7 +37,7 @@ ReactDOM.render(
     <div className="page-container " >
         <div className="content-wrap ">
             <Header/>
-            <App/>
+            {/*<App/>*/}
             <BrowserRouter>
 
                 <Route exact path="/" component={Welcome} />
@@ -50,7 +48,6 @@ ReactDOM.render(
                 <Route exact path="/newclassroom" component={NewClass} />
                 <Route exact path="/class/edit/:id" component={EditClass} />
                 <Route exact path="/addstudenttoclass/:id" component={AddStudentToClass} />
-                <Route exact path="/mail" component={Mail} />
                 <Route exact path="/messaging/:id" component={Messaging} />
                 <Route exact path="/groupmessaging/:id" component={GroupMessaging} />
                 <Route exact path="/allmessaging/:id" component={AllMessaging} />

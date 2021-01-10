@@ -72,7 +72,7 @@ export default function Admin(){
         return( classroom.map(classroom=> {
                 return(
 
-                    <Card key={classroom.id} className='m-4'>
+                    <Card key={classroom.id} className='mt-4 mb-4 ml-0 mr-4'>
                         <Card.Header as="h5" className='text-wrap p-4 flex-column align-middle h-100'>{classroom.name}
                             <div className='d-block  float-right align-middle '>
                                 <Button variant="danger" className='float-right ml-1'  onClick={()=>{{handleShow(classroom.id)}}}>Delete</Button>
@@ -93,15 +93,20 @@ export default function Admin(){
     }
     function emptyClasses(){
         return(
-            <div>
 
-                <h1>no classes</h1>
+            <div className='d-flex'>
+                <h1 className='text-monospace text-uppercase mt-5 m-2 p-2'>no classes Yet
+                <div className="spinner-border ml-2 mb-0 mt-0 text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
+                </div>
+                </h1>
             </div>
+
         )
     }
     function allClasses(){
         return(
-            <div>
+            <div className='ml-1'>
                 {renderClasses()}
             </div>
         );
@@ -114,10 +119,10 @@ export default function Admin(){
                 </Badge>
             </h1>
             <Container>
-                <Button className='m-2' variant="primary" href={'/newclassroom'}>create new class</Button>
-                <Button className='m-2' variant="secondary" href={'/register'}>register users</Button>
+                <Button className='m-2' variant="info" href={'/newclassroom'}>create new class</Button>
+                <Button className='m-2' variant="outline-primary" href={'/register'}>register users</Button>
 
-                <CardColumns className='d-inline'>
+                <CardColumns className='d-inline ml-1'>
 
                 {classroom.length>0 ? allClasses() : emptyClasses()}
             </CardColumns>

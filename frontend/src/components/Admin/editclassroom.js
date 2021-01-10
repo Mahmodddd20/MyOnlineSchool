@@ -75,7 +75,7 @@ export default function Editclassroom(props) {
         return teacher.map(teach=>{
 
             return(
-                <option key={teach.id} value={teach.id}>{teach.id}name: {teach.name}| email:{teach.email} </option>
+                <option key={teach.id} value={teach.id}>{teach.role} {teach.name} </option>
 
             )})}
 
@@ -108,7 +108,7 @@ export default function Editclassroom(props) {
 
     return (
         <i>
-            <div className="container">
+            <div className="container mt-4 text-capitalize">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
@@ -129,7 +129,7 @@ export default function Editclassroom(props) {
                                         <label htmlFor="name" className="col-md-4 col-form-label text-md-right">Teacher</label>
 
                                         <div className="col-md-6">
-                                            <select id="Id" type="text" className={`form-select`} name="teacher_id" aria-label="teacher_id"
+                                            <select id="Id" type="text" className='custom-select text-capitalize' name="teacher_id" aria-label="teacher_id"
                                                     onClick={handleTeacherIdChange}>
                                                 <option defaultValue={0}>Select Teacher</option>
                                                 {AllTeachers()}
@@ -150,7 +150,7 @@ export default function Editclassroom(props) {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Finish_date</label>
+                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Finish date</label>
 
                                         <div className="col-md-6">
                                             <input id="finish_date" type="date"  className={`form-control`} name="finish_date" autoComplete="finish_date"

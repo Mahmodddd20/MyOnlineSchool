@@ -56,11 +56,12 @@ export default function AllClassWeeks(props){
 
     function emptyWeeks(){
         return(
-            <div>
-            <div className="spinner-border m-5 text-primary" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
-                <h1 className='text-monospace  text-danger  text-uppercase'>No Weeks Yet</h1>
+            <div className='d-flex'>
+                <h1 className='text-monospace   text-uppercase mt-5 m-2 p-2'>no weeks Yet
+                    <div className="spinner-border ml-2 mb-0 text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </h1>
             </div>
         );
     }
@@ -69,7 +70,7 @@ export default function AllClassWeeks(props){
     function allWeek(){
         return week.map(week=>{
             return(
-                <Card key={week.id} className='m-4 '>
+                <Card key={week.id} className='mt-4 mb-4 ml-0 mr-4 '>
                     <Card.Header as="h5" className='text-wrap p-4 flex-column align-middle h-100'>
                         {week.name}
                         {CookieService.get('role')=='teacher'?
@@ -97,11 +98,11 @@ export default function AllClassWeeks(props){
 
 
     return(
-        <Container className='m-lg-5' >
+        <Container className='m-lg-5 text-capitalize text-wrap w-auto' >
             <h1 className='m-4'>
                 <Badge pill variant="success" className='rounded-0 text-wrap'>
                     {className==''?
-                        <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span className="spinner-border spinner-border-sm spinner-grow" role="status" aria-hidden="true"></span>
                         :className}
                 </Badge>
             </h1>
@@ -114,7 +115,7 @@ export default function AllClassWeeks(props){
 
 
 
-                <CardColumns className='d-inline'>
+                <CardColumns className='d-inline ml-1'>
 
                 {week.length >0 ? allWeek() : emptyWeeks() }
             </CardColumns>

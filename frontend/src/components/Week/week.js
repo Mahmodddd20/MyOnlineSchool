@@ -72,26 +72,24 @@ export default function MyWeek(props){
 
     function emptyMaterials(){
         return(
-            <div>
-                <h4 className='text-monospace text-wrap  text-danger  text-uppercase ml-5'>no material yet</h4>
-                <div className="spinner-border  text-primary" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+            <div className='d-flex ml-2'>
+                <h1 className='text-monospace text-uppercase mt-5 m-2 p-2'>no materials yet
+                    <div className="spinner-border ml-2 mb-0 mt-0 text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </h1>
             </div>
-
-
         )
     }
     function emptyHomeworks(){
         return(
-            <div>
-                <h4 className='text-monospace text-wrap  text-danger  text-uppercase ml-5'>no homework yet</h4>
-                <div className="spinner-border  text-primary" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
+            <div className='d-flex ml-2'>
+                <h1 className='text-monospace text-uppercase mt-5 m-2 p-2'>no homeworks yet
+                    <div className="spinner-border ml-2 mb-0 mt-0 text-primary" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                </h1>
             </div>
-
-
         )
     }
 
@@ -111,7 +109,7 @@ export default function MyWeek(props){
     }
 
     return (
-        <Container className='m-2 float-left'>
+        <Container className='m-lg-5 float-left'>
             <h1 className='m-4'>
                 <Badge pill variant="success" className='rounded-0 text-wrap'>
                     welcome to your week
@@ -127,12 +125,13 @@ export default function MyWeek(props){
                     </Badge>
                 </h1>
                 </div>
-            <CardColumns className='m-4 d-inline'>
+            <CardColumns className=' mt-0 m-4 d-inline p-2'>
                 <CardGroup className='text-center'>
                     {material.length>0 ? allMaterials() : emptyMaterials()}
                 </CardGroup>
             </CardColumns>
             </div>
+            <div className='w-50'>
             <div>
                 <h1 className='m-4'>
                     <Badge pill variant="light" className='text-wrap'>
@@ -143,13 +142,12 @@ export default function MyWeek(props){
                     </Badge>
                 </h1>
                 </div>
-            <CardColumns className='m-4 d-inline'>
+            <CardColumns className='mt-0 m-4 d-inline '>
                 <CardGroup className='text-center'>
                     {homework.length>0 ? allHomeworks() : emptyHomeworks()}
                 </CardGroup>
             </CardColumns>
-
-
+            </div>
         </Container>
     )
 }
