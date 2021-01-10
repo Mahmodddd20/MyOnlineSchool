@@ -37,7 +37,6 @@ ReactDOM.render(
     <div className="page-container " >
         <div className="content-wrap ">
             <Header/>
-            {/*<App/>*/}
             <BrowserRouter>
 
                 <Route exact path="/" component={Welcome} />

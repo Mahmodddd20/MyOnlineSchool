@@ -26,7 +26,7 @@ export default function Header() {
             setId(response.data.id)
             setCheck(true)
         }).catch(error => {
-            setCheck(false)
+            setCheck(false);
         })
     }
     function guest(){

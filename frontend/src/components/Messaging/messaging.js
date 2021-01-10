@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import api from "../../api";
 import {Link, useHistory} from 'react-router-dom';
 import CookieService from "../../CookieService";
-import {Alert, Badge, Button, Card, CardColumns, Container, Form, ListGroup, Toast} from "react-bootstrap";
+import {Alert, Badge, Button, Card, CardColumns, Collapse, Container, Form, ListGroup, Toast} from "react-bootstrap";
 import Pusher from 'pusher-js';
 
 export default function Messaging (props) {
@@ -12,6 +12,7 @@ export default function Messaging (props) {
     const [message, setMessage] = useState('');
     const [contact, setContact] = useState([]);
     const [contactId, setContactId] = useState("");
+    const [open, setOpen] = useState(false);
     const [newM, setNewM] = useState("");
 
 
@@ -62,8 +63,11 @@ export default function Messaging (props) {
         fetchContacts();
         fetchTeacher();
 
-
     }, []);
+    useEffect(() => {
+    fetchMessages()
+    }, [contactId]);
+
 
     // useEffect(() => {
     //     const interval=setInterval(()=>{
@@ -107,6 +111,7 @@ export default function Messaging (props) {
 
 
     function fetchMessages () {
+        if(contactId!==''){
         api.messages(contactId).then(response => {
             console.log('messages',response.data)
             setMessages(response.data)
@@ -116,7 +121,7 @@ export default function Messaging (props) {
 
         }).catch(error => {
             // history.push('/login');
-        })
+        })}
     }
 
 
@@ -124,9 +129,10 @@ export default function Messaging (props) {
             return (contacts.map(mycontact => {
                     return (
                             <ListGroup.Item action
-                                            onClick={()=>{setContact(mycontact); setContactId(mycontact.userId);fetchMessages()}}
-                                            variant="dark" className='text-primary text-capitalize text-monospace' key={mycontact.userId}>
-                                {mycontact.userName}<span id={mycontact.userId}></span>
+                                            onClick={()=>{setContact(mycontact); setContactId(mycontact.userId);fetchMessages();setOpen(!open)}}
+                                            variant="light" className=' text-capitalize text-monospace m-1 '
+                                            style={{color:'black'}} key={mycontact.userId}>
+                                {mycontact.userName}
                             </ListGroup.Item>
 
                     );
@@ -141,15 +147,18 @@ export default function Messaging (props) {
                 return (
                     <div className='w-auto '>
                         {message.sender_id==CookieService.get('id')?
-                            <ListGroup.Item  variant="info" className='m-1 pb-0 float-left' key={message.id}>
-                                <p className='text-left  text-monospace'><strong>{message.name}:</strong> {message.message}</p>
+                            <ListGroup.Item  style={{opacity: 0.9}}
+                                             variant="light"
+                                             className='ml-2 mr-5 m-1 pb-0 float-left rounded' key={message.id}>
+                                <p style={{color:'black',opacity: 1}} className='text-left text-monospace'><strong>{message.name}:</strong> {message.message}</p>
                                 <p className='text-muted text-center text-monospace'>{message.created_at}</p>
-                            </ListGroup.Item> :''}
-                        {message.receiver_id==CookieService.get('id')?
-                            <ListGroup.Item  variant="primary" className='m-1 pb-0 float-right ' key={message.id} >
-                                <p className='text-left  text-monospace'><strong>{message.name}:</strong> {message.message} </p>
+                            </ListGroup.Item> :
+                            <ListGroup.Item style={{backgroundColor:'#c0f5ae',opacity: 0.9}}
+                                            variant="primary "
+                                            className='mr-2 ml-5 m-1 pb-0 float-right rounded' key={message.id} >
+                                <p style={{color:'black',opacity: 1}} className='text-left  text-monospace'><strong>{message.name}:</strong> {message.message} </p>
                                 <p className='text-muted text-center text-monospace'>{message.created_at}</p>
-                            </ListGroup.Item>:''}
+                            </ListGroup.Item>}
                     </div>
 
             );
@@ -198,34 +207,36 @@ export default function Messaging (props) {
 
     function allContacts(){
         return(
-            <div className='d-flex '>
-            <ListGroup style={{ width: '18rem' }} className='pre-scrollable '>
+            <div className='d-flex flex-row align-items-start h-100' >
+                <Collapse in={open}>
+                <ListGroup style={{height:'100%'}} id="example-collapse-text" className='w-50 pre-scrollable '>
                 {CookieService.get('role')!=="teacher"?
                     <ListGroup.Item action
-                                    onClick={()=>{setContact(teacher);setContactId(teacher.userId);fetchMessages()}}
-                                    variant="dark" className='text-primary text-capitalize text-monospace' key={teacher.userId}>Teacher: {teacher.userName}</ListGroup.Item>:''
+                                    onClick={()=>{setContact(teacher);setContactId(teacher.userId);fetchMessages();setOpen(!open)}}
+                                    variant="light" className=' text-capitalize text-monospace' key={teacher.userId}>Teacher: {teacher.userName}</ListGroup.Item>:''
                 }
                 {renderContacts()}
-            </ListGroup>
-                {contact==''?'':
-                <Card style={{ maxWidth: '35rem', minWidth: '18rem' ,width:'25rem'}}>
-                    <Card.Header className='text-capitalize'>The messages of <strong>{contact.userName}</strong></Card.Header>
-                    <ListGroup variant="flush" className='pre-scrollable w-100'>
-                        {renderMessages()}
+                </ListGroup></Collapse>
+
+                <Card className='w-100 h-100'>
+                    <Card style={{height:'20rem',backgroundColor:'#e6f0f2'}}>
+                    <ListGroup variant="flush"  className='pre-scrollable'>
+                        {contact==''?'':renderMessages()}
                         <div ref={messagesEndRef} />
                     </ListGroup>
+                    </Card>
 
-                    <Form method="POST" onSubmit={sendMessage}>
-                        <Form.Group controlId="formBasicMessage">
-                            {/*<Form.Label>Enter your message</Form.Label>*/}
+                    <Form method="POST" onSubmit={sendMessage} className='mb-2'>
+                        <Form.Group className='mb-0 mt-2 ml-2 mr-2  d-flex flex-row align-items-center' controlId="formBasicMessage">
                             <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
+                            <Button style={{backgroundColor:'#76b7f5'}} className='m-1 ml-2 p-1 pt-2 ' variant="primary" type="submit">
+                                Send
+                            </Button>
+
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Send
-                        </Button>
                     </Form>
 
-                </Card>}
+                </Card>
         </div>
         );
     }
@@ -239,15 +250,28 @@ export default function Messaging (props) {
     }
 
     return (
-        <Container className='m-2 '>
+        <Container className='m-2 w-100 h-100'>
             <h1 className='m-4'>
                 <Badge pill variant="success rounded-0 text-wrap">
                     Welcome To Your Class Messages
                 </Badge>{newM}
             </h1>
-            <div>
-                {contacts.length>0 ?<Card style={{ width: '18rem' }}>
-                    <Card.Header>USERS</Card.Header>
+            <div className='m-4 '>
+                {contacts.length>0 ?<Card className='w-100 '>
+                    <Card.Header style={{backgroundColor:'#76b7f5'}}
+                       className='text-light text-capitalize text-monospace
+                       d-flex align-items-center justify-content-between '>
+                        <Button
+                            onClick={() => setOpen(!open)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                            className='btn-outline-light bg-transparent '
+
+                        >
+                            USERS
+                        </Button>
+                         {contact== '' ? '' : <div className='w-auto pl-5  '>The messages of <strong>{contact.userName}</strong></div>}
+                    </Card.Header>
                 </Card>:''}
 
                     {contacts.length>0 ? allContacts() : emptyContacts()}

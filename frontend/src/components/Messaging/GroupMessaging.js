@@ -88,12 +88,16 @@ export default function GroupMessaging (props) {
                 return (
                     <div className='w-auto '>
                         {message.sender_id==CookieService.get('id')?
-                            <ListGroup.Item  variant="light" className='ml-2 m-1 pb-0 float-left' key={message.id}>
-                                <p style={{color:'black'}} className='text-left text-monospace'><strong>Me:</strong> {message.message}</p>
+                            <ListGroup.Item  style={{opacity: 0.9}}
+                                             variant="light"
+                                             className='ml-2 mr-5 m-1 pb-0 float-left rounded' key={message.id}>
+                                <p style={{color:'black',opacity: 1}} className='text-left text-monospace'><strong>{message.sender_name}:</strong> {message.message}</p>
                                 <p className='text-muted text-center text-monospace'>{message.created_at}</p>
                             </ListGroup.Item> :
-                            <ListGroup.Item style={{backgroundColor:'#c0f5ae'}} variant="primary" className='mr-2 m-1 pb-0 float-right ' key={message.id} >
-                                <p style={{color:'black'}} className='text-left  text-monospace'><strong>{message.sender_name}:</strong> {message.message} </p>
+                            <ListGroup.Item style={{backgroundColor:'#c0f5ae',opacity: 0.9}}
+                                            variant="primary "
+                                            className='mr-2 ml-5 m-1 pb-0 float-right rounded' key={message.id} >
+                                <p style={{color:'black',opacity: 1}} className='text-left  text-monospace'><strong>{message.sender_name}:</strong> {message.message} </p>
                                 <p className='text-muted text-center text-monospace'>{message.created_at}</p>
                             </ListGroup.Item>}
                     </div>
@@ -134,24 +138,29 @@ export default function GroupMessaging (props) {
         return(
             <div className='d-flex '>
                     <Card className='w-100 '>
-                        <Card.Header style={{backgroundColor:'#76b7f5'}} className='text-light text-capitalize text-monospace'>class: <strong>{classroom.name}</strong></Card.Header>
-                        <ListGroup variant="flush" className='pre-scrollable' style={{backgroundColor:'#e6f0f2'}}>
-                            {renderMessages()}
-                            <div ref={messagesEndRef} />
-                        </ListGroup>
+                        <Card.Header style={{backgroundColor:'#76b7f5'}}
+                                     className='text-light text-capitalize text-monospace
+                       d-flex align-items-center justify-content-center '>
+                            Group class:<strong> {classroom.name}</strong></Card.Header>
+                            <Card style={{height:'20rem',backgroundColor:'#e6f0f2'}}>
+                                <ListGroup variant="flush"  className='pre-scrollable'>
+                                    {renderMessages()}
+                                    <div ref={messagesEndRef} />
+                                </ListGroup>
+                            </Card>
 
-                        <Form method="POST" onSubmit={sendMessage}>
-                            <Form.Group className='mb-0 mt-1' controlId="formBasicMessage">
-                                {/*<Form.Label>Enter your message</Form.Label>*/}
-                                <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
-                                <Button style={{backgroundColor:'#76b7f5'}} className='m-2' variant="primary" type="submit">
-                                    Send
-                                </Button>
+                            <Form method="POST" onSubmit={sendMessage} className='mb-2'>
+                                <Form.Group className='mb-0 mt-2 ml-2 mr-2  d-flex flex-row align-items-center' controlId="formBasicMessage">
+                                    <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
+                                    <Button style={{backgroundColor:'#76b7f5'}} className='m-1 ml-2 p-1 pt-2 ' variant="primary" type="submit">
+                                        Send
+                                    </Button>
 
-                            </Form.Group>
-                        </Form>
+                                </Form.Group>
+                            </Form>
 
-                    </Card>
+                        </Card>
+
             </div>
         );
     }
