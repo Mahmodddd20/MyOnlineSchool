@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="did some css">
+    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="did some messaging style">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Welcome/Footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Welcome/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Welcome/welcome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +35,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -170,6 +183,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -242,7 +256,8 @@
       <workItem from="1610177455601" duration="6916000" />
       <workItem from="1610227029856" duration="51000" />
       <workItem from="1610227122151" duration="12977000" />
-      <workItem from="1610254570857" duration="14066000" />
+      <workItem from="1610254570857" duration="26955000" />
+      <workItem from="1610360598243" duration="9008000" />
     </task>
     <task id="LOCAL-00001" summary="did some css">
       <created>1610254688408</created>
@@ -251,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610254688408</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="did some messaging style">
+      <created>1610290518253</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1610290518253</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +296,7 @@
       <path value="$PROJECT_DIR$/../frontend" />
     </ignored-roots>
     <MESSAGE value="did some css" />
-    <option name="LAST_COMMIT_MESSAGE" value="did some css" />
+    <MESSAGE value="did some messaging style" />
+    <option name="LAST_COMMIT_MESSAGE" value="did some messaging style" />
   </component>
 </project>

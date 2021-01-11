@@ -28,17 +28,17 @@ import Messaging from "./components/Messaging/messaging";
 import GroupMessaging from "./components/Messaging/GroupMessaging";
 import AllMessaging from "./components/Messaging/AllMessaging";
 import SendEmail from "./components/ClassRoom/sendemail";
-
-
+import Sidebar from './components/Sidebar/sidebar'
 
 
 
 ReactDOM.render(
-    <div className="page-container " >
-        <div className="content-wrap ">
-            <Header/>
+    <div>
+        <Header/>
+        <div className="container mymargin" >
+            <div className='position-relative '>
             <BrowserRouter>
-
+                <Sidebar/>
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
@@ -49,7 +49,7 @@ ReactDOM.render(
                 <Route exact path="/addstudenttoclass/:id" component={AddStudentToClass} />
                 <Route exact path="/messaging/:id" component={Messaging} />
                 <Route exact path="/groupmessaging/:id" component={GroupMessaging} />
-                <Route exact path="/allmessaging/:id" component={AllMessaging} />
+                <Route exact path="/allmessaging" component={AllMessaging} />
                 <Route exact path="/sendemail/:id" component={SendEmail} />
 
 
@@ -71,13 +71,10 @@ ReactDOM.render(
 
 
 
-
-
-
-
-            </BrowserRouter>
-            <Footer/>
-        </div>
+                </BrowserRouter>
+                </div>
+            </div>
+        <Footer/>
     </div>,
     document.getElementById('root')
 );

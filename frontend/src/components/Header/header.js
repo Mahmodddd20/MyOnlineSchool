@@ -55,7 +55,7 @@ export default function Header() {
                         </NavDropdown>
                         {role=='admin'?<Nav.Link href="/admin">Admin Page</Nav.Link>:''}
 
-                        <Nav.Link href={"/allmessaging/"+id}>Messaging</Nav.Link>
+                        <Nav.Link href={"/allmessaging/"}>Messaging</Nav.Link>
 
                         <Nav.Link href="/">Home</Nav.Link>
 
@@ -80,7 +80,12 @@ export default function Header() {
     })}
 
     return (
-        <div style={{display:'flex',backgroundColor:'whitesmoke',padding:10}}>
+        <div style={{display:'flex',
+            backgroundColor:'whitesmoke',
+            padding:10,
+            position: 'sticky',
+            zIndex:1000,
+            }}>
             <img
                 alt=""
                 src={logo}
@@ -92,7 +97,7 @@ export default function Header() {
 
         <span  className="font-weight-bolder pl-2 " style={{fontSize:50,color:'darkolivegreen'}}>
             My Online School</span>
-        <Navbar bg="" expand="lg" style={{float: 'right',marginRight: 30,fontSize:18}}>
+        <Navbar bg="" expand="lg" style={{float: 'right',marginRight: 30,fontSize:18,backgroundColor:'whitesmoke'}}>
 
                 { check==true ? auth() : guest() }
             </Navbar>

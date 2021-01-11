@@ -137,7 +137,7 @@ export default function GroupMessaging (props) {
     function Group(){
         return(
             <div className='d-flex '>
-                    <Card className='w-100 '>
+                    <Card className='w-100 mr-2'>
                         <Card.Header style={{backgroundColor:'#76b7f5'}}
                                      className='text-light text-capitalize text-monospace
                        d-flex align-items-center justify-content-center '>
@@ -181,7 +181,7 @@ export default function GroupMessaging (props) {
                     Welcome To Your Group Messages
                 </Badge>
             </h1>
-            <div className='ml-1 m-1 ' >
+            <div className='ml-1 m-1' >
                 {Group()}
 
             </div>

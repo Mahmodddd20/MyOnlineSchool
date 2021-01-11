@@ -4,7 +4,7 @@ import api from "../../api";
 import {Badge, Button, Card, CardColumns, Container} from "react-bootstrap";
 
 
-export default function AllMessaging(props) {
+export default function AllMessaging() {
     const [classroom,setClassroom]=useState([]);
 
     useEffect(() => {

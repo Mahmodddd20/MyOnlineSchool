@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef} from "react";
 import api from "../../api";
-import {Link, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import CookieService from "../../CookieService";
-import {Alert, Badge, Button, Card, CardColumns, Collapse, Container, Form, ListGroup, Toast} from "react-bootstrap";
+import {Alert, Badge, Button, Card, Collapse, Container, Form, ListGroup, Toast} from "react-bootstrap";
 import Pusher from 'pusher-js';
 
 export default function Messaging (props) {
