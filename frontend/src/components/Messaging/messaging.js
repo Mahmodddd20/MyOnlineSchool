@@ -33,10 +33,10 @@ export default function Messaging (props) {
         // alert(JSON.stringify(data));
         if(CookieService.get('id') ==data.sender_id){
                 console.log('sender')
-        } else if(CookieService.get('id')==data.receiver_id){
-                if(contactId==data.sender_id){
+        } else if(CookieService.get('id')==data.receiver_id) {
+        }if(contactId==data.sender_id){
                     fetchMessages();
-                }else {
+                }else if(contactId!==data.sender_id){
                     // const newContacts = contacts.map((item) => {
                     //     if (item.id === data.sender_id) {
                     //         const updatedItem = '1';
@@ -48,11 +48,11 @@ export default function Messaging (props) {
                     // });
                     //
                     // setContacts(newContacts);
-                    alert(data.sender_id)
+                    // alert(contactId,data.sender_id)
 
 
                 }
-        }
+
     });
 
 
@@ -213,7 +213,9 @@ export default function Messaging (props) {
                 {CookieService.get('role')!=="teacher"?
                     <ListGroup.Item action
                                     onClick={()=>{setContact(teacher);setContactId(teacher.userId);fetchMessages();setOpen(!open)}}
-                                    variant="light" className=' text-capitalize text-monospace' key={teacher.userId}>Teacher: {teacher.userName}</ListGroup.Item>:''
+                                    variant="light" className=' text-capitalize text-monospace'
+                                    style={{color:'black'}} key={teacher.userId}>
+                                    Teacher: {teacher.userName}</ListGroup.Item>:''
                 }
                 {renderContacts()}
                 </ListGroup></Collapse>

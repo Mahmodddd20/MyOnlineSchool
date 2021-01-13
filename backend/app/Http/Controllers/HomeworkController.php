@@ -31,7 +31,6 @@ class HomeworkController extends Controller
             'name'=> 'required',
             'type'=> 'required',
             'description'=> 'required',
-            'link'=> 'required',
             'week_id'=> 'required',
         ]));
         return response()->json(['data' => $new, 'success' => true]);
@@ -74,14 +73,12 @@ class HomeworkController extends Controller
             'name'=> 'required',
             'type'=> 'required',
             'description'=> 'required',
-            'link'=> 'required',
             'week_id'=> 'required',
         ]);
         $homework = Homework::findOrFail($id);
         $homework->name=$request->name;
         $homework->type=$request->type;
         $homework->description=$request->description;
-        $homework->link=$request->link;
         $homework->save();
         return response()->json(['data'=>$homework,'success'=>true]);
 
@@ -116,7 +113,7 @@ class HomeworkController extends Controller
     {
         $homework = DB::table('weeks')
             ->join('homework','week_id','=','weeks.id')
-            ->select('homework.id','homework.name','homework.type','homework.description','homework.link','homework.week_id')
+            ->select('homework.id','homework.name','homework.type','homework.description','homework.week_id')
             ->where('homework.week_id','=',$id)
             ->get();
 

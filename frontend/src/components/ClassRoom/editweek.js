@@ -4,6 +4,7 @@ import api from '../../api';
 
 export default function Editweek(props) {
     const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
     const [start_date, setStart_date] = useState('');
     const [end_date, setEnd_date] = useState('');
     const [classid, setClassid] = useState('');
@@ -15,6 +16,7 @@ export default function Editweek(props) {
 
         api.myweek(props.match.params.id).then(response=>{
             setName(response.data.name)
+            setDescription(response.data.description)
             setStart_date(response.data.start_date)
             setEnd_date(response.data.end_date)
             setClassid(response.data.class_id)
@@ -31,7 +33,9 @@ export default function Editweek(props) {
         setName(event.target.value)
     }
 
-
+    function handleDescriptionChange (event) {
+        setDescription(event.target.value)
+    }
 
     function handleStart_dateChange (event) {
         setStart_date(event.target.value)
@@ -51,6 +55,7 @@ export default function Editweek(props) {
 
         const week = {
             name: name,
+            description:description,
             start_date: start_date,
             end_date: end_date,
         }
@@ -87,6 +92,17 @@ export default function Editweek(props) {
                                             />
                                         </div>
                                     </div>
+                                    <div className="form-group row">
+                                        <label htmlFor="description" className="col-md-4 col-form-label text-md-right">description</label>
+
+                                        <div className="col-md-6">
+                                            <textarea id="name" type="text"  className={`form-control`} name="description" autoComplete="description"
+                                                      value={description}
+                                                      onChange={handleDescriptionChange}
+                                            />
+                                        </div>
+                                    </div>
+
 
                                     <div className="form-group row">
                                         <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Start date</label>

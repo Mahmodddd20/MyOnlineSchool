@@ -10,6 +10,7 @@ class Week extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'description',
         'start_date',
         'end_date',
         'class_id',

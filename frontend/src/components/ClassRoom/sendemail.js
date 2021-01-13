@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
 import JoditEditor from "jodit-react";
+import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 
 export default function Neweek(props) {
     const [subject, setSubject] = useState('');
@@ -12,6 +13,11 @@ export default function Neweek(props) {
     const [config, setConfig] = useState({
         readonly: false,
         toolbar: true,
+        width:'50vw',
+        height:'50vh',
+        spellcheck: true,
+        toolbarAdaptive:false,
+
     })
     const [textAreaValue, setTextAreaValue] = useState('')
     const handleBlurAreaChange = () => {
@@ -54,16 +60,16 @@ export default function Neweek(props) {
         )
     }
     return (
-        <i>
-            <div className="container mt-4" >
-                <div className="row justify-content-center">
-                    <div className="col-md-auto">
-                        <div className="card">
-                            <div className="card-header">Email</div>
-                            <div className="card-body">
-                                <form method="POST" onSubmit={handleSendEmail} >
-                                    <div className="form-group row">
-                                        <label htmlFor="subject" className="col-md-4 col-form-label text-md-right">Subject</label>
+            <Container className="mt-4" >
+                <Row className=" justify-content-center">
+                    <Col md='auto' >
+                        <Card >
+                            <Card.Header>Email
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></Card.Header>
+                            <Card.Body>
+                                <Form method="POST" onSubmit={handleSendEmail} >
+                                    <Form.Group className="row">
+                                        <Form.Label htmlFor="subject" className="col-md-4 col-form-label text-md-right">Subject</Form.Label>
 
                                         <div className="col-md-6">
                                             <input id="subject" type="text"  className={`form-control`} name="subject" autoComplete="subject" autoFocus
@@ -71,9 +77,8 @@ export default function Neweek(props) {
                                                    onChange={handleSubjectChange}
                                             />
                                         </div>
-                                    </div>
+                                    </Form.Group>
                                     <div className="form-group row " >
-                                        <label htmlFor="subject" className="col-md-4 col-form-label text-md-right"></label>
                                         <div className="col-md-12 ">
                                             <JoditEditor
                                                 config={config}
@@ -82,19 +87,16 @@ export default function Neweek(props) {
                                                 value={textAreaValue}/>
                                         </div>
                                     </div>
-                                    <div className="form-group row mb-0">
-                                        <div className="col-md-8 offset-md-4">
-                                            <button type="submit" className="btn btn-primary" onClick={handleDescriptionChange}>
+                                    <Form.Group className=" row mb-0 justify-content-center">
+                                            <Button variant='outline-primary' type="submit" className="btn mr-3 ml-3 w-100" onClick={handleDescriptionChange}>
                                                 Send
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </i>
+                                            </Button>
+                                    </Form.Group>
+                                </Form>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
     )
 }

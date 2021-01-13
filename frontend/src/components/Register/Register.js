@@ -4,7 +4,8 @@ import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from '../../CookieService';
 import AllUsers from "./AllUsers";
-import {Alert} from "react-bootstrap";
+import {Alert, Button} from "react-bootstrap";
+import Spinner from "../Loading/Spinner";
 
 function Register() {
     const [name, setName] = useState('');
@@ -132,7 +133,8 @@ function Register() {
             <div className="row justify-content-center">
                 <div className="col-md-8">
                     <div className="card">
-                        <div className="card-header">Register</div>
+                        <div className="card-header">Register
+                            <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
         
                         <div className="card-body">
                             {sent}{errors}
@@ -210,9 +212,9 @@ function Register() {
                             </form>
                         </div>
                     </div>
+                    <AllUsers/>
                 </div>
             </div>
-                <AllUsers/>
         </div>
         </i>
         )

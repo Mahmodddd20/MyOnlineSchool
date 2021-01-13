@@ -3,6 +3,8 @@ import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from "../../CookieService";
 import AllTeachersTable from "./AllTeachers";
+import Spinner from "../Loading/Spinner";
+import {Button} from "react-bootstrap";
 
 export default function Newclassroom() {
     const [name, setName] = useState('');
@@ -96,12 +98,13 @@ export default function Newclassroom() {
 
 
     return (
-        <i>
+        <i>{teacher.length>0?
             <div className="container mt-4 text-capitalize">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header">New Class Room</div>
+                            <div className="card-header">New Class Room
+                            <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleCreateClassroom} >
                                     <div className="form-group row">
@@ -162,7 +165,7 @@ export default function Newclassroom() {
 
                     </div>
                 </div>
-            </div>
+            </div>:<Spinner delay="5000"/>}
         </i>
     )
 }

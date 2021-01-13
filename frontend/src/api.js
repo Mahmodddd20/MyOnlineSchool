@@ -140,6 +140,10 @@ export default{
     addgroupmessage: (message) =>
         axios.post(`${BASE_URL}/groupmessages`,message, token),
 
+    myupload: (file) =>
+        axios.post(`${BASE_URL}/upload`,file, token),
+
+
 
 
 

@@ -12,7 +12,6 @@ class Homework extends Model
         'name',
         'type',
         'description',
-        'link',
         'week_id',
     ];
     public function week()

@@ -33,7 +33,6 @@ class MaterialController extends Controller
             'name'=> 'required',
             'type'=> 'required',
             'description'=> 'required',
-            'link'=> 'required',
             'week_id'=> 'required',
         ]));
         return response()->json(['data' => $new, 'success' => true]);
@@ -77,13 +76,11 @@ class MaterialController extends Controller
             'name'=> 'required',
             'type'=> 'required',
             'description'=> 'required',
-            'link'=> 'required',
         ]);
         $material = Material::findOrFail($id);
         $material->name=$request->name;
         $material->type=$request->type;
         $material->description=$request->description;
-        $material->link=$request->link;
         $material->save();
         return response()->json(['data'=>$material,'success'=>true]);
 
@@ -148,7 +145,7 @@ class MaterialController extends Controller
     {
                 $material = DB::table('weeks')
                     ->join('materials','week_id','=','weeks.id')
-                    ->select('materials.id','materials.name','materials.type','materials.description','materials.link','materials.week_id')
+                    ->select('materials.id','materials.name','materials.type','materials.description','materials.week_id')
                     ->where('materials.week_id','=',$id)
                     ->get();
 

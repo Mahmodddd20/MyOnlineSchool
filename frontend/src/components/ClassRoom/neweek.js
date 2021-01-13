@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
-import {Alert} from "react-bootstrap";
+import {Alert, Button} from "react-bootstrap";
 
 export default function Neweek(props) {
     const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
     const [start_date, setStart_date] = useState('');
     const [end_date, setEnd_date] = useState('');
     const [success, setSuccess] = useState('');
@@ -22,7 +23,9 @@ export default function Neweek(props) {
         setName(event.target.value)
     }
 
-
+    function handleDescriptionChange (event) {
+        setDescription(event.target.value)
+    }
 
     function handleStart_dateChange (event) {
         setStart_date(event.target.value)
@@ -42,12 +45,14 @@ export default function Neweek(props) {
 
         const week = {
             name: name,
+            description:description,
             start_date: start_date,
             end_date: end_date,
             class_id:props.match.params.id
         }
         api.createweek(week, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
             .then(response => {
+                event.target.reset();
                 setErrors(' ')
                 setSuccess(<Alert variant={'success'}>
                     Week added successfully
@@ -62,6 +67,7 @@ export default function Neweek(props) {
 
                     console.log('The email sent successfully')
                 })
+
                 // window.location.reload();
             }).catch(error => {
                 setSuccess(' ')
@@ -78,12 +84,13 @@ export default function Neweek(props) {
 
     return (
         <i>
-            <div className="container mt-4">
+            <div className="container mt-4 text-capitalize">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
                             {success}{errors}{email}
-                            <div className="card-header">New Week</div>
+                            <div className="card-header">New Week
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleCreateWeek} >
                                     <div className="form-group row">
@@ -96,6 +103,17 @@ export default function Neweek(props) {
                                             />
                                         </div>
                                     </div>
+                                    <div className="form-group row">
+                                        <label htmlFor="description" className="col-md-4 col-form-label text-md-right">description</label>
+
+                                        <div className="col-md-6">
+                                            <textarea id="name" type="text"  className={`form-control`} name="description" autoComplete="description"
+                                                   value={description}
+                                                   onChange={handleDescriptionChange}
+                                            />
+                                        </div>
+                                    </div>
+
 
                                     <div className="form-group row">
                                         <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Start date</label>
@@ -109,7 +127,7 @@ export default function Neweek(props) {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="end_date" className="col-md-4 col-form-label text-md-right">End_date</label>
+                                        <label htmlFor="end_date" className="col-md-4 col-form-label text-md-right">End date</label>
 
                                         <div className="col-md-6">
                                             <input id="end_date" type="date"  className={`form-control`} name="end_date" autoComplete="end_date"

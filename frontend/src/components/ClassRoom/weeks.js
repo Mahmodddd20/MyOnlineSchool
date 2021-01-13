@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
-import {Badge, Button, Card, CardColumns, Container, Modal} from "react-bootstrap";
+import {Badge, Button, Card, CardColumns, Col, Container, Modal, Row} from "react-bootstrap";
 import CookieService from '../../CookieService';
+import '../../index.css';
+import Spinner3 from "../Loading/Spinner3";
+
 
 
 export default function AllClassWeeks(props){
@@ -38,7 +41,7 @@ export default function AllClassWeeks(props){
         api.myweeks(props.match.params.id).then(response=>{
             setWeek(response.data)
         }).catch(error=>{
-            history.push('/login')
+            // history.push('/login')
         })
 
     }
@@ -56,22 +59,16 @@ export default function AllClassWeeks(props){
 
     function emptyWeeks(){
         return(
-            <div className='d-flex'>
-                <h1 className='text-monospace   text-uppercase mt-5 m-2 p-2'>no weeks Yet
-                    <div className="spinner-border ml-2 mb-0 text-primary" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </h1>
-            </div>
-        );
+            <Spinner3 delay="5000"/>
+            );
     }
 
 
-    function allWeek(){
+    function allWeeks(){
         return week.map(week=>{
             return(
-                <Card key={week.id} className='mt-4 mb-4 ml-0 mr-4 '>
-                    <Card.Header as="h5" className='text-wrap p-4 flex-column align-middle h-100'>
+                <Card key={week.id} className='mt-2 mb-2 ml-0 mr-2 w-100'>
+                    <Card.Header as="h5" className='overflow-auto p-4 flex-column align-middle h-100'>
                         {week.name}
                         {CookieService.get('role')=='teacher'?
                             <div className='d-block  float-right align-middle '>
@@ -83,12 +80,21 @@ export default function AllClassWeeks(props){
                     <Card.Body>
                         <Card.Title>From {week.start_date} To {week.end_date}</Card.Title>
                         <Card.Text>
-                            With supporting text below as a natural lead-in to additional content.
+                            {week.description}.
                         </Card.Text>
-                        <Button className='m-2' variant="primary" href={"/materials/all/"+week.id}>Enter The Week Materials</Button>
-                        <Button className='m-2' variant="primary" href={"/homeworks/all/"+week.id}>Enter The Week Homeworks</Button>
-                        <Button className='m-2' variant="primary" href={"/week/show/"+week.id}>Enter {week.name}</Button>
-
+                        <Col className='m-0 p-0'>
+                            {CookieService.get('role')=='teacher'?
+                                <div className='m-0'>
+                                <Button className='ml-0 mt-2' variant="outline-success" href={'/newmaterial/'+week.id}>Add Materials</Button><br/>
+                                <Button className='ml-0 mt-2' variant="outline-success" href={'/newhomework/'+week.id}>Add Homeworks</Button>
+                                </div>:''}
+                            {CookieService.get('role')!=='teacher'?
+                                <div>
+                                    <Button className='ml-0 mt-2' variant="primary" href={"/materials/all/"+week.id}>View Materials</Button><br/>
+                                <Button className='ml-0 mt-2' variant="primary" href={"/homeworks/all/"+week.id}>View Homeworks</Button>
+                                </div>:''}
+                            <Button className='ml-0 mt-2' variant="primary" href={"/week/show/"+week.id}>View {week.name}</Button>
+                        </Col>
                     </Card.Body>
                 </Card>
             );
@@ -98,28 +104,29 @@ export default function AllClassWeeks(props){
 
 
     return(
-        <Container className='m-lg-5 text-capitalize text-wrap w-auto' >
-            <h1 className='m-4'>
-                <Badge pill variant="success" className='rounded-0 text-wrap'>
+        <Container fluid className='text-capitalize m-2 ml-5' >
+            <Row>
+                <h1 className='m-2'>
+                    <Badge pill variant="success" className='rounded-0 text-wrap'>
                     {className==''?
                         <span className="spinner-border spinner-border-sm spinner-grow" role="status" aria-hidden="true"></span>
                         :className}
-                </Badge>
-            </h1>
-            <Container>
+                    </Badge>
+                </h1>
+            </Row>
+            <Row>
                 {CookieService.get('role')=='teacher'?<Button className='m-2' variant="outline-primary" href={'/neweek/'+props.match.params.id}>create new week</Button>:''}
-                {CookieService.get('role')=='teacher'?<Button className='m-2' variant="outline-info" href={'/sendemail/'+props.match.params.id}>Send Email To Students</Button>:''}
-
                 {CookieService.get('role')=='admin'?<Button className='m-2' variant="info" href={'/addstudenttoclass/'+props.match.params.id}>add students to the class</Button>:''}
-                {CookieService.get('role')=='admin'?<Button className='m-2' variant="outline-primary" href={'/sendemail/'+props.match.params.id}>Send Email To Students</Button>:''}
+                {CookieService.get('role')!=='student'?<Button className='m-2' variant="outline-info" href={'/sendemail/'+props.match.params.id}>Send Email To Students</Button>:''}
+                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Go Back</Button>
 
+            </Row>
+            <Row className='w-75 overflow-auto mb-5'>
+                <CardColumns className=' ml-2'>
 
-
-                <CardColumns className='d-inline ml-1'>
-
-                {week.length >0 ? allWeek() : emptyWeeks() }
-            </CardColumns>
-            </Container>
+                    {week.length >0 ? allWeeks() : emptyWeeks() }
+                </CardColumns>
+            </Row>
 
             <>
                 <Modal

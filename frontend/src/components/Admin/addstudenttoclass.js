@@ -3,6 +3,7 @@ import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from "../../CookieService";
 import {Alert, Button, CardColumns, Container, Table} from "react-bootstrap";
+import Spinner from "../Loading/Spinner";
 export default function Addstudenttoclass(props) {
     const [classroom, setClass] = useState([]);
     const [student, setStudent] = useState([]);
@@ -76,7 +77,7 @@ export default function Addstudenttoclass(props) {
         return student.map(stu=>{
 
             return(
-                <option key={stu.id} value={stu.id}>name: {stu.name} </option>
+                <option className='text-capitalize text-center' key={stu.id} value={stu.id}> {stu.name} </option>
 
             )})}
 
@@ -119,6 +120,8 @@ export default function Addstudenttoclass(props) {
                             <th>{students.userName}</th>
                             <th>{students.userEmail}</th>
                             <th>{students.userRole}</th>
+                            <th><Button variant='warning'>Edit</Button></th>
+                            <th><Button variant='danger'>Delete</Button></th>
                         </tr>
 
 
@@ -141,13 +144,15 @@ export default function Addstudenttoclass(props) {
                 <Table striped bordered hover>
                 <thead >
                 <tr key={classroom.id}>
-                    <td colSpan="4">Class Name {classroom.name}</td>
+                    <td colSpan="6">Class Name {classroom.name}</td>
                 </tr>
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -162,15 +167,14 @@ export default function Addstudenttoclass(props) {
     }
 
     return (
-        <i>
+        <i>{classStudents.length>0?
             <div className="container mt-4">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
                             {success}{errors}
-                            <div className="card-header">
-                                Add students to <Button href={'/weeks/show/'+props.match.params.id} variant="info">{classroom.name}</Button>
-                            </div>
+                            <div className="card-header">Add students to {classroom.name}
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleAddStudentToClass} >
                                     <div className="form-group row">
@@ -193,13 +197,10 @@ export default function Addstudenttoclass(props) {
                                 </form>
                             </div>
                         </div>
+                        {classStudents.length==0?'':allClassStudents()}
                     </div>
                 </div>
-            </div>
-            <Container className='mt-4'>
-                {classStudents.length==0?'':allClassStudents()}
-
-            </Container>
+            </div>:<Spinner delay="10000"/>}
         </i>
     )
 }

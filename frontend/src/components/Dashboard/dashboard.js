@@ -3,6 +3,7 @@ import api from "../../api";
 import { Link ,useHistory } from 'react-router-dom';
 import {Badge, Button, Card, CardColumns, CardGroup, Container} from "react-bootstrap";
 import CookieService from "../../CookieService";
+import Spinner from "../Loading/Spinner";
 
 
 export default function AllMyClasses(){
@@ -82,12 +83,7 @@ export default function AllMyClasses(){
     }
     function emptyClasses(){
         return(
-                <h1 className='text-monospace text-uppercase ml-2 pl-2'>no classes Yet
-                    <div className="spinner-border  text-primary" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </h1>
-        )
+            <Spinner delay="5000"/>        )
     }
     function allClasses(){
         return(

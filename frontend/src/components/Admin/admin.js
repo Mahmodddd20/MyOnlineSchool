@@ -1,8 +1,10 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
 import { Link ,useHistory } from 'react-router-dom';
-import {Badge, Button, Card, CardColumns, CardGroup, Container, Modal} from "react-bootstrap";
+import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Modal, Row} from "react-bootstrap";
 import CookieService from "../../CookieService";
+import '../../index.css';
+import Spinner from "../Loading/Spinner";
 
 
 
@@ -72,14 +74,10 @@ export default function Admin(){
         console.log('classroomafter',classroom)
         return( classroom.map(classroom=> {
                 return(
-
-                    <Card key={classroom.id} className='mt-4 mb-4 ml-0 mr-4'>
-                        <Card.Header as="h5" className='text-wrap p-4 flex-column align-middle h-100'>{classroom.name}
-                            <div className='d-block  float-right align-middle '>
-                                <Button variant="danger" className='float-right ml-1'  onClick={()=>{{handleShow(classroom.id)}}}>Delete</Button>
-                                <Button variant="warning" className='float-right mr-1' href={'/class/edit/' + classroom.id}>Edit</Button>
-                            </div>
-
+                    <Card key={classroom.id} className='mt-2 mb-2'>
+                        <Card.Header as="h5" className='text-wrap p-4 flex-column align-middle '>{classroom.name}
+                                     <Button variant="danger" className='float-right ml-1'  onClick={()=>{{handleShow(classroom.id)}}}>Delete</Button>
+                                     <Button variant="warning" className='float-right mr-1' href={'/class/edit/' + classroom.id}>Edit</Button>
                         </Card.Header>
                         <Card.Body>
                             <Card.Title >From {classroom.start_date} To {classroom.finish_date}</Card.Title>
@@ -94,40 +92,37 @@ export default function Admin(){
     }
     function emptyClasses(){
         return(
-
-            <div className='d-flex'>
-                <h1 className='text-monospace text-uppercase mt-5 m-2 p-2'>no classes Yet
-                <div className="spinner-border ml-2 mb-0 mt-0 text-primary" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div>
-                </h1>
-            </div>
-
+            <Spinner delay="5000"/>
         )
     }
+
     function allClasses(){
         return(
-            <div className='ml-1'>
+            <div>
                 {renderClasses()}
             </div>
         );
     }
     return (
-        <Container className='m-lg-5 text-capitalize text-wrap w-auto'>
-            <h1 className='m-4'>
-                <Badge pill variant="success" className='rounded-0 text-wrap'>
-                    welcome to admin Page
-                </Badge>
-            </h1>
-            <Container>
-                <Button className='m-2' variant="info" href={'/newclassroom'}>create new class</Button>
-                <Button className='m-2' variant="outline-primary" href={'/register'}>register users</Button>
+        <Container fluid className=' text-capitalize m-2 ml-5'>
+            <Row>
+                <h1 className='m-2'>
+                    <Badge pill variant="success" className='rounded-0 text-wrap'>
+                        welcome to Controller Page
+                    </Badge>
+                </h1>
+            </Row>
+            <Row>
+                    <Button className='m-2' variant="info" href={'/newclassroom'}>create new class</Button>
+                    <Button className='m-2' variant="outline-primary" href={'/register'}>register users</Button>
+                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Go Back</Button>
+            </Row>
+            <Row className='w-75 h-100'>
+                <CardColumns className='m-2 d-flex flex-wrap'>
 
-                <CardColumns className='d-inline ml-1'>
-
-                {classroom.length>0 ? allClasses() : emptyClasses()}
-            </CardColumns>
-            </Container>
+                    {classroom.length>0 ? allClasses() : emptyClasses()}
+                </CardColumns>
+            </Row>
             <>
                 <Modal
                     show={show}

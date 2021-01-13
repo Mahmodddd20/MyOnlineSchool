@@ -1,19 +1,25 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
 import { Link ,useHistory } from 'react-router-dom';
-import {Badge, Button, Card, CardColumns, CardGroup, Container} from "react-bootstrap";
+import {Badge, Button, Card, CardColumns, CardGroup, Container, Row, Table} from "react-bootstrap";
 import CookieService from "../../CookieService";
+import Spinner from "../Loading/Spinner";
 
 
 export default function MyWeek(props){
     const [material, setMaterial] =useState([]);
     const [homework, setHomework] =useState([]);
+    const [weekName, setWeekName] =useState('');
+
 
 
     const history = useHistory();
     useEffect(() => {
         fetchMaterials();
         fetchHomeworks();
+        api.myweek(props.match.params.id).then(response=>{
+            setWeekName(response.data.name)
+        })
     },[]);
 
 
@@ -35,17 +41,10 @@ export default function MyWeek(props){
     function renderMaterials(){
         return( material.map(material=> {
                 return(
-                    <Card key={material.id} className='m-4'>
-                        <Card.Header as="h5">{material.name}</Card.Header>
-                        <Card.Body>
-                            {/*<Card.Img variant="top" src={material.link} />*/}
-                            <Card.Text  dangerouslySetInnerHTML={{ __html: material.description }}>
-                            </Card.Text>
-                            <Button className='m-2' variant="primary" href={"/material/show/"+material.id}>
-                                Enter {material.name}</Button>
-
-                        </Card.Body>
-                    </Card>
+                    <tr key={material.id}>
+                        <th>{material.name}</th>
+                        <th><Button className='m-2' variant="primary" href={"/material/show/"+material.id}>Enter {material.name}</Button></th>
+                    </tr>
                 );
             })
         );
@@ -93,13 +92,6 @@ export default function MyWeek(props){
         )
     }
 
-    function allMaterials(){
-        return(
-            <div>
-                {renderMaterials()}
-            </div>
-        );
-    }
     function allHomeworks(){
         return(
             <div>
@@ -109,29 +101,41 @@ export default function MyWeek(props){
     }
 
     return (
-        <Container className='m-lg-5 float-left'>
-            <h1 className='m-4'>
-                <Badge pill variant="success" className='rounded-0 text-wrap'>
-                    welcome to your week
-                </Badge>
-            </h1>
-            <div className='w-50'>
-            <div >
-                <h1 className='m-4'>
-                    <Badge pill variant="light" className='text-wrap'>
-                        The Materials
-                        {CookieService.get('role')=='teacher'?
-                            <Button className='m-2' variant="outline-success" href={'/newmaterial/'+props.match.params.id}>Add Materials</Button>:''}
+        <Container className='text-capitalize m-2 ml-5'>
+            {/*{weekName!==''?*/}
+                <div>
+            <Row>
+                <h1 className='m-2'>
+                    <Badge pill variant="success" className='rounded-0 text-wrap'>
+                        welcome to {weekName}
                     </Badge>
                 </h1>
+            </Row>
+        <div className=''>
+            <Row>
+                <div  className=' text-capitalize'>
+                    <Table striped bordered hover>
+                        <thead>
+                        <tr key={props.match.params.id}>
+                            <td colSpan="2"><h4 className='m-0 w-50'>Materials</h4>
+                                {CookieService.get('role')=='teacher'?
+                                    <Button className='' variant="outline-success" href={'/newmaterial/'+props.match.params.id}>Add Materials</Button>:''}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>URL</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        {material.length>0 ? renderMaterials() : emptyMaterials()}
+                        </tbody>
+                    </Table>
                 </div>
-            <CardColumns className=' mt-0 m-4 d-inline p-2'>
-                <CardGroup className='text-center'>
-                    {material.length>0 ? allMaterials() : emptyMaterials()}
-                </CardGroup>
-            </CardColumns>
+            </Row>
             </div>
-            <div className='w-50'>
+
+                <div className='w-50'>
             <div>
                 <h1 className='m-4'>
                     <Badge pill variant="light" className='text-wrap'>
@@ -148,6 +152,9 @@ export default function MyWeek(props){
                 </CardGroup>
             </CardColumns>
             </div>
+
+            </div>
+            {/*:<Spinner delay="8000"/>}*/}
         </Container>
     )
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\ClassroomController;
 
 Route::post('/login','AuthenticationController@login');
 //Route::post('/password/forgot-password', 'AuthenticationController@forgotPassword');
+Route::post('/upload', 'WeekController@upload' );
 
 
 Route::group(['middleware' => 'auth:api'], function() {

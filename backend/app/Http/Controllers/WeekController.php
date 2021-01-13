@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Mail\newTask;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
 
 use function Sodium\add;
 
@@ -35,6 +38,7 @@ class WeekController extends Controller
     {
         $week = Week::create($request->validate([
             'name' => 'required',
+            'description'=>'required',
             'start_date' => 'required',
             'end_date' => 'required',
             'class_id'=> 'required',
@@ -77,11 +81,13 @@ class WeekController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'description'=>'required',
             'start_date' => 'required',
             'end_date' => 'required',
         ]);
         $week = Week::findOrFail($id);
         $week->name=$request->name;
+        $week->description=$request->description;
         $week->start_date=$request->start_date;
         $week->end_date=$request->end_date;
         $week->save();
@@ -118,11 +124,9 @@ class WeekController extends Controller
     {
         $weeks = DB::table('classrooms')
             ->join('weeks','class_id','=','classrooms.id')
-            ->select('weeks.id','weeks.name','weeks.start_date','weeks.end_date')
+            ->select('weeks.id','weeks.name','weeks.description','weeks.start_date','weeks.end_date')
             ->where('weeks.class_id','=',$id)
             ->get();
-        $room = Classroom::all()->find($id);
-//'classroom' => $room,
         return response()->json($weeks);
 
     }
@@ -133,7 +137,7 @@ class WeekController extends Controller
             $id=$i->id;
             $weeks = DB::table('classrooms')
                 ->join('weeks','class_id','=','classrooms.id')
-                ->select('weeks.id','weeks.name','weeks.start_date','weeks.end_date')
+                ->select('weeks.id','weeks.name','week.description','weeks.start_date','weeks.end_date')
                 ->where('weeks.class_id','=',$id)
                 ->get();
             $room = Classroom::all()->find($id);
@@ -144,8 +148,44 @@ class WeekController extends Controller
         return response()->json( $result);
 
     }
+    public function upload(Request $request){
+
+//        $path = $request->file('image')->store('type'.'/'.auth()->user()->id);
+//
+//        return $path;
+        $validator = Validator::make($request->all(),
+            [
+//                'user_id' => 'required',
+                'file' => 'required|mimes:png,jpg|max:2048',
+            ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
 
 
+        if ($files = $request->file('file')) {
+
+            //store file into document folder
+            $file = $request->file->store('public/image');
+            $file= 'http://localhost:8000'.Storage::url($file);
+            return response()->json([
+                "success" => true,
+                "message" => "File successfully uploaded",
+                "file" => $file
+            ]);
+
+        }
+
+
+    }
 
 
 }
+
+
+
+
+
+
+

@@ -45,19 +45,19 @@ export default function Header() {
             <>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    {role!=='admin'?<Navbar.Brand className='pr-4 ' href="/dashboard">Dashboard
-                    </Navbar.Brand>:''}
                     <Nav className="mr-auto">
-                        <NavDropdown className='font-weight-bold text-capitalize' title={ role+' '+name} id="basic-nav-dropdown">
+                        {role!=='admin'?<Nav.Link href={"/dashboard"}>Dashboard</Nav.Link>:''}
+                        <Nav.Link href={"/chat"}>Chat</Nav.Link>
+                        {role!=='admin'?<Nav.Link href="/">Home</Nav.Link>:
+                        <Nav.Link href="/admin">Controller</Nav.Link>}
+
+                        <NavDropdown className='text-capitalize' title={ name+' ('+role+')'} id="basic-nav-dropdown">
                             <NavDropdown.Item onClick= {() => handleLogout()}>Logout</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
                             {role=='admin'?<NavDropdown.Item href="/register">register new users</NavDropdown.Item>:''}
+
                         </NavDropdown>
-                        {role=='admin'?<Nav.Link href="/admin">Admin Page</Nav.Link>:''}
 
-                        <Nav.Link href={"/allmessaging/"}>Messaging</Nav.Link>
-
-                        <Nav.Link href="/">Home</Nav.Link>
 
 
                     </Nav>

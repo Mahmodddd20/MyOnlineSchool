@@ -12,7 +12,6 @@ class Material extends Model
         'name',
         'type',
         'description',
-        'link',
         'week_id',
 
     ];

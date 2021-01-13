@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import api from "../../api";
 import {Button, Table} from "react-bootstrap";
+import Spinner from "../Loading/Spinner";
+import Spinner2 from "../Loading/Spinner2";
 
 
 export default function AllTeachersTable() {
@@ -45,7 +47,8 @@ export default function AllTeachersTable() {
         );
     }
     return (
-        <div  className='mt-4 mb-4 h-50 pre-scrollable text-capitalize w-auto'>
+        <i>{teachers.length>0?
+            <div  className='mt-4 mb-4 h-50 pre-scrollable text-capitalize w-auto'>
             <Table striped bordered hover>
                 <thead>
                 <tr>
@@ -63,7 +66,9 @@ export default function AllTeachersTable() {
                 {renderTeachers ()}
                 </tbody>
             </Table>
-        </div>
+
+        </div>:<Spinner2 delay="5000"/>}
+        </i>
 
     )
 

@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
 import { BrowserRouter, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Welcome from './components/Welcome/welcome';
 import Login from './components/Login/Login';
 import Register from "./components/Register/Register";
@@ -29,16 +27,23 @@ import GroupMessaging from "./components/Messaging/GroupMessaging";
 import AllMessaging from "./components/Messaging/AllMessaging";
 import SendEmail from "./components/ClassRoom/sendemail";
 import Sidebar from './components/Sidebar/sidebar'
+import {Col, Container, Row} from "react-bootstrap";
+import Chat from './components/Messaging/Chat';
+import App from './App'
 
 
 
 ReactDOM.render(
-    <div>
+    <Container fluid className='m-0 p-0'>
+    <Row>
+        <Col>
         <Header/>
-        <div className="container mymargin" >
-            <div className='position-relative '>
+        </Col>
+    </Row>
+    <Row>
             <BrowserRouter>
-                <Sidebar/>
+                <Col xs='auto' md='auto' lg="10">
+                <Route exact path="/app" component={App} />
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
@@ -47,34 +52,32 @@ ReactDOM.render(
                 <Route exact path="/newclassroom" component={NewClass} />
                 <Route exact path="/class/edit/:id" component={EditClass} />
                 <Route exact path="/addstudenttoclass/:id" component={AddStudentToClass} />
+                <Route exact path="/chat" component={Chat} />
                 <Route exact path="/messaging/:id" component={Messaging} />
                 <Route exact path="/groupmessaging/:id" component={GroupMessaging} />
                 <Route exact path="/allmessaging" component={AllMessaging} />
                 <Route exact path="/sendemail/:id" component={SendEmail} />
-
-
-
-
-
                 <Route exact path="/weeks/show/:id" component={Weeks} />
                 <Route exact path="/neweek/:id" component={NeWeek} />
                 <Route exact path="/week/edit/:id" component={EditWeek} />
                 <Route exact path="/week/show/:id" component={Week} />
                 <Route exact path="/newmaterial/:id" component={NewMaterial} />
                 <Route exact path="/newhomework/:id" component={NewHomework} />
-
                 <Route exact path="/material/show/:id" component={Material} />
                 <Route exact path="/homework/show/:id" component={Homework} />
                 <Route exact path="/materials/all/:id" component={AllMaterials} />
                 <Route exact path="/homeworks/all/:id" component={AllHomeworks} />
+                </Col>
+                <Col xs md lg="1" >
+                    <Sidebar/>
+                </Col>
 
-
-
-
-                </BrowserRouter>
-                </div>
-            </div>
+            </BrowserRouter>
+        <Row>
         <Footer/>
-    </div>,
+        </Row>
+    </Row>
+    </Container>
+    ,
     document.getElementById('root')
 );

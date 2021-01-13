@@ -1,21 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="did some messaging style">
+    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="add sidebar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeworkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeworkController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WeekController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WeekController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Homework.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Homework.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Material.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Material.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Week.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Week.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_08_123234_create_weeks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_08_123234_create_weeks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_08_162459_create_materials_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_08_162459_create_materials_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_09_132503_create_homework_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_09_132503_create_homework_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/AllTeachers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/AllTeachers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/editclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/editclassroom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/editweek.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/editweek.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/neweek.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/neweek.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/sendemail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/sendemail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/weeks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/weeks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Home/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Register/AllUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Register/AllUsers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Register/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Sidebar/chemistry.svg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Welcome/Footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Welcome/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Welcome/welcome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
@@ -34,8 +56,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -182,7 +204,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend/src/components/Loading" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -192,24 +214,24 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Loading" />
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Sidebar" />
       <recent name="$PROJECT_DIR$/../frontend/public" />
       <recent name="$PROJECT_DIR$/resources/views/email" />
       <recent name="$PROJECT_DIR$/../frontend/src/components/Admin" />
-      <recent name="$PROJECT_DIR$/../frontend/src/components/test" />
-      <recent name="$PROJECT_DIR$/database/migrations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Upload" />
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Loading" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/resources/views/email" />
       <recent name="$PROJECT_DIR$/resources/views" />
-      <recent name="$PROJECT_DIR$/../frontend/public" />
-      <recent name="$PROJECT_DIR$/../frontend/src/components/Admin" />
     </key>
   </component>
   <component name="RunManager">
@@ -257,7 +279,8 @@
       <workItem from="1610227029856" duration="51000" />
       <workItem from="1610227122151" duration="12977000" />
       <workItem from="1610254570857" duration="26955000" />
-      <workItem from="1610360598243" duration="9008000" />
+      <workItem from="1610360598243" duration="34954000" />
+      <workItem from="1610420911738" duration="60077000" />
     </task>
     <task id="LOCAL-00001" summary="did some css">
       <created>1610254688408</created>
@@ -273,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610290518253</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add sidebar">
+      <created>1610369804245</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610369804245</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +327,7 @@
     </ignored-roots>
     <MESSAGE value="did some css" />
     <MESSAGE value="did some messaging style" />
-    <option name="LAST_COMMIT_MESSAGE" value="did some messaging style" />
+    <MESSAGE value="add sidebar" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sidebar" />
   </component>
 </project>

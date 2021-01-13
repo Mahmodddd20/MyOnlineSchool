@@ -18,7 +18,6 @@ class CreateHomeworkTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->text('description');
-            $table->string('link');
             $table->foreignId('week_id')->
             references('id')->
             on('weeks')->
