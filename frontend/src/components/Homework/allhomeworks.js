@@ -1,11 +1,14 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
 import { Link ,useHistory } from 'react-router-dom';
-import {Badge, Button, Card, CardColumns, CardGroup, Container} from "react-bootstrap";
+import {Badge, Button, Card, CardColumns, CardGroup, Container, Row, Tab, Tabs} from "react-bootstrap";
+import Spinner from "../Loading/Spinner";
 
 
 export default function AllHomeworks(props){
     const [homework, setHomework] =useState([]);
+    const [key, setKey] = useState('');
+
 
     const history = useHistory();
     useEffect(() => {
@@ -24,18 +27,17 @@ export default function AllHomeworks(props){
     function renderHomeworks(){
         return( homework.map(homework=> {
                 return(
-                    <Card key={homework.id} className='m-4'>
-                        <Card.Header as="h5">{homework.name}</Card.Header>
-                        <Card.Body>
-                            {/*<Card.Img variant="top" src={homework.link} />*/}
-                            <Card.Title>{homework.type}</Card.Title>
-                            <Card.Text dangerouslySetInnerHTML={{ __html: homework.description }}>
-                            </Card.Text>
-                            <Button className='m-2' variant="primary" href={"/homework/show/"+homework.id}>
-                                Enter {homework.name}</Button>
+                    <Tab tabClassName='ml-0 mt-2 text-capitalize text-monospace btn-outline-primary mr-2 ' eventKey={homework.id} title={homework.name}>
+                        <Card key={homework.id} className='ml-0 mt-2 align-items-center w-75 mb-5'>
+                            <Card.Body className='ml-0'>
+                                <Card.Text dangerouslySetInnerHTML={{__html: homework.description}}>
+                                </Card.Text>
+                                <Button className='m-2 w-100' variant="outline-info" href={"/material/show/"+homework.id}>
+                                    Enter {homework.name}</Button>
 
-                        </Card.Body>
-                    </Card>
+                            </Card.Body>
+                        </Card>
+                    </Tab>
                 );
             })
         );
@@ -43,45 +45,31 @@ export default function AllHomeworks(props){
 
     function emptyHomeworks(){
         return(
-            <div className='d-flex mt-0 ml-2'>
-                <h1 className='text-monospace text-uppercase mt-0 m-2 p-2'>no homeworks yet
-                    <div className="spinner-border ml-2 mb-0 mt-0 text-primary" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                </h1>
-            </div>
+               <Spinner delay="5000"/>
+
         )
     }
 
-    function allHomeworks(){
-        return(
-            <div>
-                {renderHomeworks()}
-            </div>
-        );
-    }
-
     return (
-        <Container className='m-lg-5 text-capitalize text-wrap w-auto '>
-            <h1 className='m-4'>
-                <Badge pill variant="success" className='rounded-0 text-wrap'>
-                    welcome to your homeworks
-                </Badge>
-            </h1>
-            <div className='w-50'>
-                <h1 className='m-4'>
-                    <Badge pill variant="light" className='text-wrap'>
-                        The Homeworks
-                    </Badge>
-                </h1>
-            </div>
-            <CardColumns className='m-0 d-inline'>
-                <CardGroup>
-                    {homework.length>0 ? allHomeworks() : emptyHomeworks()}
-                </CardGroup>
-            </CardColumns>
-
-
+        <Container className='ml-5 m-2  text-capitalize  '>
+            {homework.length>0?<>
+                <Row>
+                    <h1 className='ml-3 m-2'>
+                        <Badge pill variant="success" className='rounded-0 text-wrap'>
+                            welcome to your homeworks
+                        </Badge>
+                    </h1>
+                </Row>
+                <Row>
+                    <Button variant='outline-dark' className='ml-3 m-2' onClick={()=>history.goBack()}>Go Back</Button>
+                </Row>
+                <Tabs
+                    id="controlled-tab-example"
+                    activeKey={key}
+                    onSelect={(k) => setKey(k)}>
+                    {homework.length>0 ? renderHomeworks() : emptyHomeworks()}
+                </Tabs>
+            </>:emptyHomeworks()}
         </Container>
     )
 }

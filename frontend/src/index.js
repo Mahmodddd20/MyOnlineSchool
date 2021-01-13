@@ -69,7 +69,7 @@ ReactDOM.render(
                 <Route exact path="/homeworks/all/:id" component={AllHomeworks} />
                 </Col>
                 <Col xs md lg="1" >
-                    <Sidebar/>
+                    {/*<Sidebar/>*/}
                 </Col>
 
             </BrowserRouter>

@@ -4,7 +4,8 @@ import api from '../../api';
 import CookieService from "../../CookieService";
 import AllTeachersTable from "./AllTeachers";
 import Spinner from "../Loading/Spinner";
-import {Button} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
+import Sidebar from "../Sidebar/sidebar";
 
 export default function Newclassroom() {
     const [name, setName] = useState('');
@@ -98,7 +99,11 @@ export default function Newclassroom() {
 
 
     return (
-        <i>{teacher.length>0?
+        <i>
+            <Row>
+            <Col xs='auto' md='auto' lg="11" >
+
+            {teacher.length>0?
             <div className="container mt-4 text-capitalize">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
@@ -166,6 +171,11 @@ export default function Newclassroom() {
                     </div>
                 </div>
             </div>:<Spinner delay="5000"/>}
-        </i>
+            </Col>
+            <Col xs md lg="1" >
+                <Sidebar/>
+            </Col>
+        </Row>
+</i>
     )
 }

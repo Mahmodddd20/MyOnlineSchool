@@ -114,6 +114,8 @@ export default{
     creatematerial: (material) =>
         axios.post(`${BASE_URL}/material/create`,material ,token),
 
+    deletematerial: (id) =>
+        axios.delete(`${BASE_URL}/material/delete/${id}` ,token),
 
     myhomeworks: (id) =>
         axios.get(`${BASE_URL}/show/classes_week_homeworks/${id}`, token),
@@ -121,6 +123,8 @@ export default{
     createhomework: (homework) =>
         axios.post(`${BASE_URL}/homework/create`,homework ,token),
 
+    deletehomework: (id) =>
+        axios.delete(`${BASE_URL}/homework/delete/${id}` ,token),
 
     showmaterialbyid: (id) =>
         axios.get(`${BASE_URL}/material/show/${id}`, token),

@@ -1,10 +1,11 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
-import { Link ,useHistory } from 'react-router-dom';
+import {BrowserRouter, Link, useHistory} from 'react-router-dom';
 import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Modal, Row} from "react-bootstrap";
 import CookieService from "../../CookieService";
 import '../../index.css';
 import Spinner from "../Loading/Spinner";
+import Sidebar from "../Sidebar/sidebar";
 
 
 
@@ -104,13 +105,19 @@ export default function Admin(){
         );
     }
     return (
-        <Container fluid className=' text-capitalize m-2 ml-5'>
+        <Container fluid className=' text-capitalize m-2 ml-5 '>
             <Row>
-                <h1 className='m-2'>
+                <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
+                <h1 className=' m-2'>
                     <Badge pill variant="success" className='rounded-0 text-wrap'>
                         welcome to Controller Page
                     </Badge>
                 </h1>
+                </Col>
+                <Col xs md lg="1" >
+                    <Sidebar/>
+                </Col>
+
             </Row>
             <Row>
                     <Button className='m-2' variant="info" href={'/newclassroom'}>create new class</Button>

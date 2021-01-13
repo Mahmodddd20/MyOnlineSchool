@@ -58,6 +58,10 @@ export default function Login() {
             .then(response => {
 
                 const options = {Path: "/",Expires: response.data.expires, Secure: true};
+                CookieService.remove('access_token')
+                CookieService.remove('role')
+                CookieService.remove('id')
+
                 CookieService.set('access_token', response.data.access, options);
                 CookieService.set('role', response.data.role, options);
                 CookieService.set('id', response.data.id, options);
