@@ -26,7 +26,7 @@ class CreateClassroomStudentsTable extends Migration
             onUpdate('cascade');
             $table->index('student_id','class_id');
             $table->timestamps();
-            $table->primary('student_id + class_id');
+            $table->unique('student_id + class_id');
 
         });
     }

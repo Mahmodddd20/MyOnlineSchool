@@ -111,7 +111,7 @@ class ClassroomStudentController extends Controller
     {
         $classroom = DB::table('classroom__students')->where('class_id','=',$id)->
         join('users','users.id','=','classroom__students.student_id')->
-        select('users.id as userId','users.name as userName','email as userEmail','role as userRole')->
+        select('users.id as userId','users.name as userName','users.email as userEmail','role as userRole','users.picture as userPicture')->
         get();
         $student = DB::table('classroom__students')->select('student_id')->where('class_id','=',$id)->
         join('users','id','=','classroom__students.student_id')->

@@ -141,7 +141,7 @@ class classroomController extends Controller
     {
         $room = DB::table('classrooms')->where('classrooms.id','=',$id)->
         join('users','users.id','=','classrooms.teacher_id')->
-        select('users.id as userId','users.name as userName')->get();
+        select('users.id as userId','users.name as userName','users.email as userEmail','users.picture as userPicture')->get();
         return response()->json($room, 200);
 
 

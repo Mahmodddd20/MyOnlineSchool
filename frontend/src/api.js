@@ -28,6 +28,8 @@ export default{
     detailsOne: (id) =>
         axios.get(`${BASE_URL}/details/${id}`, token),
 
+    updatetheuser: (user,id) =>
+        axios.post(`${BASE_URL}/update/user/${id}`,user, token),
 
     detailsAllTeacher: () =>
         axios.get(`${BASE_URL}/details/teacher/all`, token),
@@ -131,6 +133,15 @@ export default{
 
     showhomeworkbyid: (id) =>
         axios.get(`${BASE_URL}/homework/show/${id}`, token),
+
+    createanswer:(answer) =>
+        axios.post(`${BASE_URL}/answer/create`,answer ,token),
+
+    finished:(id) =>
+        axios.get(`${BASE_URL}/answer/finished/${id}` ,token),
+
+    allanswers:(id) =>
+        axios.get(`${BASE_URL}/answer/show/all/${id}` ,token),
 
     messages: (id) =>
         axios.get(`${BASE_URL}/messages/${id}`, token),

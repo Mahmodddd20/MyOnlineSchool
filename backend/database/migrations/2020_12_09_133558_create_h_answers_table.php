@@ -17,12 +17,19 @@ class CreateHAnswersTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('link');
             $table->foreignId('homework_id')->
             references('id')->
             on('homework')->
             onUpdate('cascade')->
             onDelete('cascade');
+            $table->foreignId('student_id')->
+            references('id')->
+            on('users')->
+            onUpdate('cascade')->
+            onDelete('cascade');
+            $table->unique('homework_id + student_id');
+
+
             $table->timestamps();
         });
     }

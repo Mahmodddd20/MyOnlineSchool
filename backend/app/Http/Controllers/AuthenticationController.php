@@ -91,7 +91,8 @@ class AuthenticationController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role'=>$request->role
+            'role'=>$request->role,
+            'picture'=>'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'
           ]);
 
         if($user instanceOf User)
@@ -120,21 +121,21 @@ class AuthenticationController extends Controller
         return response()->json($user, 200);
     }
     public function detailsOne($id){
-        $user = DB::table('users')->select('id','name','email','role')->where('id','=',$id)->get();
-        return response()->json($user,200);
+        $user = DB::table('users')->select('id','name','email','role','picture')->where('id','=',$id)->get();
+        return response()->json($user);
     }
 
 
     public function detailsAllTeachers(){
-        $user = DB::table('users')->select('id','name','email','role')->where('role','=','teacher')->get();
+        $user = DB::table('users')->select('id','name','email','role','picture')->where('role','=','teacher')->get();
         return response()->json($user, 200);
     }
     public function detailsAllStudents(){
-        $user = DB::table('users')->select('id','name','email','role')->where('role','=','student')->get();
+        $user = DB::table('users')->select('id','name','email','role','picture')->where('role','=','student')->get();
         return response()->json($user, 200);
     }
     public function detailsAllUsers(){
-        $user = DB::table('users')->select('id','name','email','role')->get();
+        $user = DB::table('users')->select('id','name','email','role','picture')->get();
         return response()->json($user, 200);
     }
 
@@ -151,6 +152,27 @@ class AuthenticationController extends Controller
         $message = $response == Password::RESET_LINK_SENT ? 'Mail send successfully' : GLOBAL_SOMETHING_WANTS_TO_WRONG;
 
         return response()->json($message);
+    }
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email',
+            'password' => 'required',
+            'c_password' => 'required|same:password',
+            'role'=>'required|string',
+            'picture'=>'required|string',
+
+        ]);
+        $user = User::findOrFail($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=bcrypt($request->password);
+        $user->role=$request->role;
+        $user->picture=$request->picture;
+        $user->save();
+        return response()->json(['data'=>$user,'success'=>true]);
+
     }
 
 

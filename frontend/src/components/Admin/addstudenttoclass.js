@@ -167,7 +167,7 @@ export default function Addstudenttoclass(props) {
     }
 
     return (
-        <i>{classStudents.length>0?
+        <i>{student.length>0?
             <div className="container mt-4">
                 <div className="row justify-content-center">
                     <div className="col-md-8">

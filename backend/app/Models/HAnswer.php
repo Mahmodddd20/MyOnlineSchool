@@ -9,11 +9,10 @@ class HAnswer extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'type',
+        'title',
         'description',
-        'link',
         'homework_id',
+        'student_id',
     ];
     public function homework()
     {

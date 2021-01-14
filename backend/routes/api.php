@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClassroomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +27,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/details/teacher/all','AuthenticationController@detailsAllTeachers');
     Route::get('/details/student/all','AuthenticationController@detailsAllStudents');
     Route::get('/details/users/all','AuthenticationController@detailsAllUsers');
+    Route::post('/update/user/{id}','AuthenticationController@update');
+
 
 
     Route::get('/details/{id}','AuthenticationController@detailsOne');
@@ -73,11 +74,15 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/homework/edit/{id}', 'HomeworkController@edit' );
     Route::delete('/homework/delete/{id}', 'HomeworkController@destroy' );
 
-    Route::get('/homework-answer/all', 'HAnswerController@index' );
-    Route::post('/homework-answer/create', 'HAnswerController@create' );
-    Route::get('/homework-answer/show/{id}', 'HAnswerController@show' );
-    Route::post('/homework-answer/edit/{id}', 'HAnswerController@edit' );
-    Route::delete('/homework-answer/delete/{id}', 'HAnswerController@destroy' );
+    Route::get('/answer/all', 'HAnswerController@index' );
+    Route::post('/answer/create', 'HAnswerController@create' );
+    Route::get('/answer/show/{id}', 'HAnswerController@show' );
+    Route::post('/answer/edit/{id}', 'HAnswerController@edit' );
+    Route::delete('/answer/delete/{id}', 'HAnswerController@destroy' );
+    Route::get('/answer/finished/{id}', 'HAnswerController@finished' );
+    Route::get('/answer/show/all/{id}', 'HAnswerController@showall' );
+
+
 
     Route::get('/messages/{id}', 'MessagesController@index' );
     Route::post('/messages', 'MessagesController@create' );

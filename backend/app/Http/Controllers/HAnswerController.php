@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HAnswer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HAnswerController extends Controller
 {
@@ -27,13 +28,12 @@ class HAnswerController extends Controller
     public function create(Request $request)
     {
         $new = HAnswer::create($request->validate([
-            'name'=> 'required',
-            'type'=> 'required',
+            'title'=> 'required',
             'description'=> 'required',
-            'link'=> 'required',
-            'week_id'=> 'required',
+            'homework_id'=> 'required',
+            'student_id'=>'required'
         ]));
-        return response()->json(['data' => $new, 'success' => true]);
+        return response()->json($new);
 
     }
 
@@ -43,9 +43,11 @@ class HAnswerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function finished($id)
     {
-        //
+        $count=DB::table('h_answers')->where('student_id','=',auth()->id())->
+            where('homework_id','=',$id)->count();
+        return response()->json($count);
     }
 
     /**
@@ -111,4 +113,15 @@ class HAnswerController extends Controller
         return response()->json(['data'=>$answer,'success'=>true]);
 
     }
+    public function showall($id)
+    {
+        $answer = DB::table('h_answers')->
+        where('homework_id','=',$id)->
+        join('users','users.id','=','h_answers.student_id')->
+        select('h_answers.*','users.name as userName','users.email as userEmail')->get();
+
+        return response($answer);
+
+    }
+
 }

@@ -14,5 +14,5 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', 'ClassroomController@views' );
+//Route::get('/', 'ClassroomController@views' );
 

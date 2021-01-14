@@ -35,7 +35,7 @@ export default function AllUsers() {
                                     <th>{user.name}</th>
                                     <th>{user.email}</th>
                                     <th>{user.role}</th>
-                                    <th><Button variant='warning'>Edit</Button></th>
+                                    <th><Button variant='warning' href={'/edituser/'+user.id}>Edit</Button></th>
                                     <th><Button variant='danger'>Delete</Button></th>
                                 </tr>
 

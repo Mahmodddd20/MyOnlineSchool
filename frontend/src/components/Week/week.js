@@ -6,6 +6,7 @@ import CookieService from "../../CookieService";
 import Spinner from "../Loading/Spinner";
 import Spinner3 from "../Loading/Spinner3";
 import Spinner2 from "../Loading/Spinner2";
+import Sidebar from "../Sidebar/sidebar";
 
 
 export default function MyWeek(props){
@@ -23,6 +24,18 @@ export default function MyWeek(props){
             setWeekName(response.data.name)
         })
     },[]);
+
+    useEffect(() => {
+        const interval=setInterval(()=>{
+            fetchMaterials()
+            fetchHomeworks()
+
+
+        },60000)
+        return()=>clearInterval(interval)
+
+    });
+
 
 
     function fetchMaterials(){
@@ -80,14 +93,20 @@ export default function MyWeek(props){
 
     return (
         <Container className='text-capitalize m-2 ml-5'>
-            {homework.length>0?<>
+            {material.length>0?<>
                 <Row>
-                <h1 className='m-2'>
+                    <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
+                    <h1 className='m-2'>
                     <Badge pill variant="success" className='rounded-0 text-wrap'>
                         welcome to {weekName}
                     </Badge>
                 </h1>
-            </Row>
+                    </Col>
+                    <Col xs md lg="1" >
+                        <Sidebar/>
+                    </Col>
+
+                </Row>
             <Row>
                 <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Go Back</Button>
             </Row>

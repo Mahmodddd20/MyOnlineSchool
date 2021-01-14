@@ -11,6 +11,7 @@ export default function Header() {
     const [name, setName] = useState('');
     const [role, setRole] = useState('');
     const [id, setId] = useState('');
+    const [picture, setPicture] = useState('');
     const [check, setCheck] = useState('');
 
     const hasMount = useRef(false)
@@ -21,9 +22,14 @@ export default function Header() {
 
     function details(){
         api.details().then(response => {
-            setName(response.data.name)
+            let fname=response.data.name
+            let index = fname.indexOf(" ");
+            let sname = fname.substr(0, index);
+            console.log(sname)
+            setName(sname)
             setRole(response.data.role)
             setId(response.data.id)
+            setPicture(response.data.picture)
             setCheck(true)
         }).catch(error => {
             setCheck(false);
@@ -45,22 +51,25 @@ export default function Header() {
             <>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                    <Nav className="mr-0">
                         {role!=='admin'?<Nav.Link href={"/dashboard"}>Dashboard</Nav.Link>:''}
                         <Nav.Link href={"/chat"}>Chat</Nav.Link>
-                        {role!=='admin'?<Nav.Link href="/">Home</Nav.Link>:
-                        <Nav.Link href="/admin">Controller</Nav.Link>}
+                        <Nav.Link href="/admin">Controller</Nav.Link>
 
-                        <NavDropdown className='text-capitalize' title={ name+' ('+role+')'} id="basic-nav-dropdown">
+                        <NavDropdown className='text-capitalize mr-2' title={ name+' ('+role+')'} id="basic-nav-dropdown">
                             <NavDropdown.Item onClick= {() => handleLogout()}>Logout</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
+                            <NavDropdown.Item href={"/profile/"+id}>Profile</NavDropdown.Item>
                             {role=='admin'?<NavDropdown.Item href="/register">register new users</NavDropdown.Item>:''}
 
                         </NavDropdown>
+                        <Nav.Link href={"/profile/"+id}>
+                            <img className='rounded-circle'
+                                 style={{width:'50px',position:'absolute',top:'2px',right:'8px'}} src={picture}/></Nav.Link>
 
 
 
-                    </Nav>
+
+                            </Nav>
                 </Navbar.Collapse>
                 </>
         )
@@ -75,6 +84,10 @@ export default function Header() {
             history.push('/login');
             window.location.reload();
         }).catch(error=>{
+            CookieService.remove('access_token')
+            CookieService.remove('role')
+            CookieService.remove('id')
+
             // history.push('/login');
             window.location.reload();
     })}
@@ -97,7 +110,7 @@ export default function Header() {
 
         <span  className="font-weight-bolder pl-2 " style={{fontSize:50,color:'darkolivegreen'}}>
             My Online School</span>
-        <Navbar bg="" expand="lg" style={{float: 'right',marginRight: 30,fontSize:18,backgroundColor:'whitesmoke'}}>
+        <Navbar bg="" expand="lg" style={{float: 'right',marginRight: 0,fontSize:18,backgroundColor:'whitesmoke'}}>
 
                 { check==true ? auth() : guest() }
             </Navbar>

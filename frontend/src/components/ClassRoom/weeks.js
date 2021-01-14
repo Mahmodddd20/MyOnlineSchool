@@ -5,6 +5,7 @@ import {Badge, Button, Card, CardColumns, Col, Container, Modal, Row} from "reac
 import CookieService from '../../CookieService';
 import '../../index.css';
 import Spinner3 from "../Loading/Spinner3";
+import Sidebar from "../Sidebar/sidebar";
 
 
 
@@ -106,6 +107,7 @@ export default function AllClassWeeks(props){
     return(
         <Container fluid className='text-capitalize m-2 ml-5' >
             <Row>
+                <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
                 <h1 className='m-2'>
                     <Badge pill variant="success" className='rounded-0 text-wrap'>
                     {className==''?
@@ -113,6 +115,11 @@ export default function AllClassWeeks(props){
                         :className}
                     </Badge>
                 </h1>
+                </Col>
+                <Col xs md lg="1" >
+                    <Sidebar/>
+                </Col>
+
             </Row>
             <Row>
                 {CookieService.get('role')=='teacher'?<Button className='m-2' variant="outline-primary" href={'/neweek/'+props.match.params.id}>create new week</Button>:''}

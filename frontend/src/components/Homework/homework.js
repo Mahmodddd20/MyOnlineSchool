@@ -1,25 +1,35 @@
 import React, {useEffect, useState} from "react";
 import { useHistory } from 'react-router-dom';
-import {Button, Card, Container, Modal} from "react-bootstrap";
+import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import api from "../../api";
 import CookieService from "../../CookieService";
+import Sidebar from "../Sidebar/sidebar";
 
 
 export default function Homework(props){
     const [homework, setHomework] = useState([])
     const [del, setDel] = useState('');
     const [show, setShow] = useState(false);
+    const [finished, setFinished] = useState('');
     const handleClose = () => setShow(false);
 
     const history = useHistory();
     useEffect(()=>{
         fetchHomework();
+        isfinished();
     },[]);
     function handleShow (id)
     {
         setShow(true);
         setDel(id);
     }
+
+    function isfinished(){
+        api.finished(props.match.params.id).then(response=>{
+            setFinished(response.data)
+        })
+    }
+
     function deleteHomework(id){
         console.log('click')
         api.deletehomework(id).then(response=>{
@@ -40,15 +50,27 @@ export default function Homework(props){
 
     return(
             <Container className='mt-4 justify-content-center'>
-                <Button variant='outline-dark' className='ml-0 mb-2 mt-2 ' onClick={()=>history.goBack()}>Go Back</Button>
-                {CookieService.get('role')=='teacher'?<Button variant="danger" className=' ml-2' onClick={()=>{{handleShow(homework.id)}}}>Delete</Button>:''}
-                <Card className='w-50 text-center text-capitalize'>
-                    <Card.Header as='h1'>{homework.name}</Card.Header>
+                <Row>
+                    <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
+                    <Button variant='outline-dark' className='ml-0 mb-2 mt-2 ' onClick={()=>history.goBack()}>Go Back</Button>
+                    {CookieService.get('role')=='teacher'?<Button variant="danger" className=' ml-2' onClick={()=>{{handleShow(homework.id)}}}>Delete</Button>:''}
+                    {CookieService.get('role')=='teacher'?<Button variant="primary" className=' ml-2' href={'/answer/all/'+homework.id}>Answers</Button>:''}
+                    {CookieService.get('role')=='student'?finished!==0?'':<Button variant="outline-success" className=' ml-2' target='_blank' href={'/answer/'+homework.id}>Submit Your Answer</Button>:''}
+
+                        <Card className='w-50  text-capitalize'>
+                    <Card.Header className='text-center' >{homework.name}</Card.Header>
                     <Card.Body>
-                        <Card.Subtitle className="mb-2 text-muted">{homework.type}</Card.Subtitle>
-                        <Card.Text as='h3' dangerouslySetInnerHTML={{__html: homework.description}}/>
+                        <Card.Subtitle className="mb-2 text-center text-muted">{homework.type}</Card.Subtitle>
+                        <Card.Text dangerouslySetInnerHTML={{__html: homework.description}}/>
                     </Card.Body>
                 </Card>
+                    </Col>
+
+                    <Col xs md lg="1" >
+                        <Sidebar/>
+                    </Col>
+                </Row>
+
                 <>
                     <Modal
                         show={show}

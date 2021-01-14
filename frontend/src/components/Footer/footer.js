@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Nav, Navbar, NavDropdown} from "react-bootstrap";
 import logo from './logo.png';
+import '../../index.css'
 export default function Footer() {
     return (
-        <Navbar bg="dark" variant="dark" fixed="bottom" sticky='bottom' style={{width:'100%',float: 'right',marginTop:'20px'}}>
+        <Navbar bg="dark" variant="dark" fixed="bottom"  style={{width:'100%',float: 'right',marginTop:'20px'}}>
             <Navbar.Brand href="/">
                 <img
                     alt=""

@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="add uploader">
+    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="improve materials and homeworks pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthenticationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthenticationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClassroomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClassroomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClassroomStudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClassroomStudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HAnswerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HAnswerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/HAnswer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/HAnswer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_09_133558_create_h_answers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_09_133558_create_h_answers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_22_143349_create_classroom__students_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_22_143349_create_classroom__students_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/weeks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/weeks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Footer/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Footer/footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/allhomeworks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/allhomeworks.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/homework.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/homework.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Login/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/allmaterials.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/allmaterials.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/material.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/material.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Register/AllUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Register/AllUsers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -176,7 +194,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend/src/components/Loading" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend/src/components/Profile" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -192,11 +210,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Profile" />
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Upload" />
       <recent name="$PROJECT_DIR$/../frontend/src/components/Loading" />
       <recent name="$PROJECT_DIR$/../frontend/src/components/Sidebar" />
       <recent name="$PROJECT_DIR$/../frontend/public" />
-      <recent name="$PROJECT_DIR$/resources/views/email" />
-      <recent name="$PROJECT_DIR$/../frontend/src/components/Admin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../frontend/src/components/Upload" />
@@ -254,6 +272,8 @@
       <workItem from="1610360598243" duration="34954000" />
       <workItem from="1610420911738" duration="60077000" />
       <workItem from="1610532087374" duration="13066000" />
+      <workItem from="1610554565392" duration="12289000" />
+      <workItem from="1610588338101" duration="26971000" />
     </task>
     <task id="LOCAL-00001" summary="did some css">
       <created>1610254688408</created>
@@ -283,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610532168644</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="improve materials and homeworks pages">
+      <created>1610554654591</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1610554654592</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +336,7 @@
     <MESSAGE value="did some messaging style" />
     <MESSAGE value="add sidebar" />
     <MESSAGE value="add uploader" />
-    <option name="LAST_COMMIT_MESSAGE" value="add uploader" />
+    <MESSAGE value="improve materials and homeworks pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve materials and homeworks pages" />
   </component>
 </project>

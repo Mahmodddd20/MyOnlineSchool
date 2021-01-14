@@ -1,8 +1,9 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
 import { Link ,useHistory } from 'react-router-dom';
-import {Badge, Button, Card, CardColumns, CardGroup, Container, Row, Tab, Tabs} from "react-bootstrap";
+import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Tab, Tabs} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
+import Sidebar from "../Sidebar/sidebar";
 
 
 export default function AllHomeworks(props){
@@ -32,7 +33,7 @@ export default function AllHomeworks(props){
                             <Card.Body className='ml-0'>
                                 <Card.Text dangerouslySetInnerHTML={{__html: homework.description}}>
                                 </Card.Text>
-                                <Button className='m-2 w-100' variant="outline-info" href={"/material/show/"+homework.id}>
+                                <Button className='m-2 w-100' variant="outline-info" href={"/homework/show/"+homework.id}>
                                     Enter {homework.name}</Button>
 
                             </Card.Body>
@@ -51,14 +52,20 @@ export default function AllHomeworks(props){
     }
 
     return (
-        <Container className='ml-5 m-2  text-capitalize  '>
+        <Container className='ml-5 m-2 text-capitalize  '>
             {homework.length>0?<>
                 <Row>
+                    <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
                     <h1 className='ml-3 m-2'>
                         <Badge pill variant="success" className='rounded-0 text-wrap'>
                             welcome to your homeworks
                         </Badge>
                     </h1>
+                    </Col>
+                    <Col xs md lg="1" >
+                        <Sidebar/>
+                    </Col>
+
                 </Row>
                 <Row>
                     <Button variant='outline-dark' className='ml-3 m-2' onClick={()=>history.goBack()}>Go Back</Button>

@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import { useHistory } from 'react-router-dom';
-import {Button, Card, Container, Modal, Row} from "react-bootstrap";
+import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import api from "../../api";
 import CookieService from "../../CookieService";
+import Sidebar from "../Sidebar/sidebar";
 
 
 export default function Material(props){
@@ -40,15 +41,24 @@ export default function Material(props){
     }
         return(
         <Container className='mt-4 justify-content-center '>
+            <Row>
+                <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
             <Button variant='outline-dark' className='ml-0 mb-2 mt-2 ' onClick={()=>history.goBack()}>Go Back</Button>
             {CookieService.get('role')=='teacher'?<Button variant="danger" className=' ml-2' onClick={()=>{{handleShow(material.id)}}}>Delete</Button>:''}
             <Card className='w-50 text-center text-capitalize'>
-                <Card.Header as='h1'>{material.name}</Card.Header>
+                <Card.Header>{material.name}</Card.Header>
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">{material.type}</Card.Subtitle>
-                    <Card.Text as='h3' dangerouslySetInnerHTML={{__html: material.description}}/>
+                    <Card.Text dangerouslySetInnerHTML={{__html: material.description}}/>
                 </Card.Body>
             </Card>
+                </Col>
+
+                <Col xs md lg="1" >
+                        <Sidebar/>
+                    </Col>
+            </Row>
+
             <>
                 <Modal
                     show={show}
@@ -71,6 +81,7 @@ export default function Material(props){
                     </Modal.Footer>
                 </Modal>
             </>
+
 
         </Container>
 )

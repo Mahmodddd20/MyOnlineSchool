@@ -30,19 +30,25 @@ import Sidebar from './components/Sidebar/sidebar'
 import {Col, Container, Row} from "react-bootstrap";
 import Chat from './components/Messaging/Chat';
 import App from './App'
+import Answer from './components/Answer/Answer'
+import AllAnswers from './components/Answer/Allanswers'
+import Profile from "./components/Profile/Profile";
+import EditUser from "./components/Profile/EditUser";
+
+
 
 
 
 ReactDOM.render(
-    <Container fluid className='m-0 p-0'>
-    <Row>
-        <Col>
+    <Container fluid className='mb-n5 pb-5 m-0 p-0'>
+    {/*<Row>*/}
+    {/*    <Col>*/}
         <Header/>
-        </Col>
-    </Row>
-    <Row>
+    {/*    </Col>*/}
+    {/*</Row>*/}
+    {/*<Row>*/}
             <BrowserRouter>
-                <Col xs='auto' md='auto' lg="10">
+                {/*<Col xs='auto' md='auto' lg="10">*/}
                 <Route exact path="/app" component={App} />
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/login" component={Login} />
@@ -65,18 +71,24 @@ ReactDOM.render(
                 <Route exact path="/newhomework/:id" component={NewHomework} />
                 <Route exact path="/material/show/:id" component={Material} />
                 <Route exact path="/homework/show/:id" component={Homework} />
+                <Route exact path="/answer/:id" component={Answer} />
+                <Route exact path="/answer/all/:id" component={AllAnswers} />
                 <Route exact path="/materials/all/:id" component={AllMaterials} />
                 <Route exact path="/homeworks/all/:id" component={AllHomeworks} />
-                </Col>
-                <Col xs md lg="1" >
+                <Route exact path="/profile/:id" component={Profile} />
+                <Route exact path="/edituser/:id" component={EditUser} />
+
+
+                {/*</Col>*/}
+                {/*<Col xs md lg="1" >*/}
                     {/*<Sidebar/>*/}
-                </Col>
+                {/*</Col>*/}
 
             </BrowserRouter>
-        <Row>
+        {/*<Row>*/}
         <Footer/>
-        </Row>
-    </Row>
+    {/*    </Row>*/}
+    {/*</Row>*/}
     </Container>
     ,
     document.getElementById('root')

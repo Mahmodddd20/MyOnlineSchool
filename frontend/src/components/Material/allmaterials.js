@@ -3,6 +3,7 @@ import api from "../../api";
 import { Link ,useHistory } from 'react-router-dom';
 import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Tab, Tabs} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
+import Sidebar from "../Sidebar/sidebar";
 
 
 export default function MyWeek(props){
@@ -16,6 +17,8 @@ export default function MyWeek(props){
     useEffect(() => {
         fetchMaterials();
     },[]);
+
+
 
 
     function fetchMaterials(){
@@ -54,14 +57,21 @@ export default function MyWeek(props){
 
 
     return (
-        <Container className='ml-5 m-2  text-capitalize  '>
+        <Container className='ml-5 mt-4 m-2  text-capitalize  '>
+
             {material.length>0?<>
             <Row>
-            <h1 className='ml-3 m-2'>
+                <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
+                <h1 className='ml-3 m-2'>
                 <Badge pill variant="success" className='rounded-0 text-wrap'>
                     welcome to your materials
                 </Badge>
             </h1>
+                </Col>
+                <Col xs md lg="1" >
+                    <Sidebar/>
+                </Col>
+
             </Row>
             <Row>
                 <Button variant='outline-dark' className='ml-3 m-2' onClick={()=>history.goBack()}>Go Back</Button>

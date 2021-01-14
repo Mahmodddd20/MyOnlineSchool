@@ -141,7 +141,7 @@ export default function Admin(){
                     <Modal.Header closeButton>
                         <Modal.Title>Confirm</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body className='text-capitalize'>
                         Are you sure you want to Delete the class.
                     </Modal.Body>
                     <Modal.Footer>
