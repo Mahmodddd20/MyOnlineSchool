@@ -4,8 +4,6 @@ import { Link ,useHistory } from 'react-router-dom';
 import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Table} from "react-bootstrap";
 import CookieService from "../../CookieService";
 import Spinner from "../Loading/Spinner";
-import Spinner3 from "../Loading/Spinner3";
-import Spinner2 from "../Loading/Spinner2";
 import Sidebar from "../Sidebar/sidebar";
 
 
@@ -82,17 +80,22 @@ export default function MyWeek(props){
 
     function emptyMaterials(){
         return(
-            <Spinner2 delay="10000"/>
+            <tr>
+                <th colSpan="3" className='text-muted text-monospace text-center text-capitalize '>There is no data yet</th>
+            </tr>
+
         )
     }
     function emptyHomeworks(){
         return(
-            <Spinner2 delay="10000"/>
+            <tr>
+            <th colSpan="3" className='text-muted text-monospace text-center text-capitalize '>There is no data yet</th>
+            </tr>
         )
     }
 
     return (
-        <Container className='text-capitalize m-2 ml-5'>
+        <div className='text-capitalize m-2 ml-5'>
             {material.length>0?<>
                 <Row>
                     <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
@@ -165,7 +168,7 @@ export default function MyWeek(props){
 
             </Row>
             </>:<Spinner delay="10000"/>}
-        </Container>
+        </div>
     )
 }
 

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from "../../CookieService";
-import {Alert, Button, CardColumns, Container, Table} from "react-bootstrap";
+import {Alert, Button, CardColumns, Container, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 export default function Addstudenttoclass(props) {
     const [classroom, setClass] = useState([]);
@@ -16,7 +16,7 @@ export default function Addstudenttoclass(props) {
 
     useEffect(() => {
         protect();
-        detailsAllClasses();
+        detailsClass();
         detailsAllStudent();
         fetchClassStudents();
 
@@ -42,7 +42,7 @@ export default function Addstudenttoclass(props) {
         setStudent_id(event.target.value)
     }
 
-    function detailsAllClasses(){
+    function detailsClass(){
         api.myclass(props.match.params.id).then(response => {
             console.log('class',response.data)
             setClass(response.data)
@@ -80,6 +80,16 @@ export default function Addstudenttoclass(props) {
                 <option className='text-capitalize text-center' key={stu.id} value={stu.id}> {stu.name} </option>
 
             )})}
+        function handleDeleteFromClass(id){
+
+            const del = {
+                student_id:id,
+                class_id:class_id
+            }
+            api.deletestudentfromclass(del).then(response=>{
+                fetchClassStudents();
+                })
+            }
 
 
     function handleAddStudentToClass (event) {
@@ -95,6 +105,10 @@ export default function Addstudenttoclass(props) {
                  setSuccess(<Alert  variant={'success'} closeLabel>
                     Student added successfully
                 </Alert>);
+                setTimeout(() => {
+                    setSuccess('');
+                }, 5000);
+
                 AllStudents();
                 fetchClassStudents();
                 // history.push('/admin')
@@ -104,7 +118,11 @@ export default function Addstudenttoclass(props) {
                 setErrors(<Alert variant={'danger'}>
                     The Student already in the Class
                 </Alert>)
-                console.log(errors)
+                setTimeout(() => {
+                    setErrors('');
+                }, 5000);
+
+            console.log(errors)
                 // window.location.reload();
 
             }
@@ -120,8 +138,15 @@ export default function Addstudenttoclass(props) {
                             <th>{students.userName}</th>
                             <th>{students.userEmail}</th>
                             <th>{students.userRole}</th>
-                            <th><Button variant='warning'>Edit</Button></th>
-                            <th><Button variant='danger'>Delete</Button></th>
+                            <th><Button variant='warning' href={'/edituser/'+students.userId}>Edit</Button></th>
+                            <th><OverlayTrigger
+                                key={students.userId}
+                                placement={'right'}
+                                overlay={
+                                    <Tooltip id={students.userId}>Just From This Class.</Tooltip>}>
+                                <Button variant='danger' onClick={()=>handleDeleteFromClass(students.userId)}>Delete</Button>
+                            </OverlayTrigger>
+                            </th>
                         </tr>
 
 

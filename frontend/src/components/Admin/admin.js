@@ -35,6 +35,8 @@ export default function Admin(){
     function handleLogout() {
         api.logout().then((response) => {
             CookieService.remove('access_token')
+            CookieService.remove('id')
+            CookieService.remove('role')
             history.push('/login');
             window.location.reload();
         }).catch(error=>{
@@ -110,7 +112,7 @@ export default function Admin(){
                 <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
                 <h1 className=' m-2'>
                     <Badge pill variant="success" className='rounded-0 text-wrap'>
-                        welcome to Controller Page
+                        welcome to Control Page
                     </Badge>
                 </h1>
                 </Col>

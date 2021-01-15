@@ -4,8 +4,9 @@ import api from '../../api';
 import CookieService from "../../CookieService";
 import AllTeachersTable from "./AllTeachers";
 import Spinner from "../Loading/Spinner";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Alert, Button, Col, Container, Row} from "react-bootstrap";
 import Sidebar from "../Sidebar/sidebar";
+import * as dates from "nodemailer";
 
 export default function Newclassroom() {
     const [name, setName] = useState('');
@@ -14,6 +15,12 @@ export default function Newclassroom() {
     const [start_date, setStart_date] = useState('');
     const [finish_date, setFinish_date] = useState('');
     const [errors, setErrors] = useState([]);
+    const [dateError, setDateError] = useState([]);
+    const [nameError, setNameError] = useState('');
+    const [start_dateError, setStart_dateError] = useState('');
+    const [finish_dateError, setFinish_dateError] = useState('');
+
+
     const history = useHistory();
 
     useEffect(() => {
@@ -48,10 +55,62 @@ export default function Newclassroom() {
 
     function handleStart_dateChange (event) {
         setStart_date(event.target.value)
+        let start= event.target.value.split('-');
+        let finish= finish_date.split('-');
+        console.log(start,finish)
+        let latest = false;
+        if (parseInt(start[0]) < parseInt(finish[0])) {
+            latest = true;
+        } else if (parseInt(start[0]) == parseInt(finish[0])) {
+            if (parseInt(start[1]) < parseInt(finish[1])) {
+                latest = true;
+            } else if (parseInt(start[1]) == parseInt(finish[1])) {
+                if (parseInt(start[2]) < parseInt(finish[2])) {
+                    latest = true;
+                }
+            }
+        }
+        if(latest!==true){
+            setFinish_date('');
+            setDateError(  <Alert className='mt-2' variant='danger'>
+                    The Finish Date Must Be After The Start Date.
+                </Alert>
+            );
+            setTimeout(() => {
+                setDateError('');
+            }, 5000);
+
+        }
     }
 
     function handleFinish_dateChange (event) {
         setFinish_date(event.target.value)
+        let start= start_date.split('-');
+        let finish= event.target.value.split('-');
+        console.log(start,finish)
+        let latest = false;
+        if (parseInt(start[0]) < parseInt(finish[0])) {
+            latest = true;
+        } else if (parseInt(start[0]) == parseInt(finish[0])) {
+            if (parseInt(start[1]) < parseInt(finish[1])) {
+                latest = true;
+            } else if (parseInt(start[1]) == parseInt(finish[1])) {
+                if (parseInt(start[2]) < parseInt(finish[2])) {
+                    latest = true;
+                }
+            }
+        }
+        if(latest!==true){
+            setFinish_date('');
+            setDateError(  <Alert className='mt-2' variant='danger'>
+                    The Finish Date Must Be After The Start Date.
+                </Alert>
+            );
+            setTimeout(() => {
+                setDateError('');
+            }, 5000);
+
+        }
     }
 
     function detailsAllTeacher(){
@@ -67,13 +126,38 @@ export default function Newclassroom() {
         return teacher.map(teach=>{
 
             return(
-             <option  key={teach.id} className='text-capitalize text-justify' value={teach.id}> {teach.role}  {teach.name} </option>
+             <option  key={teach.id} className='text-capitalize text-justify' value={teach.id}>{teach.name} </option>
 
         )})}
 
 
     function handleCreateClassroom (event) {
         event.preventDefault();
+        if(name==''){
+            setNameError(<Alert className='mt-2'  variant='danger'>
+                The Name Field is Required.
+            </Alert>)
+            setTimeout(() => {
+                setNameError('');
+            }, 5000);
+
+        }if (start_date==''){
+            setStart_dateError(<Alert className='mt-2'  variant='danger'>
+                The Start Date Field is Required.
+            </Alert>)
+            setTimeout(() => {
+                setStart_dateError('');
+            }, 5000);
+
+        }if (finish_date==''){
+            setFinish_dateError(<Alert className='mt-2'  variant='danger'>
+                The Finish Date Field is Required.
+            </Alert>)
+            setTimeout(() => {
+                setFinish_dateError('');
+            }, 5000);
+
+        }
 
 
 
@@ -87,11 +171,11 @@ export default function Newclassroom() {
             .then(response => {
 
                 history.push('/admin')
-                window.location.reload();
+                // window.location.reload();
             }).catch(error => {
             setErrors(error.response.data.errors)
             console.log(errors)
-            window.location.reload();
+            // window.location.reload();
 
             }
         )
@@ -102,13 +186,12 @@ export default function Newclassroom() {
         <i>
             <Row>
             <Col xs='auto' md='auto' lg="11" >
-
             {teacher.length>0?
             <div className="container mt-4 text-capitalize">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
                         <div className="card">
-                            <div className="card-header">New Class Room
+                            <div className="card-header">New Class
                             <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleCreateClassroom} >
@@ -120,6 +203,7 @@ export default function Newclassroom() {
                                                    value={name}
                                                    onChange={handleNameChange}
                                             />
+                                            {nameError}
                                         </div>
                                     </div>
                                     <div className="form-group row">
@@ -132,6 +216,7 @@ export default function Newclassroom() {
                                                 {AllTeachers()}
                                             </select>
                                         </div>
+
                                     </div>
 
 
@@ -143,6 +228,7 @@ export default function Newclassroom() {
                                                    value={start_date}
                                                    onChange={handleStart_dateChange}
                                             />
+                                            {start_dateError}
                                         </div>
                                     </div>
 
@@ -154,6 +240,8 @@ export default function Newclassroom() {
                                                    value={finish_date}
                                                    onChange={handleFinish_dateChange}
                                             />
+                                            {dateError}
+                                            {finish_dateError}
                                         </div>
                                     </div>
                                     <div className="form-group row mb-0">

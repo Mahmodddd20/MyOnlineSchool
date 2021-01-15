@@ -54,6 +54,7 @@ export default function Homework(props){
                     <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
                     <Button variant='outline-dark' className='ml-0 mb-2 mt-2 ' onClick={()=>history.goBack()}>Go Back</Button>
                     {CookieService.get('role')=='teacher'?<Button variant="danger" className=' ml-2' onClick={()=>{{handleShow(homework.id)}}}>Delete</Button>:''}
+                    {CookieService.get('role')=='teacher'?<Button variant="warning" className=' ml-2' href={'/edithomework/'+homework.id}>Edit</Button>:''}
                     {CookieService.get('role')=='teacher'?<Button variant="primary" className=' ml-2' href={'/answer/all/'+homework.id}>Answers</Button>:''}
                     {CookieService.get('role')=='student'?finished!==0?'':<Button variant="outline-success" className=' ml-2' target='_blank' href={'/answer/'+homework.id}>Submit Your Answer</Button>:''}
 

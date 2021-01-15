@@ -31,6 +31,9 @@ export default{
     updatetheuser: (user,id) =>
         axios.post(`${BASE_URL}/update/user/${id}`,user, token),
 
+    deleteTheUser: (id) =>
+        axios.post(`${BASE_URL}/delete/user/${id}`, token),
+
     detailsAllTeacher: () =>
         axios.get(`${BASE_URL}/details/teacher/all`, token),
 
@@ -43,6 +46,9 @@ export default{
 
     addStudentToClass: (Add) =>
         axios.post(`${BASE_URL}/classtudent/create`,Add ,token),
+
+    deletestudentfromclass: (del) =>
+        axios.post(`${BASE_URL}/classtudent/delete`,del ,token),
 
     allStudentInClass: (id) =>
         axios.get(`${BASE_URL}/classtudent/${id}` ,token),
@@ -61,15 +67,8 @@ export default{
         axios.post(`${BASE_URL}/welcomeEmail` ,email,token),
 
 
-
-
-
-
-
-
-
     logout: () =>
-    axios.get(`${BASE_URL}/logout`, token),
+    axios.post(`${BASE_URL}/logout`, token),
 
     myclassesT: () =>
         axios.get(`${BASE_URL}/classroom/teacher`, token),
@@ -116,6 +115,10 @@ export default{
     creatematerial: (material) =>
         axios.post(`${BASE_URL}/material/create`,material ,token),
 
+    editmaterial: (material) =>
+        axios.post(`${BASE_URL}/material/edit`,material ,token),
+
+
     deletematerial: (id) =>
         axios.delete(`${BASE_URL}/material/delete/${id}` ,token),
 
@@ -124,6 +127,9 @@ export default{
 
     createhomework: (homework) =>
         axios.post(`${BASE_URL}/homework/create`,homework ,token),
+
+    edithomework: (homework) =>
+        axios.post(`${BASE_URL}/homework/edit`,homework ,token),
 
     deletehomework: (id) =>
         axios.delete(`${BASE_URL}/homework/delete/${id}` ,token),

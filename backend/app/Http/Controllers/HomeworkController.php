@@ -67,15 +67,15 @@ class HomeworkController extends Controller
      * @param  \App\Models\Homework  $homework
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
         $request->validate([
             'name'=> 'required',
             'type'=> 'required',
             'description'=> 'required',
-            'week_id'=> 'required',
+            'homework_id'=> 'required',
         ]);
-        $homework = Homework::findOrFail($id);
+        $homework = Homework::findOrFail($request->homework_id);
         $homework->name=$request->name;
         $homework->type=$request->type;
         $homework->description=$request->description;

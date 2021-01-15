@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import api from "../../api";
-import {Button, Table} from "react-bootstrap";
+import {Button, Container, Modal, Table} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Spinner2 from "../Loading/Spinner2";
 
@@ -8,9 +8,27 @@ import Spinner2 from "../Loading/Spinner2";
 export default function AllUsers() {
     const [users, setUsers] = useState([]);
 
+    const [del, setDel] = useState('');
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+
+
     useEffect(() => {
         fetchAllUsers();
     },[]);
+
+    function handleShow (id)
+    {
+        setShow(true);
+        setDel(id);
+    }
+    function deleteTheUser(id){
+        api.deleteTheUser(id).then(response=>{
+            fetchAllUsers();
+            // window.location.reload();
+        })
+    }
+
 
     function fetchAllUsers () {
         api.detailsAllUsers().then(response => {
@@ -36,7 +54,7 @@ export default function AllUsers() {
                                     <th>{user.email}</th>
                                     <th>{user.role}</th>
                                     <th><Button variant='warning' href={'/edituser/'+user.id}>Edit</Button></th>
-                                    <th><Button variant='danger'>Delete</Button></th>
+                                    <th><Button variant='danger' onClick={()=>{{handleShow(user.id)}}}>Delete</Button></th>
                                 </tr>
 
 
@@ -67,6 +85,29 @@ export default function AllUsers() {
                 </tbody>
             </Table>
         </div>:<Spinner2 delay="5000"/>}
+            <>
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Confirm</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className='text-capitalize'>
+                        Are you sure you want to Delete the user.
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="info" onClick={handleClose}>
+                            No
+                        </Button>
+                        <Button variant="danger" onClick={()=>{deleteTheUser(del) ;handleClose()}}>Yes Delete</Button>
+                    </Modal.Footer>
+                </Modal>
+            </>
+
         </i>
 
     )

@@ -30,7 +30,7 @@ export default function Sidebar() {
         })}else if(CookieService.get('role')=='teacher'){
             api.myclassesT().then(response=>{
                 setClassroom(response.data)
-            })}else  if (CookieService.get('role')=='teacher'){
+            })}else  if (CookieService.get('role')=='student'){
             api.myclassesS().then(response=>{
                 setClassroom(response.data)
 
@@ -39,14 +39,21 @@ export default function Sidebar() {
     function renderClasses(){
         return(classroom.map(classroom => {
                     return (
-                        <ul>
-                        <li key={classroom.id} className='nav-text'>
-                            <Link to={"/weeks/show/"+classroom.id}>
-                                <FaIcons.FaGraduationCap/>
-                                <span className=' m-1'>{classroom.name}</span>
-                            </Link>
-                        </li>
-                        </ul>
+                        <>
+                            {CookieService.get('role')=='student'?
+                                <li key={'c'+classroom.id} className='nav-text'>
+                                    <Link to={"/weeks/show/"+classroom.classId}>
+                                        <FaIcons.FaGraduationCap/>
+                                        <span className=' m-1'>{classroom.className}</span>
+                                    </Link>
+                                </li>:
+                                <li key={'c'+classroom.id} className='nav-text'>
+                                    <Link to={"/weeks/show/"+classroom.classId}>
+                                        <FaIcons.FaGraduationCap/>
+                                        <span className=' m-1'>{classroom.name}</span>
+                                    </Link>
+                                </li>}
+                        </>
                     );
                 })
         )
@@ -61,8 +68,8 @@ export default function Sidebar() {
                 </div>
 
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                    <ul className='nav-menu-items' >
-                        <li className='navbar-toggle' style={{width:0,height:0}}>
+                    <ul className='nav-menu-items ' >
+                        <li key={9999991} className='navbar-toggle' style={{width:0,height:0}}>
                             <Link to='#' className='menu-bars2' onClick={showSidebar}>
                                 <AiIcons.AiOutlineClose />
                             </Link>
@@ -81,14 +88,15 @@ export default function Sidebar() {
                             {CookieService.get('role')!=='admin'?
                                 <Link to='/dashboard'>
                                 <SiIcons.SiGoogleclassroom/>
-                                <span className=' m-1'>Classes</span>
+                                <span className=' m-1'>Classrooms</span>
                             </Link>:<Link to='/admin'>
                                     <SiIcons.SiGoogleclassroom/>
-                                    <span className=' m-1'>Classes</span>
+                                    <span className=' m-1'>Classrooms</span>
                                 </Link>}
                         </li>
-
-                        {CookieService.get('role')!==''?renderClasses():''}
+                        <ul key={9999992} className='pre-scrollable h-25'>
+                        {CookieService.get('role')!==' '?renderClasses():''}
+                        </ul>
                     </ul>
 
                 </nav>

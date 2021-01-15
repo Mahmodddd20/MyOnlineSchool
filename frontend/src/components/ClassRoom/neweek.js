@@ -11,6 +11,8 @@ export default function Neweek(props) {
     const [success, setSuccess] = useState('');
     const [errors, setErrors] = useState('');
     const [email, setEmail] = useState('');
+    const [dateError, setDateError] = useState([]);
+
 
     const history = useHistory();
 
@@ -29,10 +31,63 @@ export default function Neweek(props) {
 
     function handleStart_dateChange (event) {
         setStart_date(event.target.value)
-    }
+        let start= event.target.value.split('-');
+        let finish= end_date.split('-');
+        console.log(start,finish)
+        let latest = false;
+        if (parseInt(start[0]) < parseInt(finish[0])) {
+            latest = true;
+        } else if (parseInt(start[0]) == parseInt(finish[0])) {
+            if (parseInt(start[1]) < parseInt(finish[1])) {
+                latest = true;
+            } else if (parseInt(start[1]) == parseInt(finish[1])) {
+                if (parseInt(start[2]) < parseInt(finish[2])) {
+                    latest = true;
+                }
+            }
+            if(latest!==true){
+                setEnd_date('');
+                setDateError(  <Alert className='mt-2' variant='danger'>
+                        The Finish Date Must Be After The Start Date.
+                    </Alert>
+                );
+                setTimeout(() => {
+                    setDateError('');
+                }, 5000);
+
+            }
+
+    }}
 
     function handleEnd_dateChange (event) {
         setEnd_date(event.target.value)
+        let start= start_date.split('-');
+        let finish= event.target.value.split('-');
+        console.log(start,finish)
+        let latest = false;
+        if (parseInt(start[0]) < parseInt(finish[0])) {
+            latest = true;
+        } else if (parseInt(start[0]) == parseInt(finish[0])) {
+            if (parseInt(start[1]) < parseInt(finish[1])) {
+                latest = true;
+            } else if (parseInt(start[1]) == parseInt(finish[1])) {
+                if (parseInt(start[2]) < parseInt(finish[2])) {
+                    latest = true;
+                }
+            }
+        }
+        if(latest!==true){
+            setEnd_date('');
+            setDateError(  <Alert className='mt-2' variant='danger'>
+                    The Finish Date Must Be After The Start Date.
+                </Alert>
+            );
+            setTimeout(() => {
+                setDateError('');
+            }, 5000);
+
+        }
+
     }
 
 
@@ -134,6 +189,7 @@ export default function Neweek(props) {
                                                    value={end_date}
                                                    onChange={handleEnd_dateChange}
                                             />
+                                            {dateError}
                                         </div>
                                     </div>
                                     <div className="form-group row mb-0">

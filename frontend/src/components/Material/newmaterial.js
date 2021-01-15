@@ -94,7 +94,7 @@ export default function Neweek(props) {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="type" className="col-md-4 col-form-label text-md-right">type</label>
+                                        <label htmlFor="type" className="col-md-4 col-form-label text-md-right">Type</label>
 
                                         <div className="col-md-6">
                                             <select id="type" type="text"  className='custom-select' name="type" autoComplete="type"
@@ -102,6 +102,8 @@ export default function Neweek(props) {
                                                    onChange={handleTypeChange}>
                                                 <option >Select The Type</option>
                                                 <option value="article">Article</option>
+                                                <option value="essay">Essay</option>
+                                                <option value="file">File</option>
                                                 <option value="photo">Photo</option>
                                                 <option value="video">Video</option>
                                                 <option value="live-video">Live Video</option>

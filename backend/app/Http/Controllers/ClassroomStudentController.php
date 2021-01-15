@@ -100,10 +100,14 @@ class ClassroomStudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $room = Classroom_Student::findOrFail($id);
-        $room->delete();
+        $student_id=$request->student_id;
+        $class_id=$request->class_id;
+        $room = DB::table('classroom__students')->
+        where('class_id','=',$class_id)->
+        where('student_id','=',$student_id)->delete();
+
         return response()->json(['data'=>$room,'success'=>true]);
 
     }

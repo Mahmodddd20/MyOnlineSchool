@@ -111,7 +111,7 @@ export default function AllClassWeeks(props){
                 <h1 className='m-2'>
                     <Badge pill variant="success" className='rounded-0 text-wrap'>
                     {className==''?
-                        <span className="spinner-border spinner-border-sm spinner-grow" role="status" aria-hidden="true"></span>
+                        <span style={{width:'50%',height:'50%'}} className="spinner-border m-2 spinner-grow align-middle align-self-center" role="status" aria-hidden="true"></span>
                         :className}
                     </Badge>
                 </h1>

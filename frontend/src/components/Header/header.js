@@ -12,9 +12,9 @@ export default function Header() {
     const [role, setRole] = useState('');
     const [id, setId] = useState('');
     const [picture, setPicture] = useState('');
-    const [check, setCheck] = useState('');
+    const [check, setCheck] = useState(false);
 
-    const hasMount = useRef(false)
+    // const hasMount = useRef(false)
 
     useEffect(() => {
         details();
@@ -33,14 +33,21 @@ export default function Header() {
             setCheck(true)
         }).catch(error => {
             setCheck(false);
+
         })
     }
     function guest(){
         return(
             <>
-                <Navbar.Brand href="/login" >Log in</Navbar.Brand>
-                <Navbar.Brand href="/login" >About us</Navbar.Brand>
-                <Navbar.Brand href="/login" >Contact us</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-0">
+
+                    <Nav.Link href="/login" >Log in</Nav.Link>
+                <Nav.Link href="/login" >About us</Nav.Link>
+                <Nav.Link href="/login" >Contact us</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
 
             </>
         )
@@ -52,22 +59,20 @@ export default function Header() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-0">
-                        {role!=='admin'?<Nav.Link href={"/dashboard"}>Dashboard</Nav.Link>:''}
-                        <Nav.Link href={"/chat"}>Chat</Nav.Link>
-                        <Nav.Link href="/admin">Controller</Nav.Link>
+                        {role!=='admin'?<Nav.Link href="/dashboard">Dashboard</Nav.Link>:
+                            <Nav.Link href="/admin">Dashboard</Nav.Link>}
 
                         <NavDropdown className='text-capitalize mr-2' title={ name+' ('+role+')'} id="basic-nav-dropdown">
-                            <NavDropdown.Item onClick= {() => handleLogout()}>Logout</NavDropdown.Item>
                             <NavDropdown.Item href={"/profile/"+id}>Profile</NavDropdown.Item>
                             {role=='admin'?<NavDropdown.Item href="/register">register new users</NavDropdown.Item>:''}
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item onClick= {() => handleLogout()}>Logout</NavDropdown.Item>
+
 
                         </NavDropdown>
                         <Nav.Link href={"/profile/"+id}>
-                            <img className='rounded-circle'
+                            <img className='bg-white rounded-circle'
                                  style={{width:'50px',position:'absolute',top:'2px',right:'8px'}} src={picture}/></Nav.Link>
-
-
-
 
                             </Nav>
                 </Navbar.Collapse>
@@ -77,19 +82,21 @@ export default function Header() {
 
     function handleLogout() {
         api.logout().then((response) => {
-            CookieService.remove('access_token')
-            CookieService.remove('role')
-            CookieService.remove('id')
-
-            history.push('/login');
-            window.location.reload();
-        }).catch(error=>{
+            console.log(response.data)
             CookieService.remove('access_token')
             CookieService.remove('role')
             CookieService.remove('id')
 
             // history.push('/login');
-            window.location.reload();
+            // window.location.reload();
+        }).catch(error=>{
+            console.log(error)
+            // CookieService.remove('access_token')
+            // CookieService.remove('role')
+            // CookieService.remove('id')
+
+            // history.push('/login');
+            // window.location.reload();
     })}
 
     return (

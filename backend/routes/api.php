@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login','AuthenticationController@login');
 //Route::post('/password/forgot-password', 'AuthenticationController@forgotPassword');
-Route::post('/upload', 'WeekController@upload' );
 
 
 Route::group(['middleware' => 'auth:api'], function() {
@@ -28,11 +27,13 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/details/student/all','AuthenticationController@detailsAllStudents');
     Route::get('/details/users/all','AuthenticationController@detailsAllUsers');
     Route::post('/update/user/{id}','AuthenticationController@update');
+    Route::post('/delete/user/{id}','AuthenticationController@destroy');
+
 
 
 
     Route::get('/details/{id}','AuthenticationController@detailsOne');
-    Route::get('/logout','AuthenticationController@logout');
+    Route::post('/logout','AuthenticationController@logout');
 
     Route::get('/classroom/all', 'ClassroomController@index' );
     Route::get('/classroom/teacher', 'ClassroomController@classTeacher' );
@@ -45,6 +46,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::delete('/classroom/delete/{id}', 'ClassroomController@destroy' );
 
     Route::post('/classtudent/create', 'ClassroomStudentController@create' );
+    Route::post('/classtudent/delete', 'ClassroomStudentController@destroy' );
     Route::get('/classtudent/all', 'ClassroomStudentController@index' );
     Route::get('/classtudent/{id}', 'ClassroomStudentController@classStudent' );
     Route::get('/studentsemails/{id}', 'ClassroomStudentController@studentsEmails' );
@@ -65,13 +67,13 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/material/all', 'MaterialController@index' );
     Route::post('/material/create', 'MaterialController@create' );
     Route::get('/material/show/{id}', 'MaterialController@show' );
-    Route::post('/material/edit/{id}', 'MaterialController@edit' );
+    Route::post('/material/edit', 'MaterialController@edit' );
     Route::delete('/material/delete/{id}', 'MaterialController@destroy' );
 
     Route::get('/homework/all', 'HomeworkController@index' );
     Route::post('/homework/create', 'HomeworkController@create' );
     Route::get('/homework/show/{id}', 'HomeworkController@show' );
-    Route::post('/homework/edit/{id}', 'HomeworkController@edit' );
+    Route::post('/homework/edit', 'HomeworkController@edit' );
     Route::delete('/homework/delete/{id}', 'HomeworkController@destroy' );
 
     Route::get('/answer/all', 'HAnswerController@index' );
@@ -98,6 +100,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/show/classes_weeks_materials', 'MaterialController@classes_weeks_materials' );
     Route::get('/show/classes_week_materials/{id}', 'MaterialController@classes_week_materials' );
     Route::get('/show/classes_week_homeworks/{id}', 'HomeworkController@classes_week_homeworks' );
+    Route::post('/upload', 'WeekController@upload' );
 
 
 });

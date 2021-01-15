@@ -26,15 +26,15 @@ import Messaging from "./components/Messaging/messaging";
 import GroupMessaging from "./components/Messaging/GroupMessaging";
 import AllMessaging from "./components/Messaging/AllMessaging";
 import SendEmail from "./components/ClassRoom/sendemail";
-import Sidebar from './components/Sidebar/sidebar'
-import {Col, Container, Row} from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import Chat from './components/Messaging/Chat';
 import App from './App'
 import Answer from './components/Answer/Answer'
 import AllAnswers from './components/Answer/Allanswers'
 import Profile from "./components/Profile/Profile";
 import EditUser from "./components/Profile/EditUser";
-
+import EditMaterial from './components/Material/editmaterial'
+import EditHomework from './components/Homework/edithomework'
 
 
 
@@ -68,7 +68,9 @@ ReactDOM.render(
                 <Route exact path="/week/edit/:id" component={EditWeek} />
                 <Route exact path="/week/show/:id" component={Week} />
                 <Route exact path="/newmaterial/:id" component={NewMaterial} />
+                <Route exact path="/editmaterial/:id" component={EditMaterial} />
                 <Route exact path="/newhomework/:id" component={NewHomework} />
+                <Route exact path="/edithomework/:id" component={EditHomework} />
                 <Route exact path="/material/show/:id" component={Material} />
                 <Route exact path="/homework/show/:id" component={Homework} />
                 <Route exact path="/answer/:id" component={Answer} />

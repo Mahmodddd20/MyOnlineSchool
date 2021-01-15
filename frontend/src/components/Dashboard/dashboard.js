@@ -49,7 +49,7 @@ export default function AllMyClasses(){
         if(CookieService.get('role')=="teacher"){
             return( classroom.map(classroom=> {
                     return(
-                        <Card key={classroom.id} className='m-4'>
+                        <Card key={classroom.id} className='ml-0 mr-2 mt-2 mb-2'>
                             <Card.Header as="h5">{classroom.name}</Card.Header>
                             <Card.Body>
                                 <Card.Title>From {classroom.start_date} To {classroom.finish_date}</Card.Title>
@@ -57,7 +57,7 @@ export default function AllMyClasses(){
                                     Teacher Name:<br/> {classroom.teacher_name}<br/>
                                     Teacher Email:<br/> {classroom.teacher_email}
                                 </Card.Text>
-                                <Button variant="primary" href={"/weeks/show/"+classroom.id}>Enter {classroom.name}</Button>
+                                <Button variant="primary" href={"/weeks/show/"+classroom.id}>View More ...</Button>
                             </Card.Body>
                         </Card>
                 );
@@ -65,15 +65,15 @@ export default function AllMyClasses(){
         );}else if(CookieService.get('role')=="student"){
             return( classroom.map(classroom=> {
                 return(
-                    <Card key={classroom.classId} className='m-4'>
-                        <Card.Header as="h5">{classroom.classId}- {classroom.className}</Card.Header>
+                    <Card key={classroom.classId} className='ml-0 mr-2 mt-2 mb-2'>
+                        <Card.Header as="h5">{classroom.className}</Card.Header>
                         <Card.Body>
                             <Card.Title>From {classroom.start_date} To {classroom.finish_date}</Card.Title>
                             <Card.Text>
                                 Teacher Name: {classroom.teacherName}<br/>
                                 Teacher Email: {classroom.teacherEmail}
                             </Card.Text>
-                            <Button variant="primary" href={"/weeks/show/"+classroom.classId}>Enter {classroom.className}</Button>
+                            <Button variant="primary" href={"/weeks/show/"+classroom.classId}>View More ...</Button>
                         </Card.Body>
                     </Card>
                 );
@@ -88,18 +88,18 @@ export default function AllMyClasses(){
     }
     function allClasses(){
         return(
-            <div>
+            <div className='ml-0'>
                 {renderClasses()}
             </div>
         );
     }
     return (
-        <Container className='m-2 '>
+        <div className='m-2 ml-4'>
             <Row>
                 <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
                 <h1 className='m-4'>
                 <Badge pill variant="success" className='rounded-0 text-wrap'>
-                    welcome to your classes
+                    Welcome To Your Classes
                 </Badge>
             </h1>
                 </Col>
@@ -109,12 +109,12 @@ export default function AllMyClasses(){
 
             </Row>
 
-            <CardColumns className='w-75'>
+            <CardColumns className='w-75 ml-2'>
 
             {classroom.length>0 ? allClasses() : emptyClasses()}
                 </CardColumns>
 
-        </Container>
+        </div>
         )
 }
 

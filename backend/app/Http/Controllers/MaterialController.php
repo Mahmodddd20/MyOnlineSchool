@@ -70,14 +70,15 @@ class MaterialController extends Controller
      * @param  \App\Models\material  $material
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$id)
+    public function edit(Request $request)
     {
         $request->validate([
             'name'=> 'required',
             'type'=> 'required',
             'description'=> 'required',
+            'material_id'=>'required'
         ]);
-        $material = Material::findOrFail($id);
+        $material = Material::findOrFail($request->material_id);
         $material->name=$request->name;
         $material->type=$request->type;
         $material->description=$request->description;

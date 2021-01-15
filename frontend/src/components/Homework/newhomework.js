@@ -101,10 +101,10 @@ export default function Neweek(props) {
                                                     onChange={handleTypeChange}>
                                                 <option >Select The Type</option>
                                                 <option value="article">Article</option>
+                                                <option value="essay">Essay</option>
+                                                <option value="file">File</option>
                                                 <option value="photo">Photo</option>
                                                 <option value="video">Video</option>
-                                                <option value="pdf">PDF</option>
-                                                <option value="pdf">Document</option>
                                             </select>
                                         </div>
                                     </div>
