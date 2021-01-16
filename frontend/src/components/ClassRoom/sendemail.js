@@ -49,13 +49,13 @@ export default function Neweek(props) {
         }
         api.sendEmailCustomToAllClassStudents(email, props.match.params.id)
             .then(response => {
-
+            console.log(response.data)
                 history.push("/weeks/show/"+props.match.params.id)
                 window.location.reload();
             }).catch(error => {
                 setErrors(error.response.data.errors)
-                console.log(errors)
-                window.location.reload();
+                console.log(error)
+                // window.location.reload();
             }
         )
     }

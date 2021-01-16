@@ -63,13 +63,21 @@ class AuthenticationController extends Controller
 
     }
 
-    public function logout(){
-        $user = Auth::user();
-        if($user instanceOf User)
-            $logout = $user->token()->revoke();
-        return response()->json([
-            'information' => 'you are logout'
-        ], 201);
+    public function logout(Request $request){
+        $token = $request->user()->token();
+        $token->revoke();
+        $response = ['message' => 'You have been successfully logged out!'];
+        return response($response, 200);
+
+
+
+
+//        $user = Auth::user();
+//        if($user instanceOf User)
+//            $logout = $user->token()->revoke();
+//        return response()->json([
+//            'information' => 'you are logout'
+//        ], 201);
     }
 
     public function register(Request $request): \Illuminate\Http\JsonResponse

@@ -22,6 +22,7 @@ export default function Header() {
 
     function details(){
         api.details().then(response => {
+            setCheck(true)
             let fname=response.data.name
             let index = fname.indexOf(" ");
             let sname = fname.substr(0, index);
@@ -30,7 +31,6 @@ export default function Header() {
             setRole(response.data.role)
             setId(response.data.id)
             setPicture(response.data.picture)
-            setCheck(true)
         }).catch(error => {
             setCheck(false);
 
@@ -81,7 +81,10 @@ export default function Header() {
     }
 
     function handleLogout() {
-        api.logout({headers:{'Accept': "application/json", 'content-type': "application/json"}}).then((response) => {
+        console.log(CookieService.get('access_token'))
+        let token = 'Bearer '+CookieService.get('access_token')
+
+        api.logout(token).then(response=> {
             console.log(response.data)
             CookieService.remove('access_token')
             CookieService.remove('role')

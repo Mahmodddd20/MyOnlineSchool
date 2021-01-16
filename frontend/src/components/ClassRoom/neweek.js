@@ -115,25 +115,26 @@ export default function Neweek(props) {
                 setEmail(<Alert variant={'info'}>
                     Email sent to students successfully
                 </Alert>);
+                sendEmails();
 
-                api.sendEmailToAllClassStudents(props.match.params.id).then(response=>{
-                    history.push("/weeks/show/"+props.match.params.id)
-
-
-                    console.log('The email sent successfully')
-                })
 
                 // window.location.reload();
             }).catch(error => {
-                setSuccess(' ')
-                setErrors(<Alert variant={'danger'}>
-                    The Student already in the Class
-                </Alert>)
-                console.log(errors)
+            console.log(error)
                 // window.location.reload();
 
             }
         )
+    }
+    function sendEmails(){
+        api.sendEmailToAllClassStudents(props.match.params.id).then(response=>{
+            history.push("/weeks/show/"+props.match.params.id)
+
+
+            console.log('The email sent successfully')
+        }).catch(error=>{
+            console.log(error)
+        })
     }
 
 

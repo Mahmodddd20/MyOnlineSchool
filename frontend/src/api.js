@@ -67,8 +67,8 @@ export default{
         axios.post(`${BASE_URL}/welcomeEmail` ,email,token),
 
 
-    logout: () =>
-    axios.post(`${BASE_URL}/logout`, token),
+    logout: (token1) =>
+    axios.post(`${BASE_URL}/logout`,token1, token),
 
     myclassesT: () =>
         axios.get(`${BASE_URL}/classroom/teacher`, token),

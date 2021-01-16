@@ -70,7 +70,7 @@ export default function Login() {
                 {response.data.role=='admin'?history.push('/admin'):history.push('/dashboard')}
                window.location.reload();
             }).catch(error => {
-                if(email==='' || password===''){
+                if(email==' ' || password==' '){
                 setErrors(error.response.data.errors)
                 }else{
                     alert('incorrect username or password');

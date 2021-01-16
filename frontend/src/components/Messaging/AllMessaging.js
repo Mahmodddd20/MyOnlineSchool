@@ -81,7 +81,7 @@ export default function AllMessaging() {
             );}else if(CookieService.get('role')=="student"){
             return( classroom.map(classroom=> {
                 return(
-                    <Card key={classroom.classId} className='m-4'>
+                    <Card key={classroom.classId} className='m-2 ml-0'>
                         <Card.Header as="h5">{classroom.classId}- {classroom.className}</Card.Header>
                         <Card.Body>
                             <Card.Title>From {classroom.start_date} To {classroom.finish_date}</Card.Title>
@@ -89,8 +89,8 @@ export default function AllMessaging() {
                                 Teacher Name: {classroom.teacherName}<br/>
                                 Teacher Email: {classroom.teacherEmail}
                             </Card.Text>
-                            <Button variant="primary" href={"/messaging/"+classroom.classId}>Enter the private messaging </Button>
-                            <Button variant="secondary" className='mt-1' href={"/groupmessaging/"+classroom.classId}>Enter the group messaging </Button>
+                            <Button variant="primary" href={"/messaging/"+classroom.classId}>Enter the private messaging </Button><br/>
+                            <Button variant="secondary" className='mt-2' href={"/groupmessaging/"+classroom.classId}>Enter the group messaging </Button>
 
                         </Card.Body>
                     </Card>

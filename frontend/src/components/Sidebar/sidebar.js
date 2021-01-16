@@ -42,16 +42,16 @@ export default function Sidebar() {
                         <>
                             {CookieService.get('role')=='student'?
                                 <li key={'c'+classroom.id} className=' nav-text'>
-                                    <Link to={"/weeks/show/"+classroom.classId}>
+                                    <a href={"/weeks/show/"+classroom.classId}>
                                         <FaIcons.FaGraduationCap/>
                                         <span className=' m-1'>{classroom.className}</span>
-                                    </Link>
+                                    </a>
                                 </li>:
                                 <li key={'c'+classroom.id} className='nav-text'>
-                                    <Link to={"/weeks/show/"+classroom.id}>
+                                    <a href={"/weeks/show/"+classroom.id}>
                                         <FaIcons.FaGraduationCap/>
                                         <span className=' m-1'>{classroom.name}</span>
-                                    </Link>
+                                    </a>
                                 </li>}
                         </>
                     );
@@ -77,22 +77,22 @@ export default function Sidebar() {
                         {SidebarData.map((item, index) => {
                             return (
                                 <li key={index} className={item.cName}>
-                                    <Link to={item.path}>
+                                    <a href={item.path}>
                                         {item.icon}
                                         <span className=' m-1'>{item.title}</span>
-                                    </Link>
+                                    </a>
                                 </li>
                             );
                         })}
                         <li key={99999} className='nav-text'>
                             {CookieService.get('role')!=='admin'?
-                                <Link to='/dashboard'>
+                                <a href='/dashboard'>
                                 <SiIcons.SiGoogleclassroom/>
                                 <span className=' m-1'>Classrooms</span>
-                            </Link>:<Link to='/admin'>
+                            </a>:<a href='/admin'>
                                     <SiIcons.SiGoogleclassroom/>
                                     <span className=' m-1'>Classrooms</span>
-                                </Link>}
+                                </a>}
                         </li>
                         <ul key={9999992} className='pre-scrollable h-25'>
                         {CookieService.get('role')!==' '?renderClasses():''}

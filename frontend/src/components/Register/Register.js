@@ -29,16 +29,25 @@ function Register() {
 
     }
     function handleLogout() {
-        api.logout().then((response) => {
+        console.log(CookieService.get('access_token'))
+        let token = 'Bearer '+CookieService.get('access_token')
+
+        api.logout(token).then(response=> {
+            console.log(response.data)
             CookieService.remove('access_token')
             CookieService.remove('role')
             CookieService.remove('id')
 
-            history.push('/login');
+            // history.push('/login');
             window.location.reload();
         }).catch(error=>{
-            history.push('/login');
-            window.location.reload();
+            console.log(error)
+            // CookieService.remove('access_token')
+            // CookieService.remove('role')
+            // CookieService.remove('id')
+
+            // history.push('/login');
+            // window.location.reload();
         })}
 
 

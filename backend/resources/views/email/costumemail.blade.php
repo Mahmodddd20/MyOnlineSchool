@@ -163,7 +163,7 @@
                             <table style="margin:0 auto;" cellspacing="0" cellpadding="0" width="100%">
                                 <tr>
                                     <td style="text-align: center;">
-                                        <a href="http://localhost:3000/"><img class="w320" width="605" height="99" src="https://i.ibb.co/xDT01v5/logos.png" alt="company logo" ></a>
+                                        <a href="http://localhost:3000/"><img class="w320" width="605" height="99" src="https://i.ibb.co/Qcwp9Zt/logos.png" alt="company logo" ></a>
                                     </td>
                                 </tr>
                             </table>
@@ -182,7 +182,7 @@
                                             </tr>
                                             <tr>
                                                 <td style="font-size:24px; text-align:center; padding: 0 75px; color:#6f6f6f;" class="w320 mobile-spacing">
-                                                {{!!$body!!}}
+                                                {!!$body!!}
                                             </tr>
                                         </table>
 

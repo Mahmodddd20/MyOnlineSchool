@@ -27,7 +27,8 @@ class EmailsController extends Controller
                     ->subject('New Week Started');
                 $message->from(auth()->user()->email,$sender);
             });
-    }}
+    } return response()->json($all_emails);
+    }
     public function sendemail(Request $request,$id)
     {
         $all_emails=DB::table('classroom__students')->select('student_id')->where('class_id','=',$id)->

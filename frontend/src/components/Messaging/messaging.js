@@ -16,6 +16,13 @@ export default function Messaging (props) {
     const [contactId, setContactId] = useState("");
     const [open, setOpen] = useState(false);
     const [newM, setNewM] = useState("");
+    const [rn, setRn] = useState("");
+    const [ri, setRi] = useState("");
+    const [si, setSi] = useState("");
+
+
+
+
 
 
     const messagesEndRef = useRef(null);
@@ -24,7 +31,7 @@ export default function Messaging (props) {
     }
 
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
 
     const pusher = new Pusher ('9f9f8bcd4a54b9f80bc9', {
         cluster: 'ap2'
@@ -34,30 +41,54 @@ export default function Messaging (props) {
     channel.bind('my-event', function(data) {
         // alert(JSON.stringify(data));
         if(CookieService.get('id') ==data.sender_id){
-                console.log('sender')
+                console.log('sender',data.sender_id)
+            console.log('id',CookieService.get('id'))
+            console.log('contactId',contactId)
+            console.log('sender_name',data.sender_name[0].name)
+
+
+
         } else if(CookieService.get('id')==data.receiver_id) {
         }if(contactId==data.sender_id){
                     fetchMessages();
-                }else if(contactId!==data.sender_id){
-                    // const newContacts = contacts.map((item) => {
-                    //     if (item.id === data.sender_id) {
-                    //         const updatedItem = '1';
-                    //
-                    //         return updatedItem;
-                    //     }
-                    //
-                    //     return item;
-                    // });
-                    //
-                    // setContacts(newContacts);
-                    // alert(contactId,data.sender_id)
+                    setRn(data.sender_name[0].name)
+                    setRi(data.receiver_id)
+                    setSi(data.sender_id)
 
-
+            renderNew()
                 }
+        // else {
+        //     let sname=data.sender_name[0].name
+        //         setNewM(<Alert className='mt-2' variant='info'>
+        //                 You Get Message From {sname}.
+        //             </Alert>)
+        //     setTimeout(() => {
+        //         setNewM('');
+        //     }, 20000);
+        //
+        //
+        // }
+
+
 
     });
-
-
+   function renderNew(){
+        if(ri==CookieService.get('id')){
+            if (contactId!==si){
+                        setNewM(<Alert className='mt-2' variant='info'>
+                                You Get Message From {rn}.
+                            </Alert>)
+                    setTimeout(() => {
+                        setNewM('');
+                    }, 20000);
+            }
+            else {
+                fetchMessages();
+            }
+        }else {
+            fetchMessages();
+        }
+    }
 
 
     const history = useHistory();
@@ -86,7 +117,7 @@ export default function Messaging (props) {
 
     function fetchContacts () {
         api.allStudentInClass(props.match.params.id).then(response => {
-            console.log(response.data)
+            // console.log(response.data)
 
 
             setContacts(response.data)
@@ -113,9 +144,9 @@ export default function Messaging (props) {
 
 
     function fetchMessages () {
-        if(contactId!==''){
+        // if(contactId!==''){
         api.messages(contactId).then(response => {
-            console.log('messages',response.data)
+            // console.log('messages',response.data)
             setMessages(response.data)
             scrollToBottom();
 
@@ -123,7 +154,7 @@ export default function Messaging (props) {
 
         }).catch(error => {
             // history.push('/login');
-        })}
+        })
     }
 
 
@@ -148,7 +179,7 @@ export default function Messaging (props) {
 
     function renderMessages() {
         return (messages.map(message => {
-                console.log(messages)
+                // console.log(messages)
                 return (
                     <div className='w-auto '>
                         {message.sender_id==CookieService.get('id')?
@@ -272,7 +303,7 @@ export default function Messaging (props) {
 
                 <h1 className='mt-4 ml-4 mb-0'>
                 <Badge pill variant="success rounded-0" className='text-wrap'>
-                    Welcome To Your Class Messages
+                    private Chat {}
                 </Badge>{newM}
             </h1>
                 </Col>

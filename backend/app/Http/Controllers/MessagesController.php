@@ -25,6 +25,9 @@ class MessagesController extends Controller
             'receiver_id'=> 'required',
             'message'=> 'required',
         ]));
+        $receiver=DB::table('users')->
+        where('id','=',$request->sender_id)->
+        select('name')->get();
 
         $options = array(
             'cluster'=>'ap2',
@@ -37,7 +40,7 @@ class MessagesController extends Controller
             env('PUSHER_APP_ID'),
             $options
         );
-        $new = ['sender_id'=> $request->sender_id,'receiver_id'=>$request->receiver_id];
+        $new = ['sender_id'=> $request->sender_id,'receiver_id'=>$request->receiver_id,'sender_name'=>$receiver];
         $pusher->trigger('MyOnlineSchool','my-event',$new);
 
 
