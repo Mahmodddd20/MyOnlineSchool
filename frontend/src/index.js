@@ -35,6 +35,7 @@ import Profile from "./components/Profile/Profile";
 import EditUser from "./components/Profile/EditUser";
 import EditMaterial from './components/Material/editmaterial'
 import EditHomework from './components/Homework/edithomework'
+import Clock from "./components/Sidebar/NewClock";
 
 
 
@@ -79,6 +80,7 @@ ReactDOM.render(
                 <Route exact path="/homeworks/all/:id" component={AllHomeworks} />
                 <Route exact path="/profile/:id" component={Profile} />
                 <Route exact path="/edituser/:id" component={EditUser} />
+                <Route exact path="/clock" component={Clock} />
 
 
                 {/*</Col>*/}

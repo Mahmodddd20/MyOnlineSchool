@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import api from "../../api";
-import {Button, Table} from "react-bootstrap";
+import {Button, OverlayTrigger, Popover, Table} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Spinner2 from "../Loading/Spinner2";
 
@@ -31,12 +31,11 @@ export default function AllTeachersTable() {
                 return(
 
                                 <tr key={teacher.id}>
-                                    <th>{teacher.id}</th>
-                                    <th>{teacher.name}</th>
-                                    <th>{teacher.email}</th>
-                                    <th>{teacher.role}</th>
-                                    <th><Button variant='warning'>Edit</Button></th>
-                                    <th><Button variant='danger'>Delete</Button></th>
+                                    <td>{teacher.id}</td>
+                                    <td>{teacher.name}</td>
+                                    <td>{teacher.email}</td>
+                                    <td>{teacher.role}</td>
+                                    <td><Button className='w-100' variant='warning'>Edit</Button></td>
                                 </tr>
 
 
@@ -49,7 +48,7 @@ export default function AllTeachersTable() {
     return (
         <i>{teachers.length>0?
             <div  className='mt-4 mb-4 h-50 pre-scrollable text-capitalize w-auto'>
-            <Table striped bordered hover>
+            <Table striped bordered hover size='md'>
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -57,7 +56,7 @@ export default function AllTeachersTable() {
                     <th>Email</th>
                     <th>Role</th>
                     <th>Edit</th>
-                    <th>Delete</th>
+
 
                 </tr>
                 </thead>

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login','AuthenticationController@login');
 //Route::post('/password/forgot-password', 'AuthenticationController@forgotPassword');
+//Route::post('/delete/user/{id}','AuthenticationController@destroy');
 
 
 Route::group(['middleware' => 'auth:api'], function() {

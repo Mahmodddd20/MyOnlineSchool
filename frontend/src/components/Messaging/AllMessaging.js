@@ -1,13 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import CookieService from "../../CookieService";
 import api from "../../api";
-import {Badge, Button, Card, CardColumns, Container} from "react-bootstrap";
+import {Badge, Button, Card, CardColumns, Col, Container, Row} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
+import Sidebar from "../Sidebar/sidebar";
+import {useHistory} from "react-router-dom";
 
 
 
 export default function AllMessaging() {
     const [classroom,setClassroom]=useState([]);
+    const history = useHistory();
+
 
     useEffect(() => {
         fetchClasses();
@@ -59,16 +63,16 @@ export default function AllMessaging() {
         if(CookieService.get('role')!=="student"){
             return( classroom.map(classroom=> {
                     return(
-                        <Card key={classroom.id} className='m-4'>
-                            <Card.Header as="h5">{classroom.id}- {classroom.name}</Card.Header>
+                        <Card key={classroom.id} className=' m-2 ml-0'>
+                            <Card.Header as="h5">{classroom.name}</Card.Header>
                             <Card.Body>
                                 <Card.Title>From {classroom.start_date} To {classroom.finish_date}</Card.Title>
                                 <Card.Text>
                                     Teacher Name: {classroom.teacher_name}<br/>
                                     Teacher Email: {classroom.teacher_email}
                                 </Card.Text>
-                                <Button variant="primary" href={"/messaging/"+classroom.id}>Send private message </Button>
-                                <Button variant="secondary" className='mt-1' href={"/groupmessaging/"+classroom.id}>Send group message </Button>
+                                <Button variant="primary" href={"/messaging/"+classroom.id}>Send private message </Button><br/>
+                                <Button variant="secondary" className='mt-2' href={"/groupmessaging/"+classroom.id}>Send group message </Button>
 
                             </Card.Body>
                         </Card>
@@ -103,23 +107,32 @@ export default function AllMessaging() {
     }
     function allClasses(){
         return(
-            <div>
+            <div className='ml-0'>
                 {renderClasses()}
             </div>
         );
     }
     return (
-        <Container className='m-2 '>
-            <h1 className='m-4'>
+        <div className='m-2 ml-5'>
+            <Row>
+                <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
+                <h1 className='m-4 mb-0 '>
                 <Badge pill variant="success" className='text-wrap rounded-0'>
                     Chat
                 </Badge>
             </h1>
-            <CardColumns className=' ml-1'>
+                </Col>
+                <Col xs md lg="1" >
+                    <Sidebar/>
+                </Col>
+
+            </Row>
+            <Button variant='outline-dark' className='mt-0 ml-2' onClick={()=>history.goBack()}>Back</Button>
+            <CardColumns className='mt-2 pl-0 ml-0'>
 
                 {classroom.length>0 ? allClasses() : emptyClasses()}
             </CardColumns>
 
-        </Container>
+        </div>
     )
 }

@@ -48,7 +48,7 @@ export default function Neweek(props) {
             if(latest!==true){
                 setEnd_date('');
                 setDateError(  <Alert className='mt-2' variant='danger'>
-                        The Finish Date Must Be After The Start Date.
+                        The Ending Date Must Be After The Starting Date.
                     </Alert>
                 );
                 setTimeout(() => {
@@ -79,7 +79,7 @@ export default function Neweek(props) {
         if(latest!==true){
             setEnd_date('');
             setDateError(  <Alert className='mt-2' variant='danger'>
-                    The Finish Date Must Be After The Start Date.
+                    The Ending Date Must Be After The Starting Date.
                 </Alert>
             );
             setTimeout(() => {
@@ -145,7 +145,7 @@ export default function Neweek(props) {
                         <div className="card">
                             {success}{errors}{email}
                             <div className="card-header">New Week
-                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleCreateWeek} >
                                     <div className="form-group row">
@@ -171,7 +171,7 @@ export default function Neweek(props) {
 
 
                                     <div className="form-group row">
-                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Start date</label>
+                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Starting date</label>
 
                                         <div className="col-md-6">
                                             <input id="start_date" type="date"  className={`form-control`} name="start_date" autoComplete="start_date"
@@ -182,7 +182,7 @@ export default function Neweek(props) {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="end_date" className="col-md-4 col-form-label text-md-right">End date</label>
+                                        <label htmlFor="end_date" className="col-md-4 col-form-label text-md-right">Ending date</label>
 
                                         <div className="col-md-6">
                                             <input id="end_date" type="date"  className={`form-control`} name="end_date" autoComplete="end_date"

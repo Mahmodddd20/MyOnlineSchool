@@ -133,7 +133,7 @@ function Register() {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-header">Register
-                            <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
+                            <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Back</Button></div>
         
                         <div className="card-body">
                             {sent}{errors}

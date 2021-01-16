@@ -125,7 +125,7 @@ export default function AllClassWeeks(props){
                 {CookieService.get('role')=='teacher'?<Button className='m-2' variant="outline-primary" href={'/neweek/'+props.match.params.id}>create new week</Button>:''}
                 {CookieService.get('role')=='admin'?<Button className='m-2' variant="info" href={'/addstudenttoclass/'+props.match.params.id}>add students to the class</Button>:''}
                 {CookieService.get('role')!=='student'?<Button className='m-2' variant="outline-info" href={'/sendemail/'+props.match.params.id}>Send Email To Students</Button>:''}
-                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Go Back</Button>
+                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Back</Button>
 
             </Row>
             <Row className='w-75 overflow-auto mb-5'>

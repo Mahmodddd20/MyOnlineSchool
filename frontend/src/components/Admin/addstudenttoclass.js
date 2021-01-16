@@ -134,19 +134,19 @@ export default function Addstudenttoclass(props) {
         return( classStudents.map(students=> {
                 return(
                         <tr key={students.userId}>
-                            <th>{students.userId}</th>
-                            <th>{students.userName}</th>
-                            <th>{students.userEmail}</th>
-                            <th>{students.userRole}</th>
-                            <th><Button variant='warning' href={'/edituser/'+students.userId}>Edit</Button></th>
-                            <th><OverlayTrigger
+                            <td>{students.userId}</td>
+                            <td>{students.userName}</td>
+                            <td>{students.userEmail}</td>
+                            <td>{students.userRole}</td>
+                            <td><Button className='w-100' variant='warning' href={'/edituser/'+students.userId}>Edit</Button></td>
+                            <td><OverlayTrigger
                                 key={students.userId}
                                 placement={'right'}
                                 overlay={
                                     <Tooltip id={students.userId}>Just From This Class.</Tooltip>}>
-                                <Button variant='danger' onClick={()=>handleDeleteFromClass(students.userId)}>Delete</Button>
+                                <Button className='w-100' variant='danger' onClick={()=>handleDeleteFromClass(students.userId)}>Delete</Button>
                             </OverlayTrigger>
-                            </th>
+                            </td>
                         </tr>
 
 
@@ -166,7 +166,7 @@ export default function Addstudenttoclass(props) {
     function allClassStudents(){
         return(
             <div className='mt-4 mb-4 h-50 pre-scrollable'>
-                <Table striped bordered hover>
+                <Table striped bordered hover size='md'>
                 <thead >
                 <tr key={classroom.id}>
                     <td colSpan="6">Class Name {classroom.name}</td>
@@ -199,7 +199,7 @@ export default function Addstudenttoclass(props) {
                         <div className="card">
                             {success}{errors}
                             <div className="card-header">Add students to {classroom.name}
-                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleAddStudentToClass} >
                                     <div className="form-group row">

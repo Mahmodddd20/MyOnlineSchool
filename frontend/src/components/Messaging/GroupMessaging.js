@@ -2,9 +2,10 @@ import React, {useEffect, useRef, useState} from "react";
 import api from "../../api";
 import {useHistory} from 'react-router-dom';
 import CookieService from "../../CookieService";
-import {Alert, Badge, Button, Card, Container, Form, ListGroup} from "react-bootstrap";
+import {Alert, Badge, Button, Card, Col, Container, Form, ListGroup, Row} from "react-bootstrap";
 import Pusher from 'pusher-js';
 import {render} from "@testing-library/react";
+import Sidebar from "../Sidebar/sidebar";
 
 export default function GroupMessaging (props) {
     const [classroom, setClassroom] = useState([]);
@@ -136,30 +137,30 @@ export default function GroupMessaging (props) {
 
     function Group(){
         return(
-            <div className='d-flex '>
-                    <Card className='w-100 mr-2'>
-                        <Card.Header style={{backgroundColor:'#76b7f5'}}
-                                     className='text-light text-capitalize text-monospace
+            <div className='d-flex w-75'>
+                <Card className='w-100 mr-2'>
+                    <Card.Header style={{backgroundColor:'#76b7f5'}}
+                                 className='text-light text-capitalize text-monospace
                        d-flex align-items-center justify-content-center '>
-                            Group class:<strong> {classroom.name}</strong></Card.Header>
-                            <Card style={{height:'20rem',backgroundColor:'#e6f0f2'}}>
-                                <ListGroup variant="flush"  className='pre-scrollable'>
-                                    {renderMessages()}
-                                    <div ref={messagesEndRef} />
-                                </ListGroup>
-                            </Card>
+                        {classroom.name}</Card.Header>
+                    <Card style={{height:'20rem',backgroundColor:'#e6f0f2'}}>
+                        <ListGroup variant="flush"  className='pre-scrollable'>
+                            {renderMessages()}
+                            <div ref={messagesEndRef} />
+                        </ListGroup>
+                    </Card>
 
-                            <Form method="POST" onSubmit={sendMessage} className='mb-2'>
-                                <Form.Group className='mb-0 mt-2 ml-2 mr-2  d-flex flex-row align-items-center' controlId="formBasicMessage">
-                                    <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
-                                    <Button style={{backgroundColor:'#76b7f5'}} className='m-1 ml-2 p-1 pt-2 ' variant="primary" type="submit">
-                                        Send
-                                    </Button>
+                    <Form method="POST" onSubmit={sendMessage} className='mb-2'>
+                        <Form.Group className='mb-0 mt-2 ml-2 mr-2  d-flex flex-row align-items-center' controlId="formBasicMessage">
+                            <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
+                            <Button style={{backgroundColor:'#76b7f5'}} className='m-1 ml-2 p-1 pt-2 ' variant="primary" type="submit">
+                                Send
+                            </Button>
 
-                                </Form.Group>
-                            </Form>
+                        </Form.Group>
+                    </Form>
 
-                        </Card>
+                </Card>
 
             </div>
         );
@@ -175,18 +176,27 @@ export default function GroupMessaging (props) {
     }
 
     return (
-        <Container className='mb-5 m-2 w-100 mw-75 mw-50'>
-            <h1 className='mt-4 mr-0 ml-1 mb-4 '>
+        <div className='m-2 ml-4'>
+            <Row>
+                <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
+                <h1 className='mt-4 ml-4 mb-0'>
                 <Badge pill variant="success rounded-0" className='text-wrap'>
                     Welcome To Your Group Messages
                 </Badge>
             </h1>
-            <div className='ml-1 m-1' >
+                </Col>
+                <Col xs md lg="1" >
+                    <Sidebar/>
+                </Col>
+
+            </Row>
+            <Button variant='outline-dark' className=' m-2' onClick={()=>history.goBack()}>Back</Button>
+            <div className='ml-2 mt-2 w-75' >
                 {Group()}
 
             </div>
 
-        </Container>
+        </div>
     )
 
 }

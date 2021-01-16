@@ -68,7 +68,7 @@ export default function AllHomeworks(props){
 
                 </Row>
                 <Row>
-                    <Button variant='outline-dark' className='ml-3 m-2' onClick={()=>history.goBack()}>Go Back</Button>
+                    <Button variant='outline-dark' className='ml-3 m-2' onClick={()=>history.goBack()}>Back</Button>
                 </Row>
                 <Tabs
                     id="controlled-tab-example"

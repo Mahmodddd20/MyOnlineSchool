@@ -105,7 +105,7 @@ export default function Editweek(props) {
 
 
                                     <div className="form-group row">
-                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Start date</label>
+                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Starting date</label>
 
                                         <div className="col-md-6">
                                             <input id="start_date" type="date"  className={`form-control`} name="start_date" autoComplete="start_date"
@@ -116,7 +116,7 @@ export default function Editweek(props) {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="end_date" className="col-md-4 col-form-label text-md-right">End date</label>
+                                        <label htmlFor="end_date" className="col-md-4 col-form-label text-md-right">Ending date</label>
 
                                         <div className="col-md-6">
                                             <input id="end_date" type="date"  className={`form-control`} name="end_date" autoComplete="end_date"

@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from "../../CookieService";
-import Spinner from "../Loading/Spinner";
 import {Button} from "react-bootstrap";
+import Spinner4 from "../Loading/Spinner4";
 
 export default function Editclassroom(props) {
     const [name, setName] = useState('');
@@ -19,6 +19,7 @@ export default function Editclassroom(props) {
             setName(response.data.name)
             setTeacher_id(response.data.teacher_id)
             setStart_date(response.data.start_date)
+            console.log(response.data.start_date)
             setFinish_date(response.data.finish_date)
 
         }).catch(error=>{
@@ -115,7 +116,7 @@ export default function Editclassroom(props) {
                     <div className="col-md-8">
                         <div className="card">
                             <div className="card-header">Edit Class Room
-                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleCreateClassroom} >
                                     <div className="form-group row">
@@ -142,7 +143,7 @@ export default function Editclassroom(props) {
 
 
                                     <div className="form-group row">
-                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Start date</label>
+                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Starting date</label>
 
                                         <div className="col-md-6">
                                             <input id="start_date" type="date"  className={`form-control`} name="start_date" autoComplete="start_date"
@@ -153,7 +154,7 @@ export default function Editclassroom(props) {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Finish date</label>
+                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Ending date</label>
 
                                         <div className="col-md-6">
                                             <input id="finish_date" type="date"  className={`form-control`} name="finish_date" autoComplete="finish_date"
@@ -174,7 +175,7 @@ export default function Editclassroom(props) {
                         </div>
                     </div>
                 </div>
-            </div>:<Spinner delay="5000"/>}
+            </div>:<Spinner4 delay="5000"/>}
         </i>
     )
 }

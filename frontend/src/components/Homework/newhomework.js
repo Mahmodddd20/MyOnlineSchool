@@ -78,7 +78,7 @@ export default function Neweek(props) {
                     <div className="col-md-auto">
                         <div className="card">
                             <div className="card-header">New Homework
-                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleCreateHomework} >
                                     <div className="form-group row">

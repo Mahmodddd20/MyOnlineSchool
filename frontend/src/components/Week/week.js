@@ -55,9 +55,9 @@ export default function MyWeek(props){
         return( material.map(material=> {
                 return(
                     <tr key={material.id}>
-                        <th>{material.name}</th>
-                        <th>{material.type}</th>
-                        <th><Button className='align-self-center' variant="outline-primary" href={'/material/show/'+material.id}>View </Button></th>
+                        <td>{material.name}</td>
+                        <td>{material.type}</td>
+                        <td ><Button className='w-100' variant="outline-primary" href={'/material/show/'+material.id}>View </Button></td>
 
                     </tr>
                 );
@@ -68,9 +68,9 @@ export default function MyWeek(props){
         return( homework.map(homework=> {
                 return(
                     <tr key={homework.id}>
-                        <th>{homework.name}</th>
-                        <th>{homework.type}</th>
-                        <th><Button className='align-self-center' variant="outline-primary" href={'/homework/show/'+homework.id}>View</Button></th>
+                        <td>{homework.name}</td>
+                        <td>{homework.type}</td>
+                        <td><Button className='w-100' variant="outline-primary" href={'/homework/show/'+homework.id}>View</Button></td>
 
                     </tr>
                 );
@@ -111,19 +111,19 @@ export default function MyWeek(props){
 
                 </Row>
             <Row>
-                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Go Back</Button>
+                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Back</Button>
             </Row>
             <Row className='mt-2 d-flex flex-row flex-wrap '>
-                <Col xs='10' lg="4" className=' ml-1 pl-0 mr-4 '>
+                <Col xs='10' lg="4" className=' ml-2 pl-0 mr-4 '>
                     <Table striped bordered hover size='lg'>
                         <thead>
                         <tr key={props.match.params.id}>
                             <th colSpan="2" className='w-auto'><h4 className=''>Materials</h4>
                             </th>
-                            <th className='w-25'>
+                            <th>
                                 {CookieService.get('role')=='teacher'?
-                                    <Button className='' variant="outline-success" href={'/newmaterial/'+props.match.params.id}>Add </Button>
-                                    :<Button className='' variant="outline-warning" href={'/materials/all/'+props.match.params.id}>View </Button>
+                                    <Button className='w-100' variant="outline-success" href={'/newmaterial/'+props.match.params.id}>Add </Button>
+                                    :<Button className='w-100' variant="outline-warning" href={'/materials/all/'+props.match.params.id}>View </Button>
                                 }
 
                             </th>
@@ -131,7 +131,7 @@ export default function MyWeek(props){
                         <tr>
                             <th>Name</th>
                             <th>Type</th>
-                            <th></th>
+                            <th> </th>
                         </tr>
                         </thead>
                         <tbody >
@@ -140,15 +140,15 @@ export default function MyWeek(props){
                     </Table>
                 </Col>
                 <Col xs='10' lg="4" className=' ml-1 pl-0 mr-4'>
-                    <Table striped bordered hover size='lg'>
+                    <Table striped bordered hover responsive size='lg'>
                         <thead>
                         <tr key={props.match.params.id}>
-                            <th colSpan="2" className='w-auto'><h4 className=''>Homeworks</h4>
+                            <th colSpan="2" className='w-auto'><h4>Homeworks</h4>
                             </th>
                             <th className='w-25'>
                                 {CookieService.get('role')=='teacher'?
-                                    <Button className='' variant="outline-success" href={'/newhomework/'+props.match.params.id}>Add </Button>
-                                    :<Button className='' variant="outline-warning" href={'/homeworks/all/'+props.match.params.id}>View </Button>
+                                    <Button className='w-100' variant="outline-success" href={'/newhomework/'+props.match.params.id}>Add </Button>
+                                    :<Button className='w-100' variant="outline-warning" href={'/homeworks/all/'+props.match.params.id}>View </Button>
                                 }
 
                             </th>
@@ -156,11 +156,11 @@ export default function MyWeek(props){
                         <tr>
                             <th>Name</th>
                             <th>Type</th>
-                            <th></th>
+                            <th> </th>
 
                         </tr>
                         </thead>
-                        <tbody >
+                        <tbody>
                         {homework.length>0 ? renderHomeworks() : emptyHomeworks()}
                         </tbody>
                     </Table>

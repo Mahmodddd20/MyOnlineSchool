@@ -95,29 +95,25 @@ class AuthenticationController extends Controller
             'picture'=>'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'
           ]);
 
-//        if($user instanceOf User)
-//            $getToken = $user->createToken('personal token');
-//        $token = $getToken->token;
-//
-//        if($request['remember_token']){
-//            $token->expires_at = Carbon::now()->addDays(15);
-//        }else{
-//            $token->expires_at = Carbon::now()->addDays();
-//        }
-//        $token->save();
+        if($user instanceOf User)
+            $getToken = $user->createToken('personal token');
+        $token = $getToken->token;
 
-//        return response()->json([
-//            'access' => $getToken->accessToken,
-//            'token' => 'Bearer',
-//            'role'=> $request->role,
-//            'expires' => Carbon::parse(
-//                $token->expires_at
-//            )->toDateTimeString()
-//        ],200);
+        if($request['remember_token']){
+            $token->expires_at = Carbon::now()->addDays(15);
+        }else{
+            $token->expires_at = Carbon::now()->addDays();
+        }
+        $token->save();
+
         return response()->json([
-            'information' => 'success'
-        ], 200);
-
+            'access' => $getToken->accessToken,
+            'token' => 'Bearer',
+            'role'=> $request->role,
+            'expires' => Carbon::parse(
+                $token->expires_at
+            )->toDateTimeString()
+        ],200);
     }
 
     public function details(){

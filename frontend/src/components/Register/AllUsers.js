@@ -49,12 +49,12 @@ export default function AllUsers() {
                 return(
 
                                 <tr key={user.id}>
-                                    <th>{user.id}</th>
-                                    <th>{user.name}</th>
-                                    <th>{user.email}</th>
-                                    <th>{user.role}</th>
-                                    <th><Button variant='warning' href={'/edituser/'+user.id}>Edit</Button></th>
-                                    <th><Button variant='danger' onClick={()=>{{handleShow(user.id)}}}>Delete</Button></th>
+                                    <td>{user.id}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.role}</td>
+                                    <td><Button variant='warning' href={'/edituser/'+user.id}>Edit</Button></td>
+                                    <td><Button variant='danger' onClick={()=>{{handleShow(user.id)}}}>Delete</Button></td>
                                 </tr>
 
 
@@ -67,7 +67,7 @@ export default function AllUsers() {
     return (
         <i>{users.length>0?
         <div  className='mt-4 mb-4 h-50 pre-scrollable text-capitalize'>
-            <Table striped bordered hover>
+            <Table striped bordered hover size='md'>
                 <thead>
                 <tr>
                     <th>Id</th>

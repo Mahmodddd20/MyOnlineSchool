@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import { Link ,useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from "../../CookieService";
 import AllTeachersTable from "./AllTeachers";
-import Spinner from "../Loading/Spinner";
-import {Alert, Button, Col, Container, Row} from "react-bootstrap";
+import {Alert, Button, Col, Row} from "react-bootstrap";
 import Sidebar from "../Sidebar/sidebar";
-import * as dates from "nodemailer";
+import Spinner4 from "../Loading/Spinner4";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import '../../index.css'
+
+
 
 export default function Newclassroom() {
     const [name, setName] = useState('');
@@ -73,7 +77,7 @@ export default function Newclassroom() {
         if(latest!==true){
             setFinish_date('');
             setDateError(  <Alert className='mt-2' variant='danger'>
-                    The Finish Date Must Be After The Start Date.
+                    The Ending Date Must Be After The Starting Date.
                 </Alert>
             );
             setTimeout(() => {
@@ -103,7 +107,7 @@ export default function Newclassroom() {
         if(latest!==true){
             setFinish_date('');
             setDateError(  <Alert className='mt-2' variant='danger'>
-                    The Finish Date Must Be After The Start Date.
+                    The Ending Date Must Be After The Starting Date.
                 </Alert>
             );
             setTimeout(() => {
@@ -143,7 +147,7 @@ export default function Newclassroom() {
 
         }if (start_date==''){
             setStart_dateError(<Alert className='mt-2'  variant='danger'>
-                The Start Date Field is Required.
+                The Starting Date Field is Required.
             </Alert>)
             setTimeout(() => {
                 setStart_dateError('');
@@ -151,7 +155,7 @@ export default function Newclassroom() {
 
         }if (finish_date==''){
             setFinish_dateError(<Alert className='mt-2'  variant='danger'>
-                The Finish Date Field is Required.
+                The Ending Date Field is Required.
             </Alert>)
             setTimeout(() => {
                 setFinish_dateError('');
@@ -192,7 +196,7 @@ export default function Newclassroom() {
                     <div className="col-md-8">
                         <div className="card">
                             <div className="card-header">New Class
-                            <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></div>
+                            <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Back</Button></div>
                             <div className="card-body">
                                 <form method="POST" onSubmit={handleCreateClassroom} >
                                     <div className="form-group row">
@@ -221,10 +225,10 @@ export default function Newclassroom() {
 
 
                                     <div className="form-group row">
-                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Start date</label>
+                                        <label htmlFor="start_date" className="col-md-4 col-form-label text-md-right">Starting date</label>
 
-                                        <div className="col-md-6">
-                                            <input id="start_date" type="date"  className={`form-control`} name="start_date" autoComplete="start_date"
+                                        <div className="col-md-6 w-100">
+                                            <input  id="start_date" type="date"  className={`form-control`} name="start_date" autoComplete="start_date"
                                                    value={start_date}
                                                    onChange={handleStart_dateChange}
                                             />
@@ -233,7 +237,7 @@ export default function Newclassroom() {
                                     </div>
 
                                     <div className="form-group row">
-                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Finish date</label>
+                                        <label htmlFor="finish_date" className="col-md-4 col-form-label text-md-right">Ending date</label>
 
                                         <div className="col-md-6">
                                             <input id="finish_date" type="date"  className={`form-control`} name="finish_date" autoComplete="finish_date"
@@ -258,7 +262,7 @@ export default function Newclassroom() {
 
                     </div>
                 </div>
-            </div>:<Spinner delay="5000"/>}
+            </div>:<Spinner4 delay="5000"/>}
             </Col>
             <Col xs md lg="1" >
                 <Sidebar/>

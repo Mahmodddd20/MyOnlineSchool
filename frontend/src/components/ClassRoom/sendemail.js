@@ -65,7 +65,7 @@ export default function Neweek(props) {
                     <Col md='auto' >
                         <Card >
                             <Card.Header>Email
-                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Go Back</Button></Card.Header>
+                                <Button variant='outline-dark' className='float-right' onClick={()=>history.goBack()}>Back</Button></Card.Header>
                             <Card.Body>
                                 <Form method="POST" onSubmit={handleSendEmail} >
                                     <Form.Group className="row">

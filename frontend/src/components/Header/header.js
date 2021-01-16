@@ -81,14 +81,14 @@ export default function Header() {
     }
 
     function handleLogout() {
-        api.logout().then((response) => {
+        api.logout({headers:{'Accept': "application/json", 'content-type': "application/json"}}).then((response) => {
             console.log(response.data)
             CookieService.remove('access_token')
             CookieService.remove('role')
             CookieService.remove('id')
 
             // history.push('/login');
-            // window.location.reload();
+            window.location.reload();
         }).catch(error=>{
             console.log(error)
             // CookieService.remove('access_token')

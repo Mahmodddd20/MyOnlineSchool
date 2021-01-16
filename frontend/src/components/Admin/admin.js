@@ -86,7 +86,7 @@ export default function Admin(){
                             <Card.Title >From {classroom.start_date} To {classroom.finish_date}</Card.Title>
                             Teacher Name: {classroom.teacher_name}<br/>
                             Teacher Email: {classroom.teacher_email}
-                            <Button className='m-2' variant="primary" href={"/weeks/show/"+classroom.id}>Enter {classroom.name}</Button>
+                            <Button className='mr-0 mb-2 float-right' variant="primary" href={"/weeks/show/"+classroom.id}>View More ...</Button>
                         </Card.Body>
                     </Card>
                 );
@@ -124,7 +124,7 @@ export default function Admin(){
             <Row>
                     <Button className='m-2' variant="info" href={'/newclassroom'}>create new class</Button>
                     <Button className='m-2' variant="outline-primary" href={'/register'}>register users</Button>
-                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Go Back</Button>
+                <Button variant='outline-dark' className='float-right m-2' onClick={()=>history.goBack()}>Back</Button>
             </Row>
             <Row className='w-75 h-100'>
                 <CardColumns className='m-2 d-flex flex-wrap'>

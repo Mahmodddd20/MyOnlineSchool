@@ -32,10 +32,10 @@ export default function MyWeek(props){
     function renderMaterials(){
         return( material.map(material=> {
                 return(
-                    <Tab tabClassName='ml-0 mt-2 text-capitalize text-monospace btn-outline-primary mr-2' eventKey={material.id} title={material.name}>
-                <Card key={material.id} className='ml-0 mt-2 align-items-center w-75 mb-5'>
-                        <Card.Body className='ml-0'>
-                            <Card.Text dangerouslySetInnerHTML={{__html: material.description}}>
+                    <Tab tabClassName='ml-0 mt-2 text-capitalize  text-monospace btn-outline-primary mr-2' eventKey={material.id} title={material.name}>
+                <Card key={material.id} className='ml-0 mt-2  align-items-center w-75 mb-5'>
+                        <Card.Body className='ml-0 text-wrap'>
+                            <Card.Text className=' text-wrap' dangerouslySetInnerHTML={{__html: material.description}}>
                             </Card.Text>
                             <Button className='m-2 w-100' variant="outline-info" href={"/material/show/"+material.id}>
                                 Enter {material.name}</Button>
@@ -57,7 +57,7 @@ export default function MyWeek(props){
 
 
     return (
-        <Container className='ml-5 mt-4 m-2  text-capitalize  '>
+        <div className='ml-5 mt-4 m-2  text-capitalize  w-100'>
 
             {material.length>0?<>
             <Row>
@@ -74,16 +74,17 @@ export default function MyWeek(props){
 
             </Row>
             <Row>
-                <Button variant='outline-dark' className='ml-3 m-2' onClick={()=>history.goBack()}>Go Back</Button>
+                <Button variant='outline-dark' className='ml-3 m-2' onClick={()=>history.goBack()}>Back</Button>
             </Row>
             <Tabs
                 id="controlled-tab-example"
+                className="w-75 mw-100 justify-content-between"
                 activeKey={key}
                 onSelect={(k) => setKey(k)}>
                 {material.length>0 ? renderMaterials() : emptyMaterials()}
             </Tabs>
         </>:emptyMaterials()}
-        </Container>
+        </div>
     )
 }
 

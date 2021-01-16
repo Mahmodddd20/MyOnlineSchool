@@ -2,8 +2,10 @@ import React, {useState, useEffect, useRef} from "react";
 import api from "../../api";
 import { useHistory} from 'react-router-dom';
 import CookieService from "../../CookieService";
-import {Alert, Badge, Button, Card, Collapse, Container, Form, ListGroup, Toast} from "react-bootstrap";
+import {Alert, Badge, Button, Card, Col, Collapse, Container, Form, ListGroup, Row, Toast} from "react-bootstrap";
 import Pusher from 'pusher-js';
+import Sidebar from "../Sidebar/sidebar";
+import Spinner from "../Loading/Spinner";
 
 export default function Messaging (props) {
     const [contacts, setContacts] = useState([]);
@@ -128,12 +130,15 @@ export default function Messaging (props) {
     function renderContacts () {
             return (contacts.map(mycontact => {
                     return (
-                            <ListGroup.Item action
-                                            onClick={()=>{setContact(mycontact); setContactId(mycontact.userId);fetchMessages();setOpen(!open)}}
-                                            variant="light" className=' text-capitalize text-monospace m-1 '
-                                            style={{color:'black'}} key={mycontact.userId}>
-                                {mycontact.userName}
-                            </ListGroup.Item>
+                        <ListGroup.Item action
+                                        onClick={()=>{setContact(mycontact); setContactId(mycontact.userId);fetchMessages();setOpen(!open)}}
+                                        variant="light" className=' text-capitalize text-monospace m-1 '
+                                        style={{color:'black'}} key={mycontact.userId}>
+                            <img className='rounded-circle mr-1'
+                                 style={{width:'50px'}}
+                                 src={mycontact.userPicture}/>
+                            {mycontact.userName}
+                        </ListGroup.Item>
 
                     );
                 })
@@ -161,16 +166,14 @@ export default function Messaging (props) {
                             </ListGroup.Item>}
                     </div>
 
-            );
+                );
             })
         )
     }
 
     function emptyContacts(){
         return(
-            <div className="spinner-border m-5 text-primary" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+            <Spinner delay="5000"/>
 
         )
     }
@@ -209,27 +212,38 @@ export default function Messaging (props) {
         return(
             <div className='d-flex flex-row align-items-start h-100' >
                 <Collapse in={open}>
-                <ListGroup style={{height:'100%'}} id="example-collapse-text" className='w-50 pre-scrollable '>
-                {CookieService.get('role')!=="teacher"?
-                    <ListGroup.Item action
-                                    onClick={()=>{setContact(teacher);setContactId(teacher.userId);fetchMessages();setOpen(!open)}}
-                                    variant="light" className=' text-capitalize text-monospace'
-                                    style={{color:'black'}} key={teacher.userId}>
-                                    Teacher: {teacher.userName}</ListGroup.Item>:''
-                }
-                {renderContacts()}
-                </ListGroup></Collapse>
+                    <ListGroup style={{height:'100%'}} id="example-collapse-text" className='w-50 pre-scrollable '>
+                        {CookieService.get('role')!=="admin"?
+                            <ListGroup.Item action
+                                            onClick={()=>{setContact('Admin');setContactId(1);fetchMessages();setOpen(!open)}}
+                                            variant="light" className=' text-capitalize text-monospace m-1'
+                                            style={{color:'black'}} key={1}>
+                                Admin</ListGroup.Item>:''
+                        }
 
-                <Card className='w-100 h-100'>
+                        {CookieService.get('role')!=="teacher"?
+                            <ListGroup.Item action
+                                            onClick={()=>{setContact(teacher);setContactId(teacher.userId);fetchMessages();setOpen(!open)}}
+                                            variant="light" className=' text-capitalize text-monospace m-1'
+                                            style={{color:'black'}} key={teacher.userId}>
+                                <img className='rounded-circle mr-1'
+                                     style={{width:'50px'}}
+                                     src={teacher.userPicture}/>
+                                {teacher.userName}</ListGroup.Item>:''
+                        }
+                        {renderContacts()}
+                    </ListGroup></Collapse>
+
+                <Card className='w-100 pb-2'>
                     <Card style={{height:'20rem',backgroundColor:'#e6f0f2'}}>
-                    <ListGroup variant="flush"  className='pre-scrollable'>
-                        {contact==''?'':renderMessages()}
-                        <div ref={messagesEndRef} />
-                    </ListGroup>
+                        <ListGroup variant="flush"  className='pre-scrollable'>
+                            {contact==''?'':renderMessages()}
+                            <div ref={messagesEndRef} />
+                        </ListGroup>
                     </Card>
 
-                    <Form method="POST" onSubmit={sendMessage} className='mb-2'>
-                        <Form.Group className='mb-0 mt-2 ml-2 mr-2  d-flex flex-row align-items-center' controlId="formBasicMessage">
+                    <Form method="POST" onSubmit={sendMessage} className='mb-0'>
+                        <Form.Group className='mb-0 mt-2 ml-2 mr-2  d-flex flex-row  align-items-center' controlId="formBasicMessage">
                             <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
                             <Button style={{backgroundColor:'#76b7f5'}} className='m-1 ml-2 p-1 pt-2 ' variant="primary" type="submit">
                                 Send
@@ -239,7 +253,7 @@ export default function Messaging (props) {
                     </Form>
 
                 </Card>
-        </div>
+            </div>
         );
     }
     function newMessage(id){
@@ -252,14 +266,24 @@ export default function Messaging (props) {
     }
 
     return (
-        <Container className='m-2 w-100 h-100'>
-            <h1 className='m-4'>
-                <Badge pill variant="success rounded-0 text-wrap">
+        <div className='m-2 ml-4'>
+            <Row>
+                <Col xs='auto' md='auto' lg="10" className='ml-0 pl-0'>
+
+                <h1 className='mt-4 ml-4 mb-0'>
+                <Badge pill variant="success rounded-0" className='text-wrap'>
                     Welcome To Your Class Messages
                 </Badge>{newM}
             </h1>
-            <div className='m-4 '>
-                {contacts.length>0 ?<Card className='w-100 '>
+                </Col>
+                <Col xs md lg="1" >
+                    <Sidebar/>
+                </Col>
+
+            </Row>
+            <Button variant='outline-dark' className=' m-2 mt-2' onClick={()=>history.goBack()}>Back</Button>
+            <div className='ml-2 mt-2 w-75'>
+                {contacts.length>0 ?<Card>
                     <Card.Header style={{backgroundColor:'#76b7f5'}}
                        className='text-light text-capitalize text-monospace
                        d-flex align-items-center justify-content-between '>
@@ -272,7 +296,11 @@ export default function Messaging (props) {
                         >
                             USERS
                         </Button>
-                         {contact== '' ? '' : <div className='w-auto pl-5  '>The messages of <strong>{contact.userName}</strong></div>}
+                         {contact== '' ? '' : <div className='w-auto'>
+                             <img className='rounded-circle mr-1'
+                                  style={{width:'50px'}}
+                                  src={contact.userPicture}/>
+                             {contact.userName}</div>}
                     </Card.Header>
                 </Card>:''}
 
@@ -280,7 +308,7 @@ export default function Messaging (props) {
 
             </div>
 
-        </Container>
+        </div>
     )
 
 }

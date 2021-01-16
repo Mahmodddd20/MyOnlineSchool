@@ -41,14 +41,14 @@ export default function Sidebar() {
                     return (
                         <>
                             {CookieService.get('role')=='student'?
-                                <li key={'c'+classroom.id} className='nav-text'>
+                                <li key={'c'+classroom.id} className=' nav-text'>
                                     <Link to={"/weeks/show/"+classroom.classId}>
                                         <FaIcons.FaGraduationCap/>
                                         <span className=' m-1'>{classroom.className}</span>
                                     </Link>
                                 </li>:
                                 <li key={'c'+classroom.id} className='nav-text'>
-                                    <Link to={"/weeks/show/"+classroom.classId}>
+                                    <Link to={"/weeks/show/"+classroom.id}>
                                         <FaIcons.FaGraduationCap/>
                                         <span className=' m-1'>{classroom.name}</span>
                                     </Link>

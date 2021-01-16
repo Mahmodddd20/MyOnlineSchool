@@ -43,3 +43,46 @@ code {
   width: 150px;
   height: 150px;
 }
+.react-datepicker-wrapper{
+  width: 100%;
+
+}
+.react-datepicker-popper{
+  width: 100%;
+  position: relative;
+}
+.react-datepicker{
+  width: 90%;
+  margin-left: 5%;
+
+}
+.react-datepicker__month-container{
+  width: 100%;
+  font-size: medium;
+
+}
+.react-datepicker__header{
+  width: 100%;
+  font-size: medium;
+}
+.react-datepicker__day-names{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+.react-datepicker__month{
+  width: 100%;
+}
+.react-datepicker__week{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+
+}
+.react-datepicker__day{
+  width: 100%;
+  font-size: medium;
+}
