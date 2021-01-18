@@ -36,7 +36,7 @@ class GroupMessagesController extends Controller
             $options
         );
         $new = ['sender_id'=> $request->sender_id,'class_id'=>$request->class_id];
-        $pusher->trigger('MyOnlineSchool','my-event',$new);
+        $pusher->trigger('MyOnlineSchool','group',$new);
 
 
         return response()->json(['data' => $new, 'success' => true]);

@@ -41,7 +41,7 @@ class MessagesController extends Controller
             $options
         );
         $new = ['sender_id'=> $request->sender_id,'receiver_id'=>$request->receiver_id,'sender_name'=>$receiver];
-        $pusher->trigger('MyOnlineSchool','my-event',$new);
+        $pusher->trigger('MyOnlineSchool','z',$new);
 
 
         return response()->json(['data' => $new, 'success' => true]);

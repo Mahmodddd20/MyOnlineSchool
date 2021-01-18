@@ -47,7 +47,7 @@ export default function Material(props){
             {CookieService.get('role')=='teacher'?<Button variant="danger" className=' ml-2' onClick={()=>{{handleShow(material.id)}}}>Delete</Button>:''}
             {CookieService.get('role')=='teacher'?<Button variant="warning" className=' ml-2' href={'/editmaterial/'+props.match.params.id}>Edit</Button>:''}
 
-                    <Card className='w-50 text-center text-capitalize'>
+                    <Card className='w-auto  text-center text-capitalize'>
                 <Card.Header>{material.name}</Card.Header>
                 <Card.Body>
                     <Card.Subtitle className="mb-2 text-muted">{material.type}</Card.Subtitle>

@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react'
-import { Link ,useHistory } from 'react-router-dom';
+import React, {useEffect, useState } from 'react'
+import {useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from '../../CookieService';
-import {Button, Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown} from "react-bootstrap";
 import '../../index.css';
 import logo from './logo.png';
 
@@ -43,9 +43,10 @@ export default function Header() {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-0">
 
-                    <Nav.Link href="/login" >Log in</Nav.Link>
-                <Nav.Link href="/login" >About us</Nav.Link>
-                <Nav.Link href="/login" >Contact us</Nav.Link>
+                        <Nav.Link href="/login" >Log in</Nav.Link>
+                        <Nav.Link href="/" >Main</Nav.Link>
+                        <Nav.Link href="/login" >About us</Nav.Link>
+                        <Nav.Link href="/login" >Contact us</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
 
