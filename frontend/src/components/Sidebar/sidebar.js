@@ -25,13 +25,13 @@ export default function Sidebar() {
 
     function fetchClasses(){
         if(CookieService.get('role')=='admin'){
-        api.allmyclasses().then(response=>{
+        api.allClassesAdmin().then(response=>{
             setClassroom(response.data)
         })}else if(CookieService.get('role')=='teacher'){
-            api.myclassesT().then(response=>{
+            api.myClassesTeacher().then(response=>{
                 setClassroom(response.data)
             })}else  if (CookieService.get('role')=='student'){
-            api.myclassesS().then(response=>{
+            api.myClassesStudent().then(response=>{
                 setClassroom(response.data)
 
             })}

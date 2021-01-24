@@ -71,66 +71,66 @@ export default function Newclassroom() {
 
     function handleStart_dateChange (event) {
         setStart_date(event.target.value)
-        let start= event.target.value.split('-');
-        let finish= finish_date.split('-');
-        console.log(start,finish)
-        let latest = false;
-        if (parseInt(start[0]) < parseInt(finish[0])) {
-            latest = true;
-        } else if (parseInt(start[0]) == parseInt(finish[0])) {
-            if (parseInt(start[1]) < parseInt(finish[1])) {
-                latest = true;
-            } else if (parseInt(start[1]) == parseInt(finish[1])) {
-                if (parseInt(start[2]) < parseInt(finish[2])) {
-                    latest = true;
-                }
-            }
-        }
-        if(latest!==true){
-            setFinish_date('');
-            setDateError(  <Alert className='mt-2' variant='danger'>
-                    The Ending Date Must Be After The Starting Date.
-                </Alert>
-            );
-            setTimeout(() => {
-                setDateError('');
-            }, 5000);
-
-        }
+        // let start= event.target.value.split('-');
+        // let finish= finish_date.split('-');
+        // console.log(start,finish)
+        // let latest = false;
+        // if (parseInt(start[0]) < parseInt(finish[0])) {
+        //     latest = true;
+        // } else if (parseInt(start[0]) == parseInt(finish[0])) {
+        //     if (parseInt(start[1]) < parseInt(finish[1])) {
+        //         latest = true;
+        //     } else if (parseInt(start[1]) == parseInt(finish[1])) {
+        //         if (parseInt(start[2]) < parseInt(finish[2])) {
+        //             latest = true;
+        //         }
+        //     }
+        // }
+        // if(latest!==true){
+        //     setFinish_date('');
+        //     setDateError(  <Alert className='mt-2' variant='danger'>
+        //             The Ending Date Must Be After The Starting Date.
+        //         </Alert>
+        //     );
+        //     setTimeout(() => {
+        //         setDateError('');
+        //     }, 5000);
+        //
+        // }
     }
 
     function handleFinish_dateChange (event) {
         setFinish_date(event.target.value)
-        let start= start_date.split('-');
-        let finish= event.target.value.split('-');
-        console.log(start,finish)
-        let latest = false;
-        if (parseInt(start[0]) < parseInt(finish[0])) {
-            latest = true;
-        } else if (parseInt(start[0]) == parseInt(finish[0])) {
-            if (parseInt(start[1]) < parseInt(finish[1])) {
-                latest = true;
-            } else if (parseInt(start[1]) == parseInt(finish[1])) {
-                if (parseInt(start[2]) < parseInt(finish[2])) {
-                    latest = true;
-                }
-            }
-        }
-        if(latest!==true){
-            setFinish_date('');
-            setDateError(  <Alert className='mt-2' variant='danger'>
-                    The Ending Date Must Be After The Starting Date.
-                </Alert>
-            );
-            setTimeout(() => {
-                setDateError('');
-            }, 5000);
-
-        }
+        // let start= start_date.split('-');
+        // let finish= event.target.value.split('-');
+        // console.log(start,finish)
+        // let latest = false;
+        // if (parseInt(start[0]) < parseInt(finish[0])) {
+        //     latest = true;
+        // } else if (parseInt(start[0]) == parseInt(finish[0])) {
+        //     if (parseInt(start[1]) < parseInt(finish[1])) {
+        //         latest = true;
+        //     } else if (parseInt(start[1]) == parseInt(finish[1])) {
+        //         if (parseInt(start[2]) < parseInt(finish[2])) {
+        //             latest = true;
+        //         }
+        //     }
+        // }
+        // if(latest!==true){
+        //     setFinish_date('');
+        //     setDateError(  <Alert className='mt-2' variant='danger'>
+        //             The Ending Date Must Be After The Starting Date.
+        //         </Alert>
+        //     );
+        //     setTimeout(() => {
+        //         setDateError('');
+        //     }, 5000);
+        //
+        // }
     }
 
     function detailsAllTeacher(){
-        api.detailsAllTeacher().then(response => {
+        api.detailsAllTeachers().then(response => {
             console.log(response.data)
                 setTeacher(response.data)
 
@@ -183,7 +183,7 @@ export default function Newclassroom() {
             start_date: start_date,
             finish_date: finish_date
         }
-        api.createclass(classroom, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
+        api.createClass(classroom, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
             .then(response => {
 
                 history.push('/admin')

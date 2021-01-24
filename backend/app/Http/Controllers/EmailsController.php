@@ -8,28 +8,15 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailsController extends Controller
 {
-    public function newweek($id)
-    {
-        $all_emails=DB::table('classroom__students')->select('student_id')->where('class_id','=',$id)->
-        join('users','id','=','classroom__students.student_id')->
-        select('email','name','role')->get();
-        foreach($all_emails as $email){
+    /**
+     * Sending a costume email to all students in the classroom.
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
 
-            $sender1=auth()->user()->role;
-            $sender2=auth()->user()->name;
-            $sender=ucwords($sender1.' '. $sender2);
-
-            $to_name = ucwords($email->role.' '.$email->name);
-            $to_email = $email->email;
-            $data = array('name'=>auth()->user()->name, 'body' => 'new week binges');
-            Mail::send('email.newweek', $data, function($message) use ($sender, $to_name, $to_email) {
-                $message->to($to_email, $to_name)
-                    ->subject('New Week Started');
-                $message->from(auth()->user()->email,$sender);
-            });
-    } return response()->json($all_emails);
-    }
-    public function sendemail(Request $request,$id)
+    public function sendCostumeEmail(Request $request,$id)
     {
         $all_emails=DB::table('classroom__students')->select('student_id')->where('class_id','=',$id)->
         join('users','id','=','classroom__students.student_id')->
@@ -51,6 +38,13 @@ class EmailsController extends Controller
         }
         return $request;
     }
+    /**
+     * Sending a welcome email to new users.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+
     public function welcomeEmail(Request $request)
     {
 

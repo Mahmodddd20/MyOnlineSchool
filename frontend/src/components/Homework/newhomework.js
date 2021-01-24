@@ -56,7 +56,7 @@ export default function Neweek(props) {
             description: description,
             week_id:props.match.params.id
         }
-        api.createhomework(homework, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
+        api.createHomework(homework, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
             .then(response => {
 
                 history.push("/week/show/"+props.match.params.id)

@@ -8,21 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class HAnswerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $answer = HAnswer::all();
-        return $answer;
-
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * Submit the answer for the homework.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -38,9 +28,9 @@ class HAnswerController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Find if the student already submitted the answer.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function finished($id)
@@ -51,9 +41,9 @@ class HAnswerController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display one answer by id.
      *
-     * @param  \App\Models\HAnswer  $hAnswer
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,9 +54,10 @@ class HAnswerController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update the answer.
      *
-     * @param  \App\Models\HAnswer  $hAnswer
+     * @param Request $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request, $id)
@@ -88,22 +79,11 @@ class HAnswerController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HAnswer  $hAnswer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, HAnswer $hAnswer)
-    {
-        //
-    }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete the answer.
      *
-     * @param  \App\Models\HAnswer  $hAnswer
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -113,7 +93,15 @@ class HAnswerController extends Controller
         return response()->json(['data'=>$answer,'success'=>true]);
 
     }
-    public function showall($id)
+
+    /**
+     * display all answers of one homework.
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function showAllAnswersOfOneHomework($id)
     {
         $answer = DB::table('h_answers')->
         where('homework_id','=',$id)->

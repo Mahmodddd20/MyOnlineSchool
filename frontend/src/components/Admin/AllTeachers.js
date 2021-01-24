@@ -13,7 +13,7 @@ export default function AllTeachersTable() {
     },[]);
 
     function fetchAllTeachers () {
-        api.detailsAllTeacher().then(response => {
+        api.detailsAllTeachers().then(response => {
             console.log('all',response.data)
 
 

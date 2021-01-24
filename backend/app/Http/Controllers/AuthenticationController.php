@@ -16,8 +16,14 @@ use Illuminate\Support\Facades\Password;
 
 class AuthenticationController extends Controller
 {
-    public function login(Request $request){
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
 
+    public function login(Request $request)
+    {
         $getRequest = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
@@ -29,8 +35,6 @@ class AuthenticationController extends Controller
             'password' => $getRequest['password']
         ];
 
-
-
         if(!Auth::attempt($login))
       {
         return response()->json(['error'=>'Unauthorised'], 401);
@@ -38,8 +42,6 @@ class AuthenticationController extends Controller
         $user = Auth::user();
         if($user instanceOf User)
             $getToken = $user->createToken('personal token');
-
-
 
         $token = $getToken->token;
 
@@ -49,7 +51,6 @@ class AuthenticationController extends Controller
             $token->expires_at = Carbon::now()->addDays();
         }
         $token->save();
-
 
         return response()->json([
             'access' => $getToken->accessToken,
@@ -62,27 +63,31 @@ class AuthenticationController extends Controller
         ],200);
 
     }
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         $token = $request->user()->token();
         $token->revoke();
         $response = ['message' => 'You have been successfully logged out!'];
         return response($response, 200);
 
 
-
-
-//        $user = Auth::user();
-//        if($user instanceOf User)
-//            $logout = $user->token()->revoke();
-//        return response()->json([
-//            'information' => 'you are logout'
-//        ], 201);
     }
+    /**
+     * register function require the user to be Admin
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
 
-    public function register(Request $request): \Illuminate\Http\JsonResponse
+
+    public function register(Request $request)
     {
-
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
             'email' => 'required|string|email',
@@ -124,43 +129,86 @@ class AuthenticationController extends Controller
         ],200);
     }
 
-    public function details(){
+    /**
+     * detals of the logged in user
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
+
+    public function detailsTheLoggedUser()
+    {
         $user = auth()->user ();
         return response()->json($user, 200);
     }
-    public function detailsOne($id){
+    /**
+     * details of the user by id
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
+
+    public function detailsById($id)
+    {
         $user = DB::table('users')->select('id','name','email','role','picture')->where('id','=',$id)->get();
         return response()->json($user);
     }
+    /**
+     * details of all teachers
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
 
 
-    public function detailsAllTeachers(){
-        $user = DB::table('users')->select('id','name','email','role','picture')->where('role','=','teacher')->get();
-        return response()->json($user, 200);
+    public function detailsAllTeachers()
+    {
+        $allTeachers = DB::table('users')->select('id','name','email','role','picture')->where('role','=','teacher')->get();
+        return response()->json($allTeachers, 200);
     }
-    public function detailsAllStudents(){
-        $user = DB::table('users')->select('id','name','email','role','picture')->where('role','=','student')->get();
-        return response()->json($user, 200);
+    /**
+     *  details of all students
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
+
+    public function detailsAllStudents()
+    {
+        $allStudents = DB::table('users')->select('id','name','email','role','picture')->where('role','=','student')->get();
+        return response()->json($allStudents, 200);
     }
-    public function detailsAllUsers(){
-        $user = DB::table('users')->select('id','name','email','role','picture')->get();
-        return response()->json($user, 200);
+    /**
+     * details of all users
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
+
+    public function detailsAllUsers()
+    {
+        $AllUsers = DB::table('users')->select('id','name','email','role','picture')->get();
+        return response()->json($AllUsers, 200);
     }
 
-    public function forgotPassword(Request $request){
-        $input = $request->only('email');
-        $validator = Validator::make($input, [
-            'email' => "required|email"
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
-        }
-        $response = Password::sendResetLink($input);
+//    public function forgotPassword(Request $request){
+//        $input = $request->only('email');
+//        $validator = Validator::make($input, [
+//            'email' => "required|email"
+//        ]);
+//        if ($validator->fails()) {
+//            return response()->json($validator->errors());
+//        }
+//        $response = Password::sendResetLink($input);
+//
+//        $message = $response == Password::RESET_LINK_SENT ? 'Mail send successfully' : GLOBAL_SOMETHING_WANTS_TO_WRONG;
+//
+//        return response()->json($message);
+//    }
 
-        $message = $response == Password::RESET_LINK_SENT ? 'Mail send successfully' : GLOBAL_SOMETHING_WANTS_TO_WRONG;
+    /**
+     * update function will update the user's details
+     * @param Request $request & $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
 
-        return response()->json($message);
-    }
     public function update(Request $request,$id)
     {
         $request->validate([
@@ -182,6 +230,13 @@ class AuthenticationController extends Controller
         return response()->json(['data'=>$user,'success'=>true]);
 
     }
+    /**
+     * destroy function will delete the user
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Carbon\Exceptions\InvalidFormatException
+     */
+
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -189,8 +244,5 @@ class AuthenticationController extends Controller
         return response()->json(['data'=>$user,'success'=>true]);
 
     }
-
-
-
 
 }

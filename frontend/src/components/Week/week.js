@@ -18,7 +18,7 @@ export default function MyWeek(props){
     useEffect(() => {
         fetchMaterials();
         fetchHomeworks();
-        api.myweek(props.match.params.id).then(response=>{
+        api.weekById(props.match.params.id).then(response=>{
             setWeekName(response.data.name)
         })
     },[]);
@@ -37,14 +37,14 @@ export default function MyWeek(props){
 
 
     function fetchMaterials(){
-        api.mymaterials(props.match.params.id).then(response=>{
+        api.materialsOfWeek(props.match.params.id).then(response=>{
             setMaterial(response.data)
         }).catch(error=>{
             history.push('/login');
         })
     }
     function fetchHomeworks(){
-        api.myhomeworks(props.match.params.id).then(response=>{
+        api.homeworksOfWeek(props.match.params.id).then(response=>{
             setHomework(response.data)
         }).catch(error=>{
             history.push('/login');

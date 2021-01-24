@@ -12,26 +12,14 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-
 use function Sodium\add;
 
 class WeekController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create new week and then send email to students to inform them.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $week = Week::all();
-        return $week;
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -43,25 +31,33 @@ class WeekController extends Controller
             'end_date' => 'required',
             'class_id'=> 'required',
         ]));
-        return response()->json(['data' => $week, 'success' => true]);
+        $all_emails=DB::table('classroom__students')->
+        where('class_id','=',$request->class_id)->
+        join('users','id','=','classroom__students.student_id')->
+        select('email','name','role')->get();
+        foreach($all_emails as $email){
+
+            $sender1=auth()->user()->role;
+            $sender2=auth()->user()->name;
+            $sender=ucwords($sender1.' '. $sender2);
+
+            $to_name = ucwords($email->role.' '.$email->name);
+            $to_email = $email->email;
+            $data = array('name'=>auth()->user()->name, 'body' => 'new week binges');
+            Mail::send('email.newweek', $data, function($message) use ($sender, $to_name, $to_email) {
+                $message->to($to_email, $to_name)
+                    ->subject('New Week Started');
+                $message->from(auth()->user()->email,$sender);
+            });}
+
+            return response()->json(['data' => $week, 'success' => true]);
 
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the week by id.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Week  $week
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -72,9 +68,10 @@ class WeekController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Edit the week.
      *
-     * @param  \App\Models\Week  $week
+     * @param Request $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request ,$id)
@@ -96,21 +93,9 @@ class WeekController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Delete the week.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Week  $week
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Week $week)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Week  $week
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -120,7 +105,14 @@ class WeekController extends Controller
         return response()->json(['data'=>$week,'success'=>true]);
 
     }
-    public function class_weeks($id)
+    /**
+     * Show all weeks in classroom.
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function weeksOfClass($id)
     {
         $weeks = DB::table('classrooms')
             ->join('weeks','class_id','=','classrooms.id')
@@ -148,38 +140,6 @@ class WeekController extends Controller
         return response()->json( $result);
 
     }
-    public function upload(Request $request){
-
-//        $path = $request->file('image')->store('type'.'/'.auth()->user()->id);
-//
-//        return $path;
-        $validator = Validator::make($request->all(),
-            [
-//                'user_id' => 'required',
-                'file' => 'required|mimes:png,jpg|max:2048',
-            ]);
-
-        if ($validator->fails()) {
-            return response()->json(['error'=>$validator->errors()], 401);
-        }
-
-
-        if ($files = $request->file('file')) {
-
-            //store file into document folder
-            $file = $request->file->store('public/image');
-            $file= 'http://localhost:8000'.Storage::url($file);
-            return response()->json([
-                "success" => true,
-                "message" => "File successfully uploaded",
-                "file" => $file
-            ]);
-
-        }
-
-
-    }
-
 
 }
 

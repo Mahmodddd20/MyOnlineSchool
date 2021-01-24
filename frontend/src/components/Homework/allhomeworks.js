@@ -18,7 +18,7 @@ export default function AllHomeworks(props){
 
 
     function fetchHomeworks(){
-        api.myhomeworks(props.match.params.id).then(response=>{
+        api.homeworksOfWeek(props.match.params.id).then(response=>{
             setHomework(response.data)
         }).catch(error=>{
             history.push('/login');

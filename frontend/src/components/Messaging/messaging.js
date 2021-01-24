@@ -116,7 +116,7 @@ export default function Messaging (props) {
     // });
 
     function fetchContacts () {
-        api.allStudentInClass(props.match.params.id).then(response => {
+        api.allStudentsInClass(props.match.params.id).then(response => {
             // console.log(response.data)
 
 
@@ -218,7 +218,7 @@ export default function Messaging (props) {
             receiver_id: contactId,
             message: message,
         }
-        api.addmessage(send, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
+        api.addMessage(send, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
             .then(response => {
                 fetchMessages();
                 scrollToBottom();

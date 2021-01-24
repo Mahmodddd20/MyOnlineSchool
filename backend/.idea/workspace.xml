@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="some improvement chat">
+    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="some improvement chat1">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthenticationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthenticationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClassroomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClassroomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClassroomStudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClassroomStudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmailsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmailsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/GroupMessagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/GroupMessagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HAnswerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HAnswerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeworkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeworkController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MaterialController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/WeekController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/WeekController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/AllTeachers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/AllTeachers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/editclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/editclassroom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/editweek.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/editweek.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/neweek.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/neweek.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/weeks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/weeks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/allhomeworks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/allhomeworks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/homework.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/homework.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/allmaterials.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/allmaterials.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/material.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/material.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +201,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../frontend/src/components/Upload" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -187,11 +217,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Upload" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
+      <recent name="$PROJECT_DIR$/../frontend/src/components/Messaging" />
       <recent name="$PROJECT_DIR$/../frontend/src/components/Loading" />
       <recent name="$PROJECT_DIR$/../frontend/src/components/Homework" />
-      <recent name="$PROJECT_DIR$/../frontend/src/components/Material" />
-      <recent name="$PROJECT_DIR$/../frontend/src/components/Profile" />
-      <recent name="$PROJECT_DIR$/../frontend/src/components/Upload" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../frontend/src/components/Upload" />
@@ -257,7 +287,13 @@
       <workItem from="1610790200170" duration="13509000" />
       <workItem from="1610863056934" duration="5038000" />
       <workItem from="1610871694825" duration="164000" />
-      <workItem from="1610953578197" duration="1597000" />
+      <workItem from="1610953578197" duration="1766000" />
+      <workItem from="1611207236085" duration="2284000" />
+      <workItem from="1611354565134" duration="5658000" />
+      <workItem from="1611396681216" duration="7788000" />
+      <workItem from="1611416931153" duration="4454000" />
+      <workItem from="1611519476551" duration="637000" />
+      <workItem from="1611527498753" duration="2401000" />
     </task>
     <task id="LOCAL-00001" summary="did some css">
       <created>1610254688408</created>
@@ -322,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610809946820</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="some improvement chat1">
+      <created>1610955304350</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610955304350</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,6 +397,7 @@
     <MESSAGE value="some improvement" />
     <MESSAGE value="some improvement1" />
     <MESSAGE value="some improvement chat" />
-    <option name="LAST_COMMIT_MESSAGE" value="some improvement chat" />
+    <MESSAGE value="some improvement chat1" />
+    <option name="LAST_COMMIT_MESSAGE" value="some improvement chat1" />
   </component>
 </project>

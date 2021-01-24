@@ -21,8 +21,9 @@ class HomeworkController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create homework.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -38,20 +39,9 @@ class HomeworkController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display the homework by id.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Homework  $homework
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,9 +52,9 @@ class HomeworkController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Edite the homework.
      *
-     * @param  \App\Models\Homework  $homework
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
@@ -84,20 +74,9 @@ class HomeworkController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Homework  $homework
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Homework $homework)
-    {
-        //
-    }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete the homework.
      *
      * @param  \App\Models\Homework  $homework
      * @return \Illuminate\Http\Response
@@ -109,7 +88,14 @@ class HomeworkController extends Controller
         return response()->json(['data'=>$homework,'success'=>true]);
 
     }
-    public function classes_week_homeworks($id)
+    /**
+     * Show all homeworks in a week.
+     *
+     * @param  \App\Models\Homework  $homework
+     * @return \Illuminate\Http\Response
+     */
+
+    public function homeworksOfWeek($id)
     {
         $homework = DB::table('weeks')
             ->join('homework','week_id','=','weeks.id')

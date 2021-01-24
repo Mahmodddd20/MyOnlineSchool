@@ -55,7 +55,7 @@ export default function Addstudenttoclass(props) {
     }
 
     function detailsClass(){
-        api.myclass(props.match.params.id).then(response => {
+        api.showClassById(props.match.params.id).then(response => {
             console.log('class',response.data)
             setClass(response.data)
 
@@ -63,7 +63,7 @@ export default function Addstudenttoclass(props) {
         })
     }
     function fetchClassStudents () {
-        api.allStudentInClass(props.match.params.id).then(response => {
+        api.allStudentsInClass(props.match.params.id).then(response => {
             console.log('all',response.data)
 
 
@@ -77,7 +77,7 @@ export default function Addstudenttoclass(props) {
     }
 
     function detailsAllStudent(){
-        api.detailsAllStudent().then(response => {
+        api.detailsAllStudents().then(response => {
             console.log(response.data)
             setStudent(response.data)
 
@@ -98,7 +98,7 @@ export default function Addstudenttoclass(props) {
                 student_id:id,
                 class_id:class_id
             }
-            api.deletestudentfromclass(del).then(response=>{
+            api.deleteStudentFromClass(del).then(response=>{
                 fetchClassStudents();
                 })
             }

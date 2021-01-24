@@ -21,7 +21,7 @@ export default function Header() {
     },[]);
 
     function details(){
-        api.details().then(response => {
+        api.detailsTheLoggedUser().then(response => {
             setCheck(true)
             let fname=response.data.name
             let index = fname.indexOf(" ");

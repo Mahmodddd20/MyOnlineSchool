@@ -22,7 +22,7 @@ export default function MyWeek(props){
 
 
     function fetchMaterials(){
-        api.mymaterials(props.match.params.id).then(response=>{
+        api.materialsOfWeek(props.match.params.id).then(response=>{
             setMaterial(response.data)
         }).catch(error=>{
             history.push('/login');

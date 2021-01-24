@@ -23,8 +23,9 @@ class MaterialController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create new material.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -41,20 +42,9 @@ class MaterialController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show one material by id.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\material  $material
+     * @param $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -65,9 +55,9 @@ class MaterialController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Edit the material.
      *
-     * @param  \App\Models\material  $material
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function edit(Request $request)
@@ -88,19 +78,7 @@ class MaterialController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\material  $material
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, material $material)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * Delete the material.
      *
      * @param  \App\Models\material  $material
      * @return \Illuminate\Http\Response
@@ -113,7 +91,7 @@ class MaterialController extends Controller
 
     }
 
-    public function classes_weeks_materials(): \Illuminate\Http\JsonResponse
+    public function classes_weeks_materials()
     {
         $rooms = DB::table('classrooms')->select('id')->get();
         $result = [];
@@ -142,7 +120,14 @@ class MaterialController extends Controller
         return response()->json( $result);
 
     }
-    public function classes_week_materials($id)
+    /**
+     * Show all materials in a week.
+     *
+     * @param  \App\Models\Homework  $homework
+     * @return \Illuminate\Http\Response
+     */
+
+    public function materialsOfWeek($id)
     {
                 $material = DB::table('weeks')
                     ->join('materials','week_id','=','weeks.id')

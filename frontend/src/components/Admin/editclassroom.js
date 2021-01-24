@@ -15,7 +15,7 @@ export default function Editclassroom(props) {
     const history = useHistory();
 
     useEffect(() => {
-        api.myclass(props.match.params.id).then(response=>{
+        api.showClassById(props.match.params.id).then(response=>{
             setName(response.data.name)
             setTeacher_id(response.data.teacher_id)
             setStart_date(response.data.start_date)
@@ -30,7 +30,7 @@ export default function Editclassroom(props) {
         detailsAllTeacher();
     },[]);
     function protect(){
-        api.details().then(response=>{
+        api.detailsTheLoggedUser().then(response=>{
             {response.data.role!=="admin"?handleLogout():console.log(response.data.role)}
         })
 
@@ -78,7 +78,7 @@ export default function Editclassroom(props) {
     }
 
     function detailsAllTeacher(){
-        api.detailsAllTeacher().then(response => {
+        api.detailsAllTeachers().then(response => {
             console.log(response.data)
             setTeacher(response.data)
 
@@ -106,7 +106,7 @@ export default function Editclassroom(props) {
             start_date: start_date,
             finish_date: finish_date
         }
-        api.editclass(classroom, props.match.params.id)
+        api.editClass(classroom, props.match.params.id)
             .then(response => {
 
                 history.push('/admin')

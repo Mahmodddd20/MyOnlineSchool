@@ -20,7 +20,7 @@ export default function AllMyClasses(){
 
     function fetchClasses(){
         if(CookieService.get('role')=="teacher"){
-        api.myclassesT().then(response=>{
+        api.myClassesTeacher().then(response=>{
             console.log(response.data)
 
             setClassroom(response.data)
@@ -30,7 +30,7 @@ export default function AllMyClasses(){
             // history.push('/login');
         })
     }else if(CookieService.get('role')=="student"){
-            api.myclassesS().then(response=>{
+            api.myClassesStudent().then(response=>{
                 console.log(response.data)
 
                 setClassroom(response.data)

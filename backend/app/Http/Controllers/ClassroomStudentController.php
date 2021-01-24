@@ -9,132 +9,76 @@ use Illuminate\Support\Facades\DB;
 class ClassroomStudentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Add student to classroom.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $room = Classroom_Student::all();
-        return $room;
-
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
     {
-        $room = Classroom_Student::create($request->validate([
+        $classRoom = Classroom_Student::create($request->validate([
             'student_id' => 'required|int',
             'class_id'=> 'required|int'
         ]));
-        return response()->json(['data' => $room, 'success' => true]);
+        return response()->json(['data' => $classRoom, 'success' => true]);
 
 
     }
 
 
     /**
-     * Store a newly created resource in storage.
+     * Remove the student  from the classroom.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $room = Classroom_Student::all()->find($id);
-        return response($room);
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request ,$id)
-    {
-        $request->validate([
-            'student_id' => 'required|int',
-            'class_id'=> 'required|int'
-        ]);
-        $room = Classroom_Student::findOrFail($id);
-        $room->student_id=$request->student_id;
-        $room->class_id=$request->class_id;
-        $room->save();
-        return response()->json(['data'=>$room,'success'=>true]);
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
     {
         $student_id=$request->student_id;
         $class_id=$request->class_id;
-        $room = DB::table('classroom__students')->
+        $classroom = DB::table('classroom__students')->
         where('class_id','=',$class_id)->
         where('student_id','=',$student_id)->delete();
 
-        return response()->json(['data'=>$room,'success'=>true]);
+        return response()->json(['data'=>$classroom,'success'=>true]);
 
     }
-    public function classStudent($id)
+
+    /**
+     * find the details of all the students in the classroom.
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function AllStudentsInClass($id)
     {
         $classroom = DB::table('classroom__students')->where('class_id','=',$id)->
         join('users','users.id','=','classroom__students.student_id')->
         select('users.id as userId','users.name as userName','users.email as userEmail','role as userRole','users.picture as userPicture')->
         get();
-        $student = DB::table('classroom__students')->select('student_id')->where('class_id','=',$id)->
-        join('users','id','=','classroom__students.student_id')->
-        select('id','name','email','role')->get();
         return response()->json( $classroom, 200);
 
     }
-    public function studentsEmails($id)
-    {
-        $classroom = DB::table('classroom__students')->where('class_id','=',$id)->
-        join('users','users.id','=','classroom__students.student_id')->
-        select('users.id as userId','users.name as userName')->
-        get();
-        $student = DB::table('classroom__students')->select('student_id')->where('class_id','=',$id)->
-        join('users','id','=','classroom__students.student_id')->
-        select('email','name')->get();
-        return  $student;
 
+    /**
+     * find the details of all the classroom of the logged student.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function detailsTheClassesOfLoggedStudent()
+    {
+        $id=auth()->user()->id;
+        $classrooms = DB::table("classroom__students")->
+        where('student_id','=',$id)->
+        join('classrooms','classrooms.id','=','classroom__students.class_id')->
+        join('users','users.id','=','classrooms.teacher_id')->
+        select('classrooms.id as classId','classrooms.name as className','classrooms.start_date','classrooms.finish_date','users.name as teacherName','users.email as teacherEmail')->
+        get();
+        return response()->json($classrooms);
     }
+
 
 
 

@@ -105,7 +105,7 @@ export default function Neweek(props) {
             end_date: end_date,
             class_id:props.match.params.id
         }
-        api.createweek(week, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
+        api.createNewWeek(week, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
             .then(response => {
                 event.target.reset();
                 setErrors(' ')
@@ -115,7 +115,7 @@ export default function Neweek(props) {
                 setEmail(<Alert variant={'info'}>
                     Email sent to students successfully
                 </Alert>);
-                sendEmails();
+                history.push("/weeks/show/"+props.match.params.id)
 
 
                 // window.location.reload();
@@ -125,16 +125,6 @@ export default function Neweek(props) {
 
             }
         )
-    }
-    function sendEmails(){
-        api.sendEmailToAllClassStudents(props.match.params.id).then(response=>{
-            history.push("/weeks/show/"+props.match.params.id)
-
-
-            console.log('The email sent successfully')
-        }).catch(error=>{
-            console.log(error)
-        })
     }
 
 

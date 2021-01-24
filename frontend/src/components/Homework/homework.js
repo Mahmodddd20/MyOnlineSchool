@@ -32,14 +32,14 @@ export default function Homework(props){
 
     function deleteHomework(id){
         console.log('click')
-        api.deletehomework(id).then(response=>{
+        api.deleteHomework(id).then(response=>{
             history.goBack()
 
         })}
 
 
     function fetchHomework(){
-        api.showhomeworkbyid(props.match.params.id)
+        api.showHomeworkById(props.match.params.id)
             .then(response=>{
                 setHomework(response.data);
             }).catch(error=>{

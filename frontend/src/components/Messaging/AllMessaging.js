@@ -18,7 +18,7 @@ export default function AllMessaging() {
     },[]);
 
     function details(id){
-        api.detailsOne(id).then(response => {
+        api.detailsById(id).then(response => {
             console.log(response.data[0].name)
             return (response.data[0].name)
         }).catch(error => {
@@ -28,7 +28,7 @@ export default function AllMessaging() {
 
     function fetchClasses(){
         if(CookieService.get('role')=="teacher"){
-            api.myclassesT().then(response=>{
+            api.myClassesTeacher().then(response=>{
                 console.log(response.data)
 
                 setClassroom(response.data)
@@ -38,7 +38,7 @@ export default function AllMessaging() {
                 // history.push('/login');
             })
         }else if(CookieService.get('role')=="student"){
-            api.myclassesS().then(response=>{
+            api.myClassesStudent().then(response=>{
                 console.log(response.data)
 
                 setClassroom(response.data)
@@ -48,7 +48,7 @@ export default function AllMessaging() {
             })
 
         }else {
-            api.allmyclasses().then(response=>{
+            api.allClassesAdmin().then(response=>{
                 console.log(response.data)
 
                 setClassroom(response.data)

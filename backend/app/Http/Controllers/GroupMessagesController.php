@@ -9,7 +9,15 @@ use Pusher\Pusher;
 
 class GroupMessagesController extends Controller
 {
-    public function index($id){
+    /**
+     * Get the messages of the class group chat.
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function index($id)
+    {
         $messages = DB::table('group_messages')->
         where('class_id',$id)->
         orderBy('created_at','asc')->
@@ -17,7 +25,17 @@ class GroupMessagesController extends Controller
         select('group_messages.*','users.name as sender_name')->get();
         return response()->json($messages);
     }
-    public function create(Request $request){
+
+    /**
+     * Sending a message to the class group chat.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Pusher\PusherException
+     */
+
+    public function create(Request $request)
+    {
         $new = GroupMessages::create($request->validate([
             'sender_id'=> 'required',
             'class_id'=> 'required',

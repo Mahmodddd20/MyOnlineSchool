@@ -56,7 +56,7 @@ export default function Admin(){
 
 
     function details(id){
-        api.detailsOne(id).then(response => {
+        api.detailsById(id).then(response => {
             console.log(response.data[0].name)
             return (response.data[0].name)
         }).catch(error => {
@@ -65,7 +65,7 @@ export default function Admin(){
 
 
     function fetchClasses(){
-        api.allmyclasses().then(response=>{
+        api.allClassesAdmin().then(response=>{
             setClassroom(response.data)
             console.log('response',response.data)
             console.log('classroom',classroom)
@@ -76,7 +76,7 @@ export default function Admin(){
         })
     }
     function deleteclass(id){
-        api.deleteclass(id).then(response=>{
+        api.deleteClass(id).then(response=>{
             fetchClasses();
             // window.location.reload();
         })

@@ -57,7 +57,7 @@ export default function Neweek(props) {
             description: description,
             week_id:props.match.params.id
         }
-        api.creatematerial(material, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
+        api.createMaterial(material, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
             .then(response => {
 
                 history.push("/week/show/"+props.match.params.id)
@@ -121,7 +121,7 @@ export default function Neweek(props) {
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <div className="col-md-6 ">
+                                        <div className="col-md-12 ">
                                                 <FileUpload />
                                         </div>
                                     </div>

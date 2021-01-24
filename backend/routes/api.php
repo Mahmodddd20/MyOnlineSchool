@@ -22,38 +22,33 @@ Route::post('/login','AuthenticationController@login');
 
 
 Route::group(['middleware' => 'auth:api'], function() {
+
     Route::post('/register','AuthenticationController@register');
-    Route::get('/details','AuthenticationController@details');
+    Route::post('/logout','AuthenticationController@logout');
+
+    Route::get('/details','AuthenticationController@detailsTheLoggedUser');
+    Route::get('/details/{id}','AuthenticationController@detailsById');
     Route::get('/details/teacher/all','AuthenticationController@detailsAllTeachers');
     Route::get('/details/student/all','AuthenticationController@detailsAllStudents');
     Route::get('/details/users/all','AuthenticationController@detailsAllUsers');
+
     Route::post('/update/user/{id}','AuthenticationController@update');
     Route::post('/delete/user/{id}','AuthenticationController@destroy');
 
-
-
-
-    Route::get('/details/{id}','AuthenticationController@detailsOne');
-    Route::post('/logout','AuthenticationController@logout');
-
     Route::get('/classroom/all', 'ClassroomController@index' );
-    Route::get('/classroom/teacher', 'ClassroomController@classTeacher' );
+    Route::get('/classroom/teacher', 'ClassroomController@classesOfTeacher' );
     Route::get('/classroom/teacher/{id}', 'ClassroomController@teacherInClass' );
-
-    Route::get('/classroom/student', 'ClassroomController@classStudent' );
     Route::post('/classroom/create', 'ClassroomController@create' );
     Route::get('/classroom/show/{id}', 'ClassroomController@show' );
     Route::post('/classroom/edit/{id}', 'ClassroomController@edit' );
     Route::delete('/classroom/delete/{id}', 'ClassroomController@destroy' );
 
+    Route::get('/classroom/student', 'ClassroomStudentController@detailsTheClassesOfLoggedStudent' );
     Route::post('/classtudent/create', 'ClassroomStudentController@create' );
     Route::post('/classtudent/delete', 'ClassroomStudentController@destroy' );
-    Route::get('/classtudent/all', 'ClassroomStudentController@index' );
-    Route::get('/classtudent/{id}', 'ClassroomStudentController@classStudent' );
-    Route::get('/studentsemails/{id}', 'ClassroomStudentController@studentsEmails' );
+    Route::get('/classtudent/{id}', 'ClassroomStudentController@AllStudentsInClass' );
 
 
-    Route::post('/email/class/all/{id}', 'EmailsController@newweek');
     Route::post('/sendemail/class/all/{id}', 'EmailsController@sendemail');
     Route::post('/welcomeEmail', 'EmailsController@welcomeEmail');
 
@@ -83,7 +78,7 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::post('/answer/edit/{id}', 'HAnswerController@edit' );
     Route::delete('/answer/delete/{id}', 'HAnswerController@destroy' );
     Route::get('/answer/finished/{id}', 'HAnswerController@finished' );
-    Route::get('/answer/show/all/{id}', 'HAnswerController@showall' );
+    Route::get('/answer/show/all/{id}', 'HAnswerController@showAllAnswersOfOneHomework' );
 
 
 
@@ -96,12 +91,14 @@ Route::group(['middleware' => 'auth:api'], function() {
 
 
 
-    Route::get('/show/class_weeks/{id}', 'WeekController@class_weeks' );
+    Route::get('/show/class_weeks/{id}', 'WeekController@weeksOfClass' );
     Route::get('/show/classes_weeks', 'WeekController@classes_weeks' );
     Route::get('/show/classes_weeks_materials', 'MaterialController@classes_weeks_materials' );
-    Route::get('/show/classes_week_materials/{id}', 'MaterialController@classes_week_materials' );
-    Route::get('/show/classes_week_homeworks/{id}', 'HomeworkController@classes_week_homeworks' );
-    Route::post('/upload', 'WeekController@upload' );
+    Route::get('/show/classes_week_materials/{id}', 'MaterialController@materialsOfWeek' );
+    Route::get('/show/classes_week_homeworks/{id}', 'HomeworkController@homeworksOfWeek' );
+    Route::post('/upload', 'UploadController@upload' );
+    Route::post('/upload/file', 'UploadController@uploadFile' );
+
 
 
 });

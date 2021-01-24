@@ -22,43 +22,67 @@ export default{
     register: (register) =>
     axios.post(`${BASE_URL}/register`,register, token),
 
-    details: () =>
+    logout: (token1) =>
+        axios.post(`${BASE_URL}/logout`,token1, token),
+
+
+    detailsTheLoggedUser: () =>
     axios.get(`${BASE_URL}/details`, token),
 
-    detailsOne: (id) =>
+    detailsById: (id) =>
         axios.get(`${BASE_URL}/details/${id}`, token),
 
-    updatetheuser: (user,id) =>
-        axios.post(`${BASE_URL}/update/user/${id}`,user, token),
-
-    deleteTheUser: (id) =>
-        axios.post(`${BASE_URL}/delete/user/${id}`, token),
-
-    detailsAllTeacher: () =>
+    detailsAllTeachers: () =>
         axios.get(`${BASE_URL}/details/teacher/all`, token),
 
-    detailsAllStudent: () =>
+    detailsAllStudents: () =>
         axios.get(`${BASE_URL}/details/student/all`, token),
 
     detailsAllUsers: () =>
         axios.get(`${BASE_URL}/details/users/all`, token),
 
 
-    addStudentToClass: (Add) =>
-        axios.post(`${BASE_URL}/classtudent/create`,Add ,token),
+    updateTheUser: (user, id) =>
+        axios.post(`${BASE_URL}/update/user/${id}`,user, token),
 
-    deletestudentfromclass: (del) =>
-        axios.post(`${BASE_URL}/classtudent/delete`,del ,token),
+    deleteTheUser: (id) =>
+        axios.post(`${BASE_URL}/delete/user/${id}`, token),
 
-    allStudentInClass: (id) =>
-        axios.get(`${BASE_URL}/classtudent/${id}` ,token),
+
+    myClassesTeacher: () =>
+        axios.get(`${BASE_URL}/classroom/teacher`, token),
+
+    myClassesStudent: () =>
+        axios.get(`${BASE_URL}/classroom/student`, token),
+
+    allClassesAdmin: () =>
+        axios.get(`${BASE_URL}/classroom/all`, token),
+
+    createClass: (classroom) =>
+        axios.post(`${BASE_URL}/classroom/create`,classroom ,token),
+
+    showClassById: (id) =>
+        axios.get(`${BASE_URL}/classroom/show/${id}`, token),
+
+    deleteClass: (id) =>
+        axios.delete(`${BASE_URL}/classroom/delete/${id}`, token),
+
+    editClass: (classroom, id) =>
+        axios.post(`${BASE_URL}/classroom/edit/${id}`,classroom, token),
 
     teacherInClass: (id) =>
         axios.get(`${BASE_URL}/classroom/teacher/${id}` ,token),
 
 
-    sendEmailToAllClassStudents: (id) =>
-        axios.post(`${BASE_URL}/email/class/all/${id}` ,token),
+    addStudentToClass: (Add) =>
+        axios.post(`${BASE_URL}/classtudent/create`,Add ,token),
+
+    deleteStudentFromClass: (del) =>
+        axios.post(`${BASE_URL}/classtudent/delete`,del ,token),
+
+    allStudentsInClass: (id) =>
+        axios.get(`${BASE_URL}/classtudent/${id}` ,token),
+
 
     sendEmailCustomToAllClassStudents: (email,id) =>
         axios.post(`${BASE_URL}/sendemail/class/all/${id}` ,email,token),
@@ -67,102 +91,80 @@ export default{
         axios.post(`${BASE_URL}/welcomeEmail` ,email,token),
 
 
-    logout: (token1) =>
-    axios.post(`${BASE_URL}/logout`,token1, token),
-
-    myclassesT: () =>
-        axios.get(`${BASE_URL}/classroom/teacher`, token),
-
-    myclassesS: () =>
-        axios.get(`${BASE_URL}/classroom/student`, token),
-
-
-    allmyclasses: () =>
-        axios.get(`${BASE_URL}/classroom/all`, token),
-
-
-    createclass: (classroom) =>
-        axios.post(`${BASE_URL}/classroom/create`,classroom ,token),
-
-    myclass: (id) =>
-        axios.get(`${BASE_URL}/classroom/show/${id}`, token),
-
-    deleteclass: (id) =>
-        axios.delete(`${BASE_URL}/classroom/delete/${id}`, token),
-
-    editclass: (classroom,id) =>
-        axios.post(`${BASE_URL}/classroom/edit/${id}`,classroom, token),
-
-    myweeks: (id) =>
+    weeksOfClass: (id) =>
         axios.get(`${BASE_URL}/show/class_weeks/${id}`, token),
 
-    myweek: (id) =>
+    weekById: (id) =>
         axios.get(`${BASE_URL}/week/show/${id}`, token),
 
 
-    createweek: (week) =>
+    createNewWeek: (week) =>
         axios.post(`${BASE_URL}/week/create`,week ,token),
 
-    deleteweek: (id) =>
+    deleteWeekById: (id) =>
         axios.delete(`${BASE_URL}/week/delete/${id}` ,token),
 
-    editweek: (week,id) =>
+    editWeek: (week, id) =>
         axios.post(`${BASE_URL}/week/edit/${id}` ,week,token),
 
-    mymaterials: (id) =>
+    materialsOfWeek: (id) =>
         axios.get(`${BASE_URL}/show/classes_week_materials/${id}`, token),
 
-    creatematerial: (material) =>
+    createMaterial: (material) =>
         axios.post(`${BASE_URL}/material/create`,material ,token),
 
-    editmaterial: (material) =>
+    editMaterial: (material) =>
         axios.post(`${BASE_URL}/material/edit`,material ,token),
 
 
-    deletematerial: (id) =>
+    deleteMaterial: (id) =>
         axios.delete(`${BASE_URL}/material/delete/${id}` ,token),
 
-    myhomeworks: (id) =>
+    homeworksOfWeek: (id) =>
         axios.get(`${BASE_URL}/show/classes_week_homeworks/${id}`, token),
 
-    createhomework: (homework) =>
+    createHomework: (homework) =>
         axios.post(`${BASE_URL}/homework/create`,homework ,token),
 
-    edithomework: (homework) =>
+    editHomework: (homework) =>
         axios.post(`${BASE_URL}/homework/edit`,homework ,token),
 
-    deletehomework: (id) =>
+    deleteHomework: (id) =>
         axios.delete(`${BASE_URL}/homework/delete/${id}` ,token),
 
-    showmaterialbyid: (id) =>
+    showMaterialbyid: (id) =>
         axios.get(`${BASE_URL}/material/show/${id}`, token),
 
-    showhomeworkbyid: (id) =>
+    showHomeworkById: (id) =>
         axios.get(`${BASE_URL}/homework/show/${id}`, token),
 
-    createanswer:(answer) =>
+    createAnswer:(answer) =>
         axios.post(`${BASE_URL}/answer/create`,answer ,token),
 
     finished:(id) =>
         axios.get(`${BASE_URL}/answer/finished/${id}` ,token),
 
-    allanswers:(id) =>
+    allAnswers:(id) =>
         axios.get(`${BASE_URL}/answer/show/all/${id}` ,token),
 
     messages: (id) =>
         axios.get(`${BASE_URL}/messages/${id}`, token),
 
-    addmessage: (message) =>
+    addMessage: (message) =>
         axios.post(`${BASE_URL}/messages`,message, token),
 
-    groupmessages: (id) =>
+    groupMessages: (id) =>
         axios.get(`${BASE_URL}/groupmessages/${id}`, token),
 
-    addgroupmessage: (message) =>
+    addGroupMessage: (message) =>
         axios.post(`${BASE_URL}/groupmessages`,message, token),
 
-    myupload: (file) =>
+    profilePictureUpload: (file) =>
         axios.post(`${BASE_URL}/upload`,file, token),
+
+    fileUpload: (file) =>
+        axios.post(`${BASE_URL}/upload/file`,file, token),
+
 
 
 

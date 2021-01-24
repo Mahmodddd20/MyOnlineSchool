@@ -9,6 +9,13 @@ use Pusher\Pusher;
 
 class MessagesController extends Controller
 {
+    /**
+     * Show all messages between the logged user and another user by id.
+     *
+     * @param $id
+     * @return \Illuminate\Http\Response
+     */
+
     public function index($id){
         $messages = DB::table('messages')->
         where('sender_id',auth()->id())->
@@ -19,6 +26,15 @@ class MessagesController extends Controller
         select('messages.*','users.name')->orderBy('created_at','asc')->get();
         return response()->json($messages);
     }
+
+    /**
+     * Send new message to user by id.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     * @throws \Pusher\PusherException
+     */
+
     public function create(Request $request){
         $new = Messages::create($request->validate([
             'sender_id'=> 'required',

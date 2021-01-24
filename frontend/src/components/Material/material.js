@@ -23,7 +23,7 @@ export default function Material(props){
     }
     function deleteMaterial(id){
         console.log('click')
-        api.deletematerial(id).then(response=>{
+        api.deleteMaterial(id).then(response=>{
             history.goBack()
 
 
@@ -31,7 +31,7 @@ export default function Material(props){
 
 
     function fetchMaterial(){
-        api.showmaterialbyid(props.match.params.id)
+        api.showMaterialbyid(props.match.params.id)
             .then(response=>{
                 setMaterial(response.data);
             }).catch(error=>{

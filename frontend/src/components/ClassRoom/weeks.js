@@ -26,7 +26,7 @@ export default function AllClassWeeks(props){
 
     function deleteWeek(id){
         console.log('click')
-        api.deleteweek(id).then(response=>{
+        api.deleteWeekById(id).then(response=>{
             fetchWeeks()
             // window.location.reload();
 
@@ -39,7 +39,7 @@ export default function AllClassWeeks(props){
 
 
     function fetchWeeks(){
-        api.myweeks(props.match.params.id).then(response=>{
+        api.weeksOfClass(props.match.params.id).then(response=>{
             setWeek(response.data)
         }).catch(error=>{
             // history.push('/login')
@@ -47,7 +47,7 @@ export default function AllClassWeeks(props){
 
     }
     function fetchClass(){
-        api.myclass(props.match.params.id).then(
+        api.showClassById(props.match.params.id).then(
             response => {
                 setClassName(response.data.name);
             }).catch(error=>{

@@ -60,7 +60,7 @@ export default function GroupMessaging (props) {
     // });
 
     function fetchClassroom () {
-        api.myclass(props.match.params.id).then(response => {
+        api.showClassById(props.match.params.id).then(response => {
             console.log(response.data)
             setClassroom(response.data)
             console.log('classroom',classroom)
@@ -74,7 +74,7 @@ export default function GroupMessaging (props) {
 
 
     function fetchMessages () {
-        api.groupmessages(props.match.params.id).then(response => {
+        api.groupMessages(props.match.params.id).then(response => {
             console.log('messages',response.data)
             setMessages(response.data)
             scrollToBottom();
@@ -118,7 +118,7 @@ export default function GroupMessaging (props) {
             class_id: props.match.params.id,
             message: message,
         }
-        api.addgroupmessage(send, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
+        api.addGroupMessage(send, {headers:{'Accept': "application/json", 'content-type': "application/json"}})
             .then(response => {
                 fetchMessages();
                 scrollToBottom();

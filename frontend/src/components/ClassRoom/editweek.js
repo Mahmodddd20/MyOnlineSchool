@@ -14,7 +14,7 @@ export default function Editweek(props) {
     useEffect(() => {
         console.log(props.match.params.id)
 
-        api.myweek(props.match.params.id).then(response=>{
+        api.weekById(props.match.params.id).then(response=>{
             setName(response.data.name)
             setDescription(response.data.description)
             setStart_date(response.data.start_date)
@@ -59,7 +59,7 @@ export default function Editweek(props) {
             start_date: start_date,
             end_date: end_date,
         }
-        api.editweek(week, props.match.params.id)
+        api.editWeek(week, props.match.params.id)
             .then(response => {
 
                 history.push("/weeks/show/"+classid)
