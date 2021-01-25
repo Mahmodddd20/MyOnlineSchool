@@ -8,6 +8,7 @@ import './sidebar.css';
 import { IconContext } from 'react-icons';
 import api from "../../api";
 import CookieService from "../../CookieService";
+import Logged from "../Logged";
 
 
 
@@ -19,6 +20,7 @@ export default function Sidebar() {
     const [classroom, setClassroom] = useState([]);
     const showSidebar = () => setSidebar(!sidebar);
     useEffect(() => {
+        Logged();
         fetchClasses();
 
     },[]);

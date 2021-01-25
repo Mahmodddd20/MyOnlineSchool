@@ -3,18 +3,19 @@ import api from "../../api";
 import {Button, OverlayTrigger, Popover, Table} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Spinner2 from "../Loading/Spinner2";
+import AdminOnly from "../adminOnly";
 
 
 export default function AllTeachersTable() {
     const [teachers, setTeachers] = useState([]);
 
     useEffect(() => {
+        AdminOnly();
         fetchAllTeachers();
     },[]);
 
     function fetchAllTeachers () {
         api.detailsAllTeachers().then(response => {
-            console.log('all',response.data)
 
 
             setTeachers(response.data)
@@ -22,8 +23,7 @@ export default function AllTeachersTable() {
 
 
         }).catch(error => {
-            // history.push('/login');
-        })
+                     })
     }
 
     function renderTeachers(){
@@ -35,7 +35,7 @@ export default function AllTeachersTable() {
                                     <td>{teacher.name}</td>
                                     <td>{teacher.email}</td>
                                     <td>{teacher.role}</td>
-                                    <td><Button className='w-100' variant='warning'>Edit</Button></td>
+                                    <td><Button className='w-100' variant='warning' href={'/edituser/'+teacher.id}>Edit</Button></td>
                                 </tr>
 
 

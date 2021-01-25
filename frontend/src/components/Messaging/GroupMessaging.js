@@ -6,6 +6,7 @@ import {Alert, Badge, Button, Card, Col, Container, Form, ListGroup, Row} from "
 import Pusher from 'pusher-js';
 import {render} from "@testing-library/react";
 import Sidebar from "../Sidebar/sidebar";
+import Logged from "../Logged";
 
 export default function GroupMessaging (props) {
     const [classroom, setClassroom] = useState([]);
@@ -30,7 +31,6 @@ export default function GroupMessaging (props) {
     channel.bind('my-event', function(data) {
         // alert(JSON.stringify(data));
         if(CookieService.get('id') == data.sender_id){
-            console.log('sender')
         } else if(classroom.id==data.class_id){
                 fetchMessages();
             }
@@ -40,6 +40,7 @@ export default function GroupMessaging (props) {
 
     const history = useHistory();
     useEffect(() => {
+        Logged();
         fetchClassroom();
         fetchMessages();
 
@@ -61,31 +62,25 @@ export default function GroupMessaging (props) {
 
     function fetchClassroom () {
         api.showClassById(props.match.params.id).then(response => {
-            console.log(response.data)
             setClassroom(response.data)
-            console.log('classroom',classroom)
 
 
         }).catch(error => {
-            // history.push('/login');
-        })
+                     })
     }
 
 
 
     function fetchMessages () {
         api.groupMessages(props.match.params.id).then(response => {
-            console.log('messages',response.data)
             setMessages(response.data)
             scrollToBottom();
         }).catch(error => {
-            // history.push('/login');
-        })
+                     })
     }
 
     function renderMessages() {
         return (messages.map(message => {
-                console.log(messages)
                 return (
                     <div className='w-auto '>
                         {message.sender_id==CookieService.get('id')?

@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { Link ,useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from "../../CookieService";
-import {Alert, Button, CardColumns, Container, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
+import {Alert, Button, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
-export default function Addstudenttoclass(props) {
+import AdminOnly from "../adminOnly";
+export default function AddStudentToClass(props) {
     const [classroom, setClass] = useState([]);
     const [student, setStudent] = useState([]);
     const [student_id, setStudent_id] =useState('');
@@ -15,39 +16,13 @@ export default function Addstudenttoclass(props) {
     const history = useHistory();
 
     useEffect(() => {
-        protect();
+
+        AdminOnly()
         detailsClass();
         detailsAllStudent();
         fetchClassStudents();
 
     },[]);
-    function protect(){
-        {CookieService.get('role')!=="admin"?handleLogout():console.log(CookieService.get('role'))}
-
-    }
-    function handleLogout() {
-        console.log(CookieService.get('access_token'))
-        let token = 'Bearer '+CookieService.get('access_token')
-
-        api.logout(token).then(response=> {
-            console.log(response.data)
-            CookieService.remove('access_token')
-            CookieService.remove('role')
-            CookieService.remove('id')
-
-            // history.push('/login');
-            window.location.reload();
-        }).catch(error=>{
-            console.log(error)
-            // CookieService.remove('access_token')
-            // CookieService.remove('role')
-            // CookieService.remove('id')
-
-            // history.push('/login');
-            // window.location.reload();
-        })}
-
-
 
 
     function handleStudentIdChange (event) {
@@ -56,7 +31,6 @@ export default function Addstudenttoclass(props) {
 
     function detailsClass(){
         api.showClassById(props.match.params.id).then(response => {
-            console.log('class',response.data)
             setClass(response.data)
 
         }).catch(error => {
@@ -64,7 +38,6 @@ export default function Addstudenttoclass(props) {
     }
     function fetchClassStudents () {
         api.allStudentsInClass(props.match.params.id).then(response => {
-            console.log('all',response.data)
 
 
             setClassStudents(response.data)
@@ -72,13 +45,11 @@ export default function Addstudenttoclass(props) {
 
 
         }).catch(error => {
-            // history.push('/login');
         })
     }
 
     function detailsAllStudent(){
         api.detailsAllStudents().then(response => {
-            console.log(response.data)
             setStudent(response.data)
 
         }).catch(error => {
@@ -123,8 +94,6 @@ export default function Addstudenttoclass(props) {
 
                 AllStudents();
                 fetchClassStudents();
-                // history.push('/admin')
-                // window.location.reload();
             }).catch(error => {
                 setSuccess(' ')
                 setErrors(<Alert variant={'danger'}>
@@ -134,15 +103,12 @@ export default function Addstudenttoclass(props) {
                     setErrors('');
                 }, 5000);
 
-            console.log(errors)
-                // window.location.reload();
 
             }
         )
     }
 
     function renderStudents(){
-        console.log('studentsafter',classStudents)
         return( classStudents.map(students=> {
                 return(
                         <tr key={students.userId}>

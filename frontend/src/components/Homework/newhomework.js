@@ -4,6 +4,7 @@ import api from '../../api';
 import JoditEditor from "jodit-react";
 import FileUpload from "../Upload/FileUpload";
 import {Button} from "react-bootstrap";
+import TeacherOnly from "../teacherOnly";
 
 export default function Neweek(props) {
     const [name, setName] = useState('');
@@ -11,6 +12,11 @@ export default function Neweek(props) {
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
     const history = useHistory();
+
+    useEffect(()=>{
+        TeacherOnly();
+    },[]);
+
 
     const [config, setConfig] = useState({
         readonly: false,
@@ -22,11 +28,9 @@ export default function Neweek(props) {
     })
     const [textAreaValue, setTextAreaValue] = useState('')
     const handleBlurAreaChange = () => {
-        console.log('Blur')
     };
 
     const handleTextAreaChange = newTextAreaValue => {
-        console.log('handleTextAreaChange', newTextAreaValue)
         return (
             setTextAreaValue(() => newTextAreaValue)
         )
@@ -43,7 +47,6 @@ export default function Neweek(props) {
 
     function handleDescriptionChange (event) {
         setDescription(textAreaValue)
-        console.log(description)
     }
 
 
@@ -63,8 +66,6 @@ export default function Neweek(props) {
                 window.location.reload();
             }).catch(error => {
                 setErrors(error.response.data.errors)
-                console.log(errors)
-                // window.location.reload();
 
             }
         )

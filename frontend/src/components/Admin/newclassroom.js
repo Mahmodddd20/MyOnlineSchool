@@ -9,6 +9,7 @@ import Spinner4 from "../Loading/Spinner4";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import '../../index.css'
+import AdminOnly from "../adminOnly";
 
 
 
@@ -28,110 +29,29 @@ export default function Newclassroom() {
     const history = useHistory();
 
     useEffect(() => {
-        protect();
+        AdminOnly();
         detailsAllTeacher();
     },[]);
-    function protect(){
-        {CookieService.get('role')!=="admin"?handleLogout():console.log(CookieService.get('role'))}
-
-    }
-    function handleLogout() {
-        console.log(CookieService.get('access_token'))
-        let token = 'Bearer '+CookieService.get('access_token')
-
-        api.logout(token).then(response=> {
-            console.log(response.data)
-            CookieService.remove('access_token')
-            CookieService.remove('role')
-            CookieService.remove('id')
-
-            // history.push('/login');
-            window.location.reload();
-        }).catch(error=>{
-            console.log(error)
-            // CookieService.remove('access_token')
-            // CookieService.remove('role')
-            // CookieService.remove('id')
-
-            // history.push('/login');
-            // window.location.reload();
-        })}
-
 
 
     function handleNameChange (event) {
         setName(event.target.value)
     }
-
     function handleTeacherIdChange (event) {
         setTeacher_id(event.target.value)
-        console.log(teacher_id)
     }
 
 
     function handleStart_dateChange (event) {
         setStart_date(event.target.value)
-        // let start= event.target.value.split('-');
-        // let finish= finish_date.split('-');
-        // console.log(start,finish)
-        // let latest = false;
-        // if (parseInt(start[0]) < parseInt(finish[0])) {
-        //     latest = true;
-        // } else if (parseInt(start[0]) == parseInt(finish[0])) {
-        //     if (parseInt(start[1]) < parseInt(finish[1])) {
-        //         latest = true;
-        //     } else if (parseInt(start[1]) == parseInt(finish[1])) {
-        //         if (parseInt(start[2]) < parseInt(finish[2])) {
-        //             latest = true;
-        //         }
-        //     }
-        // }
-        // if(latest!==true){
-        //     setFinish_date('');
-        //     setDateError(  <Alert className='mt-2' variant='danger'>
-        //             The Ending Date Must Be After The Starting Date.
-        //         </Alert>
-        //     );
-        //     setTimeout(() => {
-        //         setDateError('');
-        //     }, 5000);
-        //
-        // }
     }
 
     function handleFinish_dateChange (event) {
         setFinish_date(event.target.value)
-        // let start= start_date.split('-');
-        // let finish= event.target.value.split('-');
-        // console.log(start,finish)
-        // let latest = false;
-        // if (parseInt(start[0]) < parseInt(finish[0])) {
-        //     latest = true;
-        // } else if (parseInt(start[0]) == parseInt(finish[0])) {
-        //     if (parseInt(start[1]) < parseInt(finish[1])) {
-        //         latest = true;
-        //     } else if (parseInt(start[1]) == parseInt(finish[1])) {
-        //         if (parseInt(start[2]) < parseInt(finish[2])) {
-        //             latest = true;
-        //         }
-        //     }
-        // }
-        // if(latest!==true){
-        //     setFinish_date('');
-        //     setDateError(  <Alert className='mt-2' variant='danger'>
-        //             The Ending Date Must Be After The Starting Date.
-        //         </Alert>
-        //     );
-        //     setTimeout(() => {
-        //         setDateError('');
-        //     }, 5000);
-        //
-        // }
     }
 
     function detailsAllTeacher(){
         api.detailsAllTeachers().then(response => {
-            console.log(response.data)
                 setTeacher(response.data)
 
         }).catch(error => {
@@ -187,11 +107,9 @@ export default function Newclassroom() {
             .then(response => {
 
                 history.push('/admin')
-                // window.location.reload();
+
             }).catch(error => {
             setErrors(error.response.data.errors)
-            console.log(errors)
-            // window.location.reload();
 
             }
         )

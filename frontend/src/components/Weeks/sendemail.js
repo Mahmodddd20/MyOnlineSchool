@@ -3,12 +3,19 @@ import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
 import JoditEditor from "jodit-react";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
+import TeacherOnly from "../teacherOnly";
+import AdminAndTeacher from "../AdminAndTeacher";
 
 export default function Neweek(props) {
     const [subject, setSubject] = useState('');
     const [description, setDescription] = useState('');
     const [errors, setErrors] = useState([]);
     const history = useHistory();
+
+    useEffect(() => {
+        AdminAndTeacher();
+    },[]);
+
 
     const [config, setConfig] = useState({
         readonly: false,
@@ -21,11 +28,9 @@ export default function Neweek(props) {
     })
     const [textAreaValue, setTextAreaValue] = useState('')
     const handleBlurAreaChange = () => {
-        console.log('Blur')
     };
 
     const handleTextAreaChange = newTextAreaValue => {
-        console.log('handleTextAreaChange', newTextAreaValue)
         return (
             setTextAreaValue(() => newTextAreaValue)
         )
@@ -49,13 +54,10 @@ export default function Neweek(props) {
         }
         api.sendEmailCustomToAllClassStudents(email, props.match.params.id)
             .then(response => {
-            console.log(response.data)
                 history.push("/weeks/show/"+props.match.params.id)
                 window.location.reload();
             }).catch(error => {
                 setErrors(error.response.data.errors)
-                console.log(error)
-                // window.location.reload();
             }
         )
     }

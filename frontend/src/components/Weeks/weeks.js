@@ -6,6 +6,7 @@ import CookieService from '../../CookieService';
 import '../../index.css';
 import Spinner3 from "../Loading/Spinner3";
 import Sidebar from "../Sidebar/sidebar";
+import Logged from "../Logged";
 
 
 
@@ -20,15 +21,14 @@ export default function AllClassWeeks(props){
     const history = useHistory();
 
     useEffect(()=>{
+        Logged();
         fetchClass()
         fetchWeeks()
     },[]);
 
     function deleteWeek(id){
-        console.log('click')
         api.deleteWeekById(id).then(response=>{
             fetchWeeks()
-            // window.location.reload();
 
         })}
     function handleShow (id)
@@ -51,7 +51,7 @@ export default function AllClassWeeks(props){
             response => {
                 setClassName(response.data.name);
             }).catch(error=>{
-            history.push('/login')
+            // history.push('/login')
         })
 
     }

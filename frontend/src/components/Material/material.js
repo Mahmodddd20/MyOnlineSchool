@@ -4,6 +4,7 @@ import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import api from "../../api";
 import CookieService from "../../CookieService";
 import Sidebar from "../Sidebar/sidebar";
+import Logged from "../Logged";
 
 
 export default function Material(props){
@@ -14,6 +15,7 @@ export default function Material(props){
 
     const history = useHistory();
     useEffect(()=>{
+        Logged();
         fetchMaterial();
     },[]);
     function handleShow (id)
@@ -22,7 +24,6 @@ export default function Material(props){
         setDel(id);
     }
     function deleteMaterial(id){
-        console.log('click')
         api.deleteMaterial(id).then(response=>{
             history.goBack()
 
@@ -35,7 +36,7 @@ export default function Material(props){
             .then(response=>{
                 setMaterial(response.data);
             }).catch(error=>{
-            history.push('/login')
+('/login')
         })
 
     }

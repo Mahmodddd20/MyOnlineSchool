@@ -5,12 +5,14 @@ import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row} from "
 import CookieService from "../../CookieService";
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
+import TeacherAndStudentOnly from "../teacherAndStudent";
 
 
 export default function AllMyClasses(){
     const [classroom, setClassroom] =useState([]);
     const history = useHistory();
     useEffect(() => {
+        TeacherAndStudentOnly();
         fetchClasses();
     },[]);
 
@@ -21,23 +23,19 @@ export default function AllMyClasses(){
     function fetchClasses(){
         if(CookieService.get('role')=="teacher"){
         api.myClassesTeacher().then(response=>{
-            console.log(response.data)
 
             setClassroom(response.data)
 
 
         }).catch(error=>{
-            // history.push('/login');
-        })
+                     })
     }else if(CookieService.get('role')=="student"){
             api.myClassesStudent().then(response=>{
-                console.log(response.data)
 
                 setClassroom(response.data)
 
             }).catch(error=>{
-                // history.push('/login');
-            })
+             })
 
         }else {
             history.push('/')

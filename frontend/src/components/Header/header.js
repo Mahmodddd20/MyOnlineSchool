@@ -5,6 +5,8 @@ import CookieService from '../../CookieService';
 import { Nav, Navbar, NavDropdown} from "react-bootstrap";
 import '../../index.css';
 import logo from './logo.png';
+import '../logout'
+import LogOut from "../logout";
 
 export default function Header() {
     const history = useHistory();
@@ -26,7 +28,6 @@ export default function Header() {
             let fname=response.data.name
             let index = fname.indexOf(" ");
             let sname = fname.substr(0, index);
-            console.log(sname)
             setName(sname)
             setRole(response.data.role)
             setId(response.data.id)
@@ -67,7 +68,7 @@ export default function Header() {
                             <NavDropdown.Item href={"/profile/"+id}>Profile</NavDropdown.Item>
                             {role=='admin'?<NavDropdown.Item href="/register">register new users</NavDropdown.Item>:''}
                             <NavDropdown.Divider />
-                            <NavDropdown.Item onClick= {() => handleLogout()}>Logout</NavDropdown.Item>
+                            <NavDropdown.Item onClick= {() => LogOut()}>Logout</NavDropdown.Item>
 
 
                         </NavDropdown>
@@ -82,26 +83,17 @@ export default function Header() {
     }
 
     function handleLogout() {
-        console.log(CookieService.get('access_token'))
         let token = 'Bearer '+CookieService.get('access_token')
 
         api.logout(token).then(response=> {
-            console.log(response.data)
             CookieService.remove('access_token')
             CookieService.remove('role')
             CookieService.remove('id')
 
-            // history.push('/login');
-            window.location.reload();
+                         window.location.reload();
         }).catch(error=>{
-            console.log(error)
-            // CookieService.remove('access_token')
-            // CookieService.remove('role')
-            // CookieService.remove('id')
-
-            // history.push('/login');
-            // window.location.reload();
-    })}
+    })
+    }
 
     return (
         <div style={{display:'flex',

@@ -4,6 +4,7 @@ import api from '../../api';
 import CookieService from "../../CookieService";
 import {Button} from "react-bootstrap";
 import Spinner4 from "../Loading/Spinner4";
+import AdminOnly from "../adminOnly";
 
 export default function Editclassroom(props) {
     const [name, setName] = useState('');
@@ -19,44 +20,15 @@ export default function Editclassroom(props) {
             setName(response.data.name)
             setTeacher_id(response.data.teacher_id)
             setStart_date(response.data.start_date)
-            console.log(response.data.start_date)
             setFinish_date(response.data.finish_date)
 
         }).catch(error=>{
             history.push('/login');
         })
 
-        protect();
+        AdminOnly();
         detailsAllTeacher();
     },[]);
-    function protect(){
-        api.detailsTheLoggedUser().then(response=>{
-            {response.data.role!=="admin"?handleLogout():console.log(response.data.role)}
-        })
-
-    }
-    function handleLogout() {
-        console.log(CookieService.get('access_token'))
-        let token = 'Bearer '+CookieService.get('access_token')
-
-        api.logout(token).then(response=> {
-            console.log(response.data)
-            CookieService.remove('access_token')
-            CookieService.remove('role')
-            CookieService.remove('id')
-
-            // history.push('/login');
-            window.location.reload();
-        }).catch(error=>{
-            console.log(error)
-            // CookieService.remove('access_token')
-            // CookieService.remove('role')
-            // CookieService.remove('id')
-
-            // history.push('/login');
-            // window.location.reload();
-        })}
-
 
 
     function handleNameChange (event) {
@@ -65,7 +37,6 @@ export default function Editclassroom(props) {
 
     function handleTeacherIdChange (event) {
         setTeacher_id(event.target.value)
-        console.log(teacher_id)
     }
 
 
@@ -79,7 +50,6 @@ export default function Editclassroom(props) {
 
     function detailsAllTeacher(){
         api.detailsAllTeachers().then(response => {
-            console.log(response.data)
             setTeacher(response.data)
 
         }).catch(error => {
@@ -113,7 +83,6 @@ export default function Editclassroom(props) {
                 window.location.reload();
             }).catch(error => {
                 setErrors(error.response.data.errors)
-                console.log(errors)
                 window.location.reload();
 
             }

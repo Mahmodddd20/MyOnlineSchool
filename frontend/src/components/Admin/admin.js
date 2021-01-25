@@ -1,11 +1,11 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
-import {BrowserRouter, Link, useHistory} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Modal, Row} from "react-bootstrap";
-import CookieService from "../../CookieService";
 import '../../index.css';
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
+import AdminOnly from "../adminOnly";
 
 
 
@@ -17,74 +17,35 @@ export default function Admin(){
     const handleClose = () => setShow(false);
 
     const history = useHistory();
+
     useEffect(() => {
-        protect();
+        AdminOnly();
         fetchClasses();
 
     },[]);
-    function protect(){
-        {CookieService.get('role')!=="admin"?handleLogout():console.log(CookieService.get('role'))}
 
-    }
     function handleShow (id)
     {
         setShow(true);
         setDel(id);
     }
 
-    function handleLogout() {
-        console.log(CookieService.get('access_token'))
-        let token = 'Bearer '+CookieService.get('access_token')
-
-        api.logout(token).then(response=> {
-            console.log(response.data)
-            CookieService.remove('access_token')
-            CookieService.remove('role')
-            CookieService.remove('id')
-
-            // history.push('/login');
-            window.location.reload();
-        }).catch(error=>{
-            console.log(error)
-            // CookieService.remove('access_token')
-            // CookieService.remove('role')
-            // CookieService.remove('id')
-
-            // history.push('/login');
-            // window.location.reload();
-        })}
-
-
-    function details(id){
-        api.detailsById(id).then(response => {
-            console.log(response.data[0].name)
-            return (response.data[0].name)
-        }).catch(error => {
-        })
-    }
-
-
     function fetchClasses(){
         api.allClassesAdmin().then(response=>{
             setClassroom(response.data)
-            console.log('response',response.data)
-            console.log('classroom',classroom)
 
 
         }).catch(error=>{
-            history.push('/login');
-        })
+                     })
     }
     function deleteclass(id){
         api.deleteClass(id).then(response=>{
             fetchClasses();
-            // window.location.reload();
         })
     }
 
 
     function renderClasses(){
-        console.log('classroomafter',classroom)
         return( classroom.map(classroom=> {
                 return(
                     <Card key={classroom.id} className='mt-2 mb-2'>

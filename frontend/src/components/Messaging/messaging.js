@@ -6,6 +6,7 @@ import {Alert, Badge, Button, Card, Col, Collapse, Container, Form, ListGroup, R
 import Pusher from 'pusher-js';
 import Sidebar from "../Sidebar/sidebar";
 import Spinner from "../Loading/Spinner";
+import Logged from "../Logged";
 
 export default function Messaging (props) {
     const [contacts, setContacts] = useState([]);
@@ -41,10 +42,6 @@ export default function Messaging (props) {
     channel.bind('my-event', function(data) {
         // alert(JSON.stringify(data));
         if(CookieService.get('id') ==data.sender_id){
-                console.log('sender',data.sender_id)
-            console.log('id',CookieService.get('id'))
-            console.log('contactId',contactId)
-            console.log('sender_name',data.sender_name[0].name)
 
 
 
@@ -93,6 +90,7 @@ export default function Messaging (props) {
 
     const history = useHistory();
     useEffect(() => {
+        Logged();
         fetchContacts();
         fetchTeacher();
 
@@ -117,15 +115,13 @@ export default function Messaging (props) {
 
     function fetchContacts () {
         api.allStudentsInClass(props.match.params.id).then(response => {
-            // console.log(response.data)
 
 
             setContacts(response.data)
 
 
         }).catch(error => {
-            // history.push('/login');
-        })
+                     })
     }
     function fetchTeacher () {
         api.teacherInClass(props.match.params.id).then(response => {
@@ -137,8 +133,7 @@ export default function Messaging (props) {
 
 
         }).catch(error => {
-            // history.push('/login');
-        })
+                     })
     }
 
 
@@ -146,15 +141,13 @@ export default function Messaging (props) {
     function fetchMessages () {
         // if(contactId!==''){
         api.messages(contactId).then(response => {
-            // console.log('messages',response.data)
             setMessages(response.data)
             scrollToBottom();
 
 
 
         }).catch(error => {
-            // history.push('/login');
-        })
+                     })
     }
 
 
@@ -179,7 +172,6 @@ export default function Messaging (props) {
 
     function renderMessages() {
         return (messages.map(message => {
-                // console.log(messages)
                 return (
                     <div className='w-auto '>
                         {message.sender_id==CookieService.get('id')?

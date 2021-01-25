@@ -6,7 +6,7 @@ import Welcome from './components/Welcome/welcome';
 import Login from './components/Login/Login';
 import Register from "./components/Register/Register";
 import Dashboard from './components/Dashboard/dashboard';
-import Weeks from './components/ClassRoom/weeks';
+import Weeks from './components/Weeks/weeks';
 import Week from './components/Week/week';
 import Material from './components/Material/material';
 import Homework from './components/Homework/homework';
@@ -16,19 +16,18 @@ import AllHomeworks from "./components/Homework/allhomeworks";
 import AllMaterials from "./components/Material/allmaterials";
 import Admin from "./components/Admin/admin";
 import NewClass from './components/Admin/newclassroom';
-import NeWeek from './components/ClassRoom/neweek';
+import NeWeek from './components/Weeks/neweek';
 import NewMaterial from './components/Material/newmaterial';
 import NewHomework from './components/Homework/newhomework';
-import EditWeek from './components/ClassRoom/editweek';
+import EditWeek from './components/Weeks/editweek';
 import EditClass from './components/Admin/editclassroom';
 import AddStudentToClass from './components/Admin/addstudenttoclass';
 import Messaging from "./components/Messaging/messaging";
 import GroupMessaging from "./components/Messaging/GroupMessaging";
 import AllMessaging from "./components/Messaging/AllMessaging";
-import SendEmail from "./components/ClassRoom/sendemail";
+import SendEmail from "./components/Weeks/sendemail";
 import { Container} from "react-bootstrap";
 import Chat from './components/Messaging/Chat';
-import App from './App'
 import Answer from './components/Answer/Answer'
 import AllAnswers from './components/Answer/Allanswers'
 import Profile from "./components/Profile/Profile";
@@ -42,15 +41,8 @@ import Clock from "./components/Sidebar/NewClock";
 
 ReactDOM.render(
     <Container fluid className='mb-n5 pb-5 m-0 p-0'>
-    {/*<Row>*/}
-    {/*    <Col>*/}
         <Header/>
-    {/*    </Col>*/}
-    {/*</Row>*/}
-    {/*<Row>*/}
             <BrowserRouter>
-                {/*<Col xs='auto' md='auto' lg="10">*/}
-                <Route exact path="/app" component={App} />
                 <Route exact path="/" component={Welcome} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
@@ -83,16 +75,9 @@ ReactDOM.render(
                 <Route exact path="/clock" component={Clock} />
 
 
-                {/*</Col>*/}
-                {/*<Col xs md lg="1" >*/}
-                    {/*<Sidebar/>*/}
-                {/*</Col>*/}
 
             </BrowserRouter>
-        {/*<Row>*/}
         <Footer/>
-    {/*    </Row>*/}
-    {/*</Row>*/}
     </Container>
     ,
     document.getElementById('root')

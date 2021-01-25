@@ -4,6 +4,7 @@ import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import api from "../../api";
 import CookieService from "../../CookieService";
 import Sidebar from "../Sidebar/sidebar";
+import Logged from "../Logged";
 
 
 export default function Homework(props){
@@ -15,6 +16,7 @@ export default function Homework(props){
 
     const history = useHistory();
     useEffect(()=>{
+        Logged();
         fetchHomework();
         isfinished();
     },[]);
@@ -31,7 +33,6 @@ export default function Homework(props){
     }
 
     function deleteHomework(id){
-        console.log('click')
         api.deleteHomework(id).then(response=>{
             history.goBack()
 
@@ -43,7 +44,7 @@ export default function Homework(props){
             .then(response=>{
                 setHomework(response.data);
             }).catch(error=>{
-            history.push('/login')
+            // history.push('/login')
         })
 
     }

@@ -3,6 +3,7 @@ import api from "../../api";
 import {Button, Container, Modal, Table} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Spinner2 from "../Loading/Spinner2";
+import AdminOnly from "../adminOnly";
 
 
 export default function AllUsers() {
@@ -14,6 +15,7 @@ export default function AllUsers() {
 
 
     useEffect(() => {
+        AdminOnly();
         fetchAllUsers();
     },[]);
 
@@ -32,7 +34,6 @@ export default function AllUsers() {
 
     function fetchAllUsers () {
         api.detailsAllUsers().then(response => {
-            console.log('all',response.data)
 
 
             setUsers(response.data)
@@ -40,8 +41,7 @@ export default function AllUsers() {
 
 
         }).catch(error => {
-            // history.push('/login');
-        })
+                     })
     }
 
     function renderUsers(){

@@ -4,6 +4,7 @@ import { Link ,useHistory } from 'react-router-dom';
 import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Tab, Tabs} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
+import Logged from "../Logged";
 
 
 export default function AllHomeworks(props){
@@ -13,6 +14,7 @@ export default function AllHomeworks(props){
 
     const history = useHistory();
     useEffect(() => {
+        Logged();
         fetchHomeworks();
     },[]);
 
@@ -21,7 +23,7 @@ export default function AllHomeworks(props){
         api.homeworksOfWeek(props.match.params.id).then(response=>{
             setHomework(response.data)
         }).catch(error=>{
-            history.push('/login');
+
         })
     }
 

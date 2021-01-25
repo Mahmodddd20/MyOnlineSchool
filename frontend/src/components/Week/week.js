@@ -5,6 +5,7 @@ import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Table}
 import CookieService from "../../CookieService";
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
+import Logged from "../Logged";
 
 
 export default function MyWeek(props){
@@ -16,6 +17,7 @@ export default function MyWeek(props){
 
     const history = useHistory();
     useEffect(() => {
+        Logged();
         fetchMaterials();
         fetchHomeworks();
         api.weekById(props.match.params.id).then(response=>{
@@ -40,14 +42,14 @@ export default function MyWeek(props){
         api.materialsOfWeek(props.match.params.id).then(response=>{
             setMaterial(response.data)
         }).catch(error=>{
-            history.push('/login');
+
         })
     }
     function fetchHomeworks(){
         api.homeworksOfWeek(props.match.params.id).then(response=>{
             setHomework(response.data)
         }).catch(error=>{
-            history.push('/login');
+
         })
     }
 

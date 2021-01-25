@@ -5,6 +5,7 @@ import {Badge, Button, Card, CardColumns, Col, Container, Row} from "react-boots
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
 import {useHistory} from "react-router-dom";
+import Logged from "../Logged";
 
 
 
@@ -14,12 +15,13 @@ export default function AllMessaging() {
 
 
     useEffect(() => {
+        Logged();
+
         fetchClasses();
     },[]);
 
     function details(id){
         api.detailsById(id).then(response => {
-            console.log(response.data[0].name)
             return (response.data[0].name)
         }).catch(error => {
         })
@@ -29,33 +31,27 @@ export default function AllMessaging() {
     function fetchClasses(){
         if(CookieService.get('role')=="teacher"){
             api.myClassesTeacher().then(response=>{
-                console.log(response.data)
 
                 setClassroom(response.data)
 
 
             }).catch(error=>{
-                // history.push('/login');
-            })
+             })
         }else if(CookieService.get('role')=="student"){
             api.myClassesStudent().then(response=>{
-                console.log(response.data)
 
                 setClassroom(response.data)
 
             }).catch(error=>{
-                // history.push('/login');
-            })
+             })
 
         }else {
             api.allClassesAdmin().then(response=>{
-                console.log(response.data)
 
                 setClassroom(response.data)
 
             }).catch(error=>{
-                // history.push('/login');
-            })
+             })
         }
     }
 

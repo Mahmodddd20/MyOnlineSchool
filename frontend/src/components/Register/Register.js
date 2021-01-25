@@ -5,6 +5,7 @@ import api from '../../api';
 import CookieService from '../../CookieService';
 import AllUsers from "./AllUsers";
 import {Alert, Button} from "react-bootstrap";
+import AdminOnly from "../adminOnly";
 
 function Register() {
     const [name, setName] = useState('');
@@ -19,37 +20,9 @@ function Register() {
     const history = useHistory();
 
     useEffect(() => {
-        protect();
-
+        AdminOnly();
 
     },[]);
-    function protect(){
-        {CookieService.get('role')!=="admin"?handleLogout():console.log(CookieService.get('role'))}
-
-
-    }
-    function handleLogout() {
-        console.log(CookieService.get('access_token'))
-        let token = 'Bearer '+CookieService.get('access_token')
-
-        api.logout(token).then(response=> {
-            console.log(response.data)
-            CookieService.remove('access_token')
-            CookieService.remove('role')
-            CookieService.remove('id')
-
-            // history.push('/login');
-            window.location.reload();
-        }).catch(error=>{
-            console.log(error)
-            // CookieService.remove('access_token')
-            // CookieService.remove('role')
-            // CookieService.remove('id')
-
-            // history.push('/login');
-            // window.location.reload();
-        })}
-
 
 
     function handleNameChange (event) {
@@ -74,19 +47,6 @@ function Register() {
 
 
 
-    // function hasErrorFor (field) {
-    //      return !!errors[field]
-    // }
-    //
-    // function renderErrorFor (field) {
-    //     if (hasErrorFor(field)) {
-    //         return (
-    //             <span className='invalid-feedback'>
-    //           <strong>{errors[field][1]}</strong>
-    //         </span>
-    //         )
-    //     }
-    // }
 
     function handleCreateNewUser (event) {
         event.preventDefault();
@@ -111,8 +71,7 @@ function Register() {
                 sendWelcomeEmail (Email)
             }).catch(error => {
                 setErrors('error')
-                // history.push('/login');
-            // window.location.reload();
+             // window.location.reload();
 
         })
     }
