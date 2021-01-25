@@ -31,7 +31,7 @@ export default function Material(props){
 
 
     function fetchMaterial(){
-        api.showMaterialbyid(props.match.params.id)
+        api.showMaterialById(props.match.params.id)
             .then(response=>{
                 setMaterial(response.data);
             }).catch(error=>{

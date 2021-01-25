@@ -122,24 +122,6 @@ class WeekController extends Controller
         return response()->json($weeks);
 
     }
-    public function classes_weeks(){
-        $rooms = DB::table('classrooms')->select('id')->get();
-        $result = [];
-        foreach ( $rooms as $i){
-            $id=$i->id;
-            $weeks = DB::table('classrooms')
-                ->join('weeks','class_id','=','classrooms.id')
-                ->select('weeks.id','weeks.name','week.description','weeks.start_date','weeks.end_date')
-                ->where('weeks.class_id','=',$id)
-                ->get();
-            $room = Classroom::all()->find($id);
-
-            $result[]=['classroom',$room,'all weeks',$weeks];
-
-        }
-        return response()->json( $result);
-
-    }
 
 }
 

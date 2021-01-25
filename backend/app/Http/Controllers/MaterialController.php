@@ -11,18 +11,6 @@ use Illuminate\Support\Facades\DB;
 class MaterialController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $material = Material::all();
-        return $material;
-
-    }
-
-    /**
      * Create new material.
      *
      * @param Request $request
@@ -88,36 +76,6 @@ class MaterialController extends Controller
         $material = Material::findOrFail($id);
         $material->delete();
         return response()->json(['data'=>$material,'success'=>true]);
-
-    }
-
-    public function classes_weeks_materials()
-    {
-        $rooms = DB::table('classrooms')->select('id')->get();
-        $result = [];
-        foreach ( $rooms as $i){
-            $id=$i->id;
-            $weeks = DB::table('classrooms')
-                ->join('weeks','class_id','=','classrooms.id')
-                ->select('weeks.id','weeks.name','weeks.start_date','weeks.end_date')
-                ->where('weeks.class_id','=',$id)
-                ->get();
-            $week = DB::table('weeks')->select('id')->get();
-            foreach ($week as $n){
-                $idd =$n->id;
-                $material = DB::table('weeks')
-                    ->join('materials','week_id','=','weeks.id')
-                    ->select('materials.id','materials.name','materials.type','materials.description','materials.link')
-                    ->where('materials.week_id','=',$idd)
-                    ->get();
-                $room = Classroom::all()->find($id);
-                $asd = Week::all()->find($idd);
-                $result[]=['classroom',$room,'week',$asd,'all material',$material];
-
-            }
-
-        }
-        return response()->json( $result);
 
     }
     /**

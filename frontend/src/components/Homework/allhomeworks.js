@@ -72,6 +72,7 @@ export default function AllHomeworks(props){
                 </Row>
                 <Tabs
                     id="controlled-tab-example"
+                    className="w-75 mw-100 justify-content-between"
                     activeKey={key}
                     onSelect={(k) => setKey(k)}>
                     {homework.length>0 ? renderHomeworks() : emptyHomeworks()}

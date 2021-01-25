@@ -58,7 +58,7 @@ export default function Homework(props){
                     {CookieService.get('role')=='teacher'?<Button variant="primary" className=' ml-2' href={'/answer/all/'+homework.id}>Answers</Button>:''}
                     {CookieService.get('role')=='student'?finished!==0?'':<Button variant="outline-success" className=' ml-2' target='_blank' href={'/answer/'+homework.id}>Submit Your Answer</Button>:''}
 
-                        <Card className='w-50  text-capitalize'>
+                        <Card className='w-auto  text-capitalize'>
                     <Card.Header className='text-center' >{homework.name}</Card.Header>
                     <Card.Body>
                         <Card.Subtitle className="mb-2 text-center text-muted">{homework.type}</Card.Subtitle>

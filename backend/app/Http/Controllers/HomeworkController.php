@@ -9,18 +9,6 @@ use Illuminate\Support\Facades\DB;
 class HomeworkController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $homework = Homework::all();
-        return $homework;
-
-    }
-
-    /**
      * Create homework.
      *
      * @param Request $request

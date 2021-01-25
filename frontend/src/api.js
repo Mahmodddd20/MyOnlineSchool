@@ -92,11 +92,10 @@ export default{
 
 
     weeksOfClass: (id) =>
-        axios.get(`${BASE_URL}/show/class_weeks/${id}`, token),
+        axios.get(`${BASE_URL}/show/weeksOfClass/${id}`, token),
 
     weekById: (id) =>
         axios.get(`${BASE_URL}/week/show/${id}`, token),
-
 
     createNewWeek: (week) =>
         axios.post(`${BASE_URL}/week/create`,week ,token),
@@ -108,7 +107,8 @@ export default{
         axios.post(`${BASE_URL}/week/edit/${id}` ,week,token),
 
     materialsOfWeek: (id) =>
-        axios.get(`${BASE_URL}/show/classes_week_materials/${id}`, token),
+        axios.get(`${BASE_URL}/show/materialsOfWeek/${id}`, token),
+
 
     createMaterial: (material) =>
         axios.post(`${BASE_URL}/material/create`,material ,token),
@@ -116,12 +116,15 @@ export default{
     editMaterial: (material) =>
         axios.post(`${BASE_URL}/material/edit`,material ,token),
 
-
     deleteMaterial: (id) =>
         axios.delete(`${BASE_URL}/material/delete/${id}` ,token),
 
+    showMaterialById: (id) =>
+        axios.get(`${BASE_URL}/material/show/${id}`, token),
+
+
     homeworksOfWeek: (id) =>
-        axios.get(`${BASE_URL}/show/classes_week_homeworks/${id}`, token),
+        axios.get(`${BASE_URL}/show/homeworksOfWeek/${id}`, token),
 
     createHomework: (homework) =>
         axios.post(`${BASE_URL}/homework/create`,homework ,token),
@@ -132,11 +135,9 @@ export default{
     deleteHomework: (id) =>
         axios.delete(`${BASE_URL}/homework/delete/${id}` ,token),
 
-    showMaterialbyid: (id) =>
-        axios.get(`${BASE_URL}/material/show/${id}`, token),
-
     showHomeworkById: (id) =>
         axios.get(`${BASE_URL}/homework/show/${id}`, token),
+
 
     createAnswer:(answer) =>
         axios.post(`${BASE_URL}/answer/create`,answer ,token),
@@ -147,17 +148,20 @@ export default{
     allAnswers:(id) =>
         axios.get(`${BASE_URL}/answer/show/all/${id}` ,token),
 
+
     messages: (id) =>
         axios.get(`${BASE_URL}/messages/${id}`, token),
 
     addMessage: (message) =>
         axios.post(`${BASE_URL}/messages`,message, token),
 
+
     groupMessages: (id) =>
         axios.get(`${BASE_URL}/groupmessages/${id}`, token),
 
     addGroupMessage: (message) =>
         axios.post(`${BASE_URL}/groupmessages`,message, token),
+
 
     profilePictureUpload: (file) =>
         axios.post(`${BASE_URL}/upload`,file, token),
