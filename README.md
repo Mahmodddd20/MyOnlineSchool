@@ -37,6 +37,41 @@ Generate a new Passport authentication personal key
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate:refresh --seed
+    
+## Now you have to create Pusher account
+
+Create an account https://dashboard.pusher.com/accounts/sign_up
+ 
+then create a Channels app. 
+
+Go to the "Keys" page for that app, 
+
+and copy your app_id, key, secret and cluster to .env file
+
+    PUSHER_APP_ID=00000
+    PUSHER_APP_KEY=0000000000000000000000
+    PUSHER_APP_SECRET=0000000000000000000000
+    PUSHER_APP_CLUSTER=000
+
+in app/Http/Controller/MessagesController.php and in app/Http/Controller/GroupMessagesController.php 
+you have to put your cluster and channels 
+
+            $options = array(
+            'cluster'=>'000',
+            'useTLS'=>true
+        );
+        
+           $pusher->trigger('0000000000','private',$new);
+
+
+dont forget to add your gmail account to .env file 
+
+    MAIL_MAILER=smtp
+    MAIL_HOST=smtp.googlemail.com
+    MAIL_PORT=465
+    MAIL_USERNAME=0000000000000@gmail.com
+    MAIL_PASSWORD=00000000000000000
+
 
 Start the local development server
 
@@ -49,6 +84,27 @@ Start the local development server
     cd frontend
     
     npm install
+    
+now include the pusher-js script tag on your index.html page in the public folder.
+
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    
+in components/Messaging/messaging.js you have to put your app_key and cluster and channel_name 
+
+        const pusher = new Pusher ('0000000000000000000000000', {
+        cluster: '000'
+    });
+
+    const channel = pusher.subscribe ('000000000000000000000');
+    
+then in components/Messaging/GroupMessaging.js you have to put your app_key and cluster and channel_name
+
+    const pusher = new Pusher ('0000000000000000000000000', {
+    cluster: '000'
+    });
+    const channel = pusher.subscribe ('000000000000000000000');
+
+Now you can run the server
     
     npm start
     
