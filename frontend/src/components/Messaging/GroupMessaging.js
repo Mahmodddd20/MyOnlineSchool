@@ -12,65 +12,45 @@ export default function GroupMessaging (props) {
     const [classroom, setClassroom] = useState([]);
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-    const [newM, setNewM] = useState("");
 
 
     const messagesEndRef = useRef(null);
     function scrollToBottom(){
         messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
     }
-
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
-
     const pusher = new Pusher ('9f9f8bcd4a54b9f80bc9', {
         cluster: 'ap2'
     });
-
     const channel = pusher.subscribe ('MyOnlineSchool');
-    channel.bind('my-event', function(data) {
-        // alert(JSON.stringify(data));
+    channel.bind('group', function(data) {
         if(CookieService.get('id') == data.sender_id){
         } else if(classroom.id==data.class_id){
                 fetchMessages();
             }
-
     });
-
+// you can use this section if Pusher didn't work for you
+    // useEffect(() => {
+    //     const interval=setInterval(()=>{
+    //         api.messages(contactId).then(response => {
+    //             setMessages(response.data)
+    //             scrollToBottom();
+    //         })
+    //     },10000)
+    //     return()=>clearInterval(interval)
+    // });
 
     const history = useHistory();
     useEffect(() => {
         Logged();
         fetchClassroom();
         fetchMessages();
-
-
     }, []);
-
-    // useEffect(() => {
-    //     const interval=setInterval(()=>{
-    //         api.messages(contactId).then(response => {
-    //             setMessages(response.data)
-    //             scrollToBottom();
-    //
-    //
-    //         })
-    //     },10000)
-    //     return()=>clearInterval(interval)
-    //
-    // });
-
     function fetchClassroom () {
         api.showClassById(props.match.params.id).then(response => {
             setClassroom(response.data)
-
-
         }).catch(error => {
                      })
     }
-
-
-
     function fetchMessages () {
         api.groupMessages(props.match.params.id).then(response => {
             setMessages(response.data)
@@ -78,7 +58,6 @@ export default function GroupMessaging (props) {
         }).catch(error => {
                      })
     }
-
     function renderMessages() {
         return (messages.map(message => {
                 return (
@@ -105,9 +84,6 @@ export default function GroupMessaging (props) {
 
     function sendMessage (event) {
         event.preventDefault();
-
-
-
         const send = {
             sender_id: CookieService.get('id'),
             class_id: props.match.params.id,
@@ -121,15 +97,11 @@ export default function GroupMessaging (props) {
                 scrollToBottom();
                 // window.location.reload();
             }).catch(error => {
-
-
         })}
-    function handelMassegeChange (event) {
+    function handleMassageChange (event) {
         setMessage(event.target.value)
         scrollToBottom();
-
     }
-
     function Group(){
         return(
             <div className='d-flex w-75'>
@@ -144,32 +116,18 @@ export default function GroupMessaging (props) {
                             <div ref={messagesEndRef} />
                         </ListGroup>
                     </Card>
-
                     <Form method="POST" onSubmit={sendMessage} className='mb-2'>
                         <Form.Group className='mb-0 mt-2 ml-2 mr-2  d-flex flex-row align-items-center' controlId="formBasicMessage">
-                            <Form.Control type="text" placeholder="Enter your message" onChange={handelMassegeChange}/>
+                            <Form.Control type="text" placeholder="Enter your message" onChange={handleMassageChange}/>
                             <Button style={{backgroundColor:'#76b7f5'}} className='m-1 ml-2 p-1 pt-2 ' variant="primary" type="submit">
                                 Send
                             </Button>
-
                         </Form.Group>
                     </Form>
-
                 </Card>
-
             </div>
         );
     }
-
-    function newMessage(id){
-        return(
-            <Alert key={id} variant='danger'>
-                you got new message!! from user {id}
-            </Alert>
-
-        )
-    }
-
     return (
         <div className='m-2 ml-4'>
             <Row>
@@ -183,14 +141,11 @@ export default function GroupMessaging (props) {
                 <Col xs md lg="1" >
                     <Sidebar/>
                 </Col>
-
             </Row>
             <Button variant='outline-dark' className=' m-2' onClick={()=>history.goBack()}>Back</Button>
             <div className='ml-2 mt-2 w-75' >
                 {Group()}
-
             </div>
-
         </div>
     )
 

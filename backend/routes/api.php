@@ -74,10 +74,10 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/answer/show/all/{id}', 'HAnswerController@showAllAnswersOfOneHomework' );
 
     Route::get('/messages/{id}', 'MessagesController@index' );
-    Route::post('/messages', 'MessagesController@create' );
+    Route::post('/addmessages', 'MessagesController@create' );
 
     Route::get('/groupmessages/{id}', 'GroupMessagesController@index' );
-    Route::post('/groupmessages', 'GroupMessagesController@create' );
+    Route::post('/addgroupmessages', 'GroupMessagesController@create' );
 
     Route::post('/upload', 'UploadController@upload' );
     Route::post('/upload/file', 'UploadController@uploadFile' );

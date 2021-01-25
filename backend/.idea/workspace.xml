@@ -1,38 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="test">
+    <list default="true" id="0f4d94db-84dc-4a61-97ed-b45830bc4f87" name="Default Changelist" comment="consol">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessagesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/AllTeachers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/AllTeachers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/addstudenttoclass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/editclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/editclassroom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Admin/newclassroom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/editweek.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Weeks/editweek.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/neweek.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Weeks/neweek.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/sendemail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Weeks/sendemail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ClassRoom/weeks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Weeks/weeks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Dashboard/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Home/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/allhomeworks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/allhomeworks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/homework.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/homework.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Homework/newhomework.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/allmaterials.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/allmaterials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/material.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/material.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Material/newmaterial.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/AllMessaging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/GroupMessaging.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Messaging/messaging.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Register/AllUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Register/AllUsers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Register/Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Sidebar/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Week/week.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Welcome/description.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/components/Welcome/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/Welcome/welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +264,7 @@
       <workItem from="1611396681216" duration="7788000" />
       <workItem from="1611416931153" duration="4454000" />
       <workItem from="1611519476551" duration="637000" />
-      <workItem from="1611527498753" duration="17922000" />
+      <workItem from="1611527498753" duration="22467000" />
     </task>
     <task id="LOCAL-00001" summary="did some css">
       <created>1610254688408</created>
@@ -373,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611534033035</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="consol">
+      <created>1611574274128</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1611574274128</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,6 +392,7 @@
     <MESSAGE value="some improvement chat1" />
     <MESSAGE value="api" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="consol" />
+    <option name="LAST_COMMIT_MESSAGE" value="consol" />
   </component>
 </project>

@@ -85,8 +85,8 @@ export default function AllMessaging() {
                                 Teacher Name: {classroom.teacherName}<br/>
                                 Teacher Email: {classroom.teacherEmail}
                             </Card.Text>
-                            <Button variant="primary" href={"/messaging/"+classroom.classId}>Enter the private messaging </Button><br/>
-                            <Button variant="secondary" className='mt-2' href={"/groupmessaging/"+classroom.classId}>Enter the group messaging </Button>
+                            <Button variant="primary" href={"/messaging/"+classroom.classId}>Send private message </Button><br/>
+                            <Button variant="secondary" className='mt-2' href={"/groupmessaging/"+classroom.classId}>Send group message </Button>
 
                         </Card.Body>
                     </Card>

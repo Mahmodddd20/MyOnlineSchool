@@ -153,14 +153,14 @@ export default{
         axios.get(`${BASE_URL}/messages/${id}`, token),
 
     addMessage: (message) =>
-        axios.post(`${BASE_URL}/messages`,message, token),
+        axios.post(`${BASE_URL}/addmessages`,message, token),
 
 
     groupMessages: (id) =>
         axios.get(`${BASE_URL}/groupmessages/${id}`, token),
 
     addGroupMessage: (message) =>
-        axios.post(`${BASE_URL}/groupmessages`,message, token),
+        axios.post(`${BASE_URL}/addgroupmessages`,message, token),
 
 
     profilePictureUpload: (file) =>
