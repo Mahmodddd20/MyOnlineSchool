@@ -32,20 +32,8 @@
     -->
 
     <title>My Online School</title>
-    <script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
 
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script>
-      const beamsClient = new PusherPushNotifications.Client({
-        instanceId: '56b26735-eac9-4256-ac7a-5b614538e23c',
-      });
-
-      beamsClient.start()
-              .then(() => beamsClient.addDeviceInterest('hello'))
-              .then(() => console.log('Successfully registered and subscribed!'))
-              .catch(console.error);
-
-    </script>
 
 
   </head>
@@ -62,8 +50,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
 
   </body>
 </html>

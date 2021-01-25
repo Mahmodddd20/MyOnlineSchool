@@ -26,11 +26,12 @@ class EmailsController extends Controller
             $sender1=auth()->user()->role;
             $sender2=auth()->user()->name;
             $sender=ucwords($sender1.' '. $sender2);
-
             $to_name = ucwords($email->role.' '.$email->name);
+
             $to_email = $email->email;
             $data = array('subject'=>$request->subject, 'body' => $request->description);
-            Mail::send('email.costumemail', $data, function($message) use ($request, $sender, $to_name, $to_email) {
+            Mail::send('email.costumemail', $data,
+                function($message) use ($request, $sender, $to_name, $to_email) {
                 $message->to($to_email, $to_name)
                     ->subject($request->subject);
                 $message->from(auth()->user()->email,$sender);

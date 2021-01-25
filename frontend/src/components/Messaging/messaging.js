@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import api from "../../api";
 import { useHistory} from 'react-router-dom';
 import CookieService from "../../CookieService";
-import {Alert, Badge, Button, Card, Col, Collapse, Container, Form, ListGroup, Row, Toast} from "react-bootstrap";
+import { Badge, Button, Card, Col, Collapse, Container, Form, ListGroup, Row, Toast} from "react-bootstrap";
 import Pusher from 'pusher-js';
 import Sidebar from "../Sidebar/sidebar";
 import Spinner from "../Loading/Spinner";
@@ -29,7 +29,7 @@ export default function Messaging (props) {
 
     const channel = pusher.subscribe ('MyOnlineSchool');
     channel.bind('private', function(data) {
-        if(CookieService.get('id')==data.sender_id){
+        if(CookieService.get('id')==data.receiver_id){
             fetchMessages();
                 }
 
