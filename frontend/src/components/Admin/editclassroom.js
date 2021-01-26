@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { Link ,useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import api from '../../api';
-import CookieService from "../../CookieService";
 import {Button} from "react-bootstrap";
 import Spinner4 from "../Loading/Spinner4";
-import AdminOnly from "../adminOnly";
+import AdminOnly from "../Protect/adminOnly";
 
 export default function Editclassroom(props) {
     const [name, setName] = useState('');

@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import api from "../../api";
-import {Button, Container, Modal, Table} from "react-bootstrap";
-import Spinner from "../Loading/Spinner";
+import {Button, Modal, Table} from "react-bootstrap";
 import Spinner2 from "../Loading/Spinner2";
-import AdminOnly from "../adminOnly";
+import AdminOnly from "../Protect/adminOnly";
 
 
 export default function AllUsers() {

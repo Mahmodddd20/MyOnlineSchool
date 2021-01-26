@@ -5,7 +5,7 @@ import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Table}
 import CookieService from "../../CookieService";
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 
 export default function MyWeek(props){

@@ -6,7 +6,7 @@ import CookieService from '../../CookieService';
 import '../../index.css';
 import Spinner3 from "../Loading/Spinner3";
 import Sidebar from "../Sidebar/sidebar";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 
 

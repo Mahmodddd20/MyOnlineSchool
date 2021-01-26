@@ -4,7 +4,7 @@ import {Button, Card, Col, Container, Modal, Row} from "react-bootstrap";
 import api from "../../api";
 import CookieService from "../../CookieService";
 import Sidebar from "../Sidebar/sidebar";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 
 export default function Material(props){

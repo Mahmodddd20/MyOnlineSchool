@@ -6,7 +6,7 @@ import {Alert, Badge, Button, Card, Col, Container, Form, ListGroup, Row} from "
 import Pusher from 'pusher-js';
 import {render} from "@testing-library/react";
 import Sidebar from "../Sidebar/sidebar";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 export default function GroupMessaging (props) {
     const [classroom, setClassroom] = useState([]);

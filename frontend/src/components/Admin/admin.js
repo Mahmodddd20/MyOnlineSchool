@@ -5,7 +5,7 @@ import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Modal, Row}
 import '../../index.css';
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
-import AdminOnly from "../adminOnly";
+import AdminOnly from "../Protect/adminOnly";
 
 
 

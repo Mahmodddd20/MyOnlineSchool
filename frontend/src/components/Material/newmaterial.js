@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { Link ,useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import api from '../../api';
 import JoditEditor from "jodit-react";
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import FileUpload from "../Upload/FileUpload";
-import TeacherOnly from "../teacherOnly";
-import Logged from "../Logged";
+import TeacherOnly from "../Protect/teacherOnly";
+import Logged from "../Protect/Logged";
 
 export default function Neweek(props) {
     const [name, setName] = useState('');

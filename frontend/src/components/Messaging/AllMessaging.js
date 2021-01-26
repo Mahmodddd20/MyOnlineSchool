@@ -5,7 +5,7 @@ import {Badge, Button, Card, CardColumns, Col, Container, Row} from "react-boots
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
 import {useHistory} from "react-router-dom";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 
 

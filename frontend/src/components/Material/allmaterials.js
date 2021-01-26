@@ -4,7 +4,7 @@ import { Link ,useHistory } from 'react-router-dom';
 import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Tab, Tabs} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 
 export default function MyWeek(props){

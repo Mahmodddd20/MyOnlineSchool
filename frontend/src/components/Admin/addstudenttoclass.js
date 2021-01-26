@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory } from 'react-router-dom';
 import api from '../../api';
-import CookieService from "../../CookieService";
 import {Alert, Button, OverlayTrigger, Table, Tooltip} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
-import AdminOnly from "../adminOnly";
+import AdminOnly from "../Protect/adminOnly";
 export default function AddStudentToClass(props) {
     const [classroom, setClass] = useState([]);
     const [student, setStudent] = useState([]);

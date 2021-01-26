@@ -9,7 +9,7 @@ import Spinner4 from "../Loading/Spinner4";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import '../../index.css'
-import AdminOnly from "../adminOnly";
+import AdminOnly from "../Protect/adminOnly";
 
 
 

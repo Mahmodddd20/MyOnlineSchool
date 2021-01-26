@@ -1,11 +1,11 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
-import { Link ,useHistory } from 'react-router-dom';
-import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row} from "react-bootstrap";
+import {useHistory } from 'react-router-dom';
+import {Badge, Button, Card, CardColumns, Col, Row} from "react-bootstrap";
 import CookieService from "../../CookieService";
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
-import TeacherAndStudentOnly from "../teacherAndStudent";
+import TeacherAndStudentOnly from "../Protect/teacherAndStudent";
 
 
 export default function AllMyClasses(){

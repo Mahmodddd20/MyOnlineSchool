@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link ,useHistory } from 'react-router-dom';
 import api from '../../api';
-import TeacherOnly from "../teacherOnly";
+import TeacherOnly from "../Protect/teacherOnly";
 
 export default function Editweek(props) {
     const [name, setName] = useState('');

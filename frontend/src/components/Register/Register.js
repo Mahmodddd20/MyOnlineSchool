@@ -1,11 +1,10 @@
-import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import {useHistory } from 'react-router-dom';
 import api from '../../api';
 import CookieService from '../../CookieService';
 import AllUsers from "./AllUsers";
 import {Alert, Button} from "react-bootstrap";
-import AdminOnly from "../adminOnly";
+import AdminOnly from "../Protect/adminOnly";
 
 function Register() {
     const [name, setName] = useState('');

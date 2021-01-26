@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { Link ,useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import api from '../../api';
 import JoditEditor from "jodit-react";
 import {Button, Card, Col, Container, Form, Row} from "react-bootstrap";
-import TeacherOnly from "../teacherOnly";
-import AdminAndTeacher from "../AdminAndTeacher";
+import AdminAndTeacher from "../Protect/AdminAndTeacher";
 
 export default function Neweek(props) {
     const [subject, setSubject] = useState('');

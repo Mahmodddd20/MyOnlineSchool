@@ -3,7 +3,7 @@ import api from "../../api";
 import {Button, OverlayTrigger, Popover, Table} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Spinner2 from "../Loading/Spinner2";
-import AdminOnly from "../adminOnly";
+import AdminOnly from "../Protect/adminOnly";
 
 
 export default function AllTeachersTable() {

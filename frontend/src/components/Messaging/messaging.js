@@ -6,7 +6,7 @@ import { Badge, Button, Card, Col, Collapse, Container, Form, ListGroup, Row, To
 import Pusher from 'pusher-js';
 import Sidebar from "../Sidebar/sidebar";
 import Spinner from "../Loading/Spinner";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 export default function Messaging (props) {
     const [contacts, setContacts] = useState([]);
