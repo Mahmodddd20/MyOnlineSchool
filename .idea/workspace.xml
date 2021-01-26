@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7b38d7b-c228-4efb-91df-bf12d4997c7a" name="Default Changelist" comment="database">
+    <list default="true" id="d7b38d7b-c228-4efb-91df-bf12d4997c7a" name="Default Changelist" comment="protect">
       <change beforePath="$PROJECT_DIR$/frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Admin/AllTeachers.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Admin/AllTeachers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Admin/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Admin/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Admin/newclassroom.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Admin/newclassroom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Answer/Allanswers.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Answer/Allanswers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Answer/Answer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Answer/Answer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer/footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Homework/allhomeworks.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Homework/allhomeworks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Material/allmaterials.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Material/allmaterials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Messaging/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Messaging/Chat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Messaging/GroupMessaging.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Messaging/GroupMessaging.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar/sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar/sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Week/week.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Week/week.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Weeks/editweek.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Weeks/editweek.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +150,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testschool" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -183,7 +170,7 @@
       <workItem from="1610227096759" duration="21000" />
       <workItem from="1611620139527" duration="1138000" />
       <workItem from="1611652895611" duration="760000" />
-      <workItem from="1611655494909" duration="427000" />
+      <workItem from="1611655494909" duration="657000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1611620158968</created>
@@ -213,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611655543929</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="protect">
+      <created>1611655936035</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611655936035</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +229,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="Protect" />
     <MESSAGE value="database" />
-    <option name="LAST_COMMIT_MESSAGE" value="database" />
+    <MESSAGE value="protect" />
+    <option name="LAST_COMMIT_MESSAGE" value="protect" />
   </component>
 </project>
