@@ -2,44 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7b38d7b-c228-4efb-91df-bf12d4997c7a" name="Default Changelist" comment="Protect">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/school.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/UploadController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.idea/frontend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Answer/Allanswers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Answer/Answer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Homework/edithomework.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/Spinner.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/Spinner2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/Spinner3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/Spinner4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Material/editmaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Messaging/Chat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Profile/EditUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Profile/Profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Protect/AdminAndTeacher.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Protect/Logged.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Protect/adminOnly.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Protect/logout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Protect/studentOnly.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Protect/teacherAndStudent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Protect/teacherOnly.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar/NewClock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar/SidebarData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar/clock.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar/clock.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar/sidebar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Upload/FileUpload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Upload/FileUploadService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Upload/FileUploadServiceProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Weeks/weeks.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Weeks/weeks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2020_12_09_133558_create_h_answers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/migrations/2020_12_09_133558_create_h_answers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/database/migrations/2020_12_22_143349_create_classroom__students_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/database/migrations/2020_12_22_143349_create_classroom__students_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +151,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/src/components/Prrotect" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testschool" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -204,7 +169,8 @@
       <option name="presentableId" value="Default" />
       <updated>1610227095486</updated>
       <workItem from="1610227096759" duration="21000" />
-      <workItem from="1611620139527" duration="1055000" />
+      <workItem from="1611620139527" duration="1138000" />
+      <workItem from="1611652895611" duration="760000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1611620158968</created>
@@ -220,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611620826518</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Protect">
+      <created>1611621210396</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611621210396</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +209,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />

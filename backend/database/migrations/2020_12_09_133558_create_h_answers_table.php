@@ -27,8 +27,7 @@ class CreateHAnswersTable extends Migration
             on('users')->
             onUpdate('cascade')->
             onDelete('cascade');
-            $table->unique('homework_id + student_id');
-
+//            $table->index(['homework_id ' , 'student_id']);
 
             $table->timestamps();
         });

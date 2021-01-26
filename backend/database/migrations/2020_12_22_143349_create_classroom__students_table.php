@@ -14,6 +14,7 @@ class CreateClassroomStudentsTable extends Migration
     public function up()
     {
         Schema::create('classroom__students', function (Blueprint $table) {
+            $table->unique(['student_id', 'class_id']);
             $table->foreignId('student_id')->
             references('id')->
             on('users')->
@@ -26,8 +27,6 @@ class CreateClassroomStudentsTable extends Migration
             onUpdate('cascade');
             $table->index('student_id','class_id');
             $table->timestamps();
-            $table->unique('student_id + class_id');
-
         });
     }
 
