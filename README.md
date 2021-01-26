@@ -40,6 +40,10 @@ Run the database migrations (**Set the database connection in .env before migrat
 Generate a new Passport authentication personal key
 
     php artisan passport:install
+    
+Then run
+
+    php artisan storage:link
 
 ## Now you have to create Pusher account
 
