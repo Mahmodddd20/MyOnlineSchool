@@ -12,9 +12,11 @@ Alternative installation is possible without local dependencies relying on [Dock
 
 Clone the repository
 
-    git clone git@github.com:Mahmodddd20/MyOnlineSchool.git
+    git clone https://github.com/Mahmodddd20/MyOnlineSchool.git
 
 Switch to the backend folder
+
+    cd MyOnlineSchool
 
     cd backend
 
@@ -30,14 +32,15 @@ Generate a new application key
 
     php artisan key:generate
 
+
+Run the database migrations (**Set the database connection in .env before migrating**)
+
+    php artisan migrate:fresh --seed
+    
 Generate a new Passport authentication personal key
 
     php artisan passport:install
 
-Run the database migrations (**Set the database connection in .env before migrating**)
-
-    php artisan migrate:refresh --seed
-    
 ## Now you have to create Pusher account
 
 Create an account https://dashboard.pusher.com/accounts/sign_up
