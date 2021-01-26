@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link ,useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import api from '../../api';
 import {Badge, Button, Card, CardColumns, Col, Container, Modal, Row} from "react-bootstrap";
 import CookieService from '../../CookieService';
