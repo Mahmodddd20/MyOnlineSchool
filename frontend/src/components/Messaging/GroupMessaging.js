@@ -2,9 +2,8 @@ import React, {useEffect, useRef, useState} from "react";
 import api from "../../api";
 import {useHistory} from 'react-router-dom';
 import CookieService from "../../CookieService";
-import {Alert, Badge, Button, Card, Col, Container, Form, ListGroup, Row} from "react-bootstrap";
+import { Badge, Button, Card, Col, Container, Form, ListGroup, Row} from "react-bootstrap";
 import Pusher from 'pusher-js';
-import {render} from "@testing-library/react";
 import Sidebar from "../Sidebar/sidebar";
 import Logged from "../Protect/Logged";
 

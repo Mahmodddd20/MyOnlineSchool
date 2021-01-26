@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useHistory } from 'react-router-dom';
 import api from '../../api';
 import JoditEditor from "jodit-react";
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import FileUpload from "../Upload/FileUpload";
 import CookieService from "../../CookieService";
 import StudentOnly from "../Protect/studentOnly";

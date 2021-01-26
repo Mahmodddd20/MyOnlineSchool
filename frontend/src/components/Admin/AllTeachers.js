@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import api from "../../api";
-import {Button, OverlayTrigger, Popover, Table} from "react-bootstrap";
-import Spinner from "../Loading/Spinner";
+import {Button, Table} from "react-bootstrap";
 import Spinner2 from "../Loading/Spinner2";
 import AdminOnly from "../Protect/adminOnly";
 

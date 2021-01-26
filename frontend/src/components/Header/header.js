@@ -6,7 +6,7 @@ import { Nav, Navbar, NavDropdown} from "react-bootstrap";
 import '../../index.css';
 import logo from './logo.png';
 import '../logout'
-import LogOut from "../logout";
+import LogOut from "../Protect/logout";
 
 export default function Header() {
     const history = useHistory();

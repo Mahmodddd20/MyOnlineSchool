@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory } from 'react-router-dom';
 import api from '../../api';
-import CookieService from "../../CookieService";
 import AllTeachersTable from "./AllTeachers";
 import {Alert, Button, Col, Row} from "react-bootstrap";
 import Sidebar from "../Sidebar/sidebar";
 import Spinner4 from "../Loading/Spinner4";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import '../../index.css'
 import AdminOnly from "../Protect/adminOnly";

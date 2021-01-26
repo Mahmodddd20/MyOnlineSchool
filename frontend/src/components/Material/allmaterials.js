@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
 import api from "../../api";
-import { Link ,useHistory } from 'react-router-dom';
-import {Badge, Button, Card, CardColumns, CardGroup, Col, Container, Row, Tab, Tabs} from "react-bootstrap";
+import {  useHistory } from 'react-router-dom';
+import {Badge, Button, Card, Col, Row, Tab, Tabs} from "react-bootstrap";
 import Spinner from "../Loading/Spinner";
 import Sidebar from "../Sidebar/sidebar";
 import Logged from "../Protect/Logged";

@@ -13,7 +13,7 @@ import {
 import {useHistory} from "react-router-dom";
 import Sidebar from "../Sidebar/sidebar";
 import Spinner from "../Loading/Spinner";
-import Logged from "../Logged";
+import Logged from "../Protect/Logged";
 
 
 export default function Chat() {

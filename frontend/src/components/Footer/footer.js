@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Nav, Navbar, NavDropdown} from "react-bootstrap";
+import React from 'react';
+import { Navbar} from "react-bootstrap";
 import logo from './logo.png';
 import '../../index.css'
 export default function Footer() {
