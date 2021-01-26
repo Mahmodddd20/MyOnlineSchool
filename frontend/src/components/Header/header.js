@@ -1,7 +1,6 @@
 import React, {useEffect, useState } from 'react'
 import {useHistory } from 'react-router-dom';
 import api from '../../api';
-import CookieService from '../../CookieService';
 import { Nav, Navbar, NavDropdown} from "react-bootstrap";
 import '../../index.css';
 import logo from './logo.png';
@@ -15,7 +14,6 @@ export default function Header() {
     const [picture, setPicture] = useState('');
     const [check, setCheck] = useState(false);
 
-    // const hasMount = useRef(false)
 
     useEffect(() => {
         details();
@@ -79,19 +77,6 @@ export default function Header() {
                 </Navbar.Collapse>
                 </>
         )
-    }
-
-    function handleLogout() {
-        let token = 'Bearer '+CookieService.get('access_token')
-
-        api.logout(token).then(response=> {
-            CookieService.remove('access_token')
-            CookieService.remove('role')
-            CookieService.remove('id')
-
-                         window.location.reload();
-        }).catch(error=>{
-    })
     }
 
     return (
