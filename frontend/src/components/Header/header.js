@@ -5,7 +5,6 @@ import CookieService from '../../CookieService';
 import { Nav, Navbar, NavDropdown} from "react-bootstrap";
 import '../../index.css';
 import logo from './logo.png';
-import '../logout'
 import LogOut from "../Protect/logout";
 
 export default function Header() {
