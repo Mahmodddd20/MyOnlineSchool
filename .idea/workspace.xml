@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d7b38d7b-c228-4efb-91df-bf12d4997c7a" name="Default Changelist" comment="protect">
+    <list default="true" id="d7b38d7b-c228-4efb-91df-bf12d4997c7a" name="Default Changelist" comment="header">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/school.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/school.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Header/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/backend/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -150,7 +154,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testschool" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -171,6 +175,9 @@
       <workItem from="1611620139527" duration="1138000" />
       <workItem from="1611652895611" duration="760000" />
       <workItem from="1611655494909" duration="657000" />
+      <workItem from="1611657891191" duration="504000" />
+      <workItem from="1611659111345" duration="4000" />
+      <workItem from="1611756303659" duration="341000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1611620158968</created>
@@ -207,7 +214,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611655936035</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="header">
+      <created>1611657942491</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611657942491</updated>
+    </task>
+    <task id="LOCAL-00007" summary="header">
+      <created>1611658131539</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611658131539</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +251,7 @@
     <MESSAGE value="Protect" />
     <MESSAGE value="database" />
     <MESSAGE value="protect" />
-    <option name="LAST_COMMIT_MESSAGE" value="protect" />
+    <MESSAGE value="header" />
+    <option name="LAST_COMMIT_MESSAGE" value="header" />
   </component>
 </project>
